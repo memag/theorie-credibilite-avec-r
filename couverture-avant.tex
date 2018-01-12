@@ -32,7 +32,7 @@
 \def\titlefmt{%
   \sffamily\bfseries\fontsize{45}{45}\selectfont\thetitle\par}
 \def\authorfmt{%
-  \sffamily\bfseries\fontsize{28}{28}\selectfont\theauthor}
+  \sffamily\mdseries\fontsize{28}{28}\selectfont\theauthor}
 \def\affiliation{%
   \sffamily\mdseries\fontsize{22}{26}\selectfont
   Professeur titulaire \\
@@ -40,52 +40,6 @@
 \def\edition{%
   \sffamily\mdseries\fontsize{22}{26}\selectfont
   Édition {\fullcaps\year}.\month}
-
-%% bandeau identitaire
-\begin{textblock*}{\paperwidth}[0,1](0mm,30\TPVertModule)
-  \textcolor{rouge}{\rule{\banderougewidth}{\banderougeheight}}% % bande rouge
-  \rule{\gapwidth}{0pt}%                                         % filet
-  \textcolor{or}{\rule{\bandeorwidth}{\bandeorheight}}           % bande or
-\end{textblock*}
-
-%% logo UL
-\begin{textblock*}{\TPHorizModule}(2\TPHorizModule,31\TPVertModule)
-  \rule{\gapwidth}{0pt}%                                         % filet
-  \includegraphics[height=\logoheight,%
-                   keepaspectratio=true]{ul_p}
-\end{textblock*}
-
-%% image de fond
-\begin{textblock*}{\paperwidth}(0mm,0mm)
-  \includegraphics[width=\paperwidth,%
-                   keepaspectratio=true]{Steinbock}
-\end{textblock*}
-
-%% titre
-\begin{textblock*}{2.71\TPHorizModule}(0mm,11\TPVertModule)
-  \pgfsetfillopacity{0.5}
-  \textcolor{white}{\rule{\linewidth}{7\TPVertModule}}
-  \pgfsetfillopacity{1}
-\end{textblock*}
-\begin{textblock*}{2.3\TPHorizModule}(0.25\TPHorizModule,12.7\TPVertModule)
-  \pgfsetfillopacity{0.8}
-  \titlefmt
-  \pgfsetfillopacity{1}
-\end{textblock*}
-
-%% auteur
-\begin{textblock*}{1.24\TPHorizModule}(0mm,2.8\TPVertModule)
-  \pgfsetfillopacity{0.5}
-  \textcolor{white}{\rule{\linewidth}{2.3\TPVertModule}}
-  \pgfsetfillopacity{1}
-\end{textblock*}
-\begin{textblock*}{1\TPHorizModule}(0.25\TPHorizModule,3.5\TPVertModule)
-  \pgfsetfillopacity{0.8}
-  \authorfmt
-  \pgfsetfillopacity{1}
-\end{textblock*}
-
-\null\cleartoverso
 
 %% bandeau identitaire
 \begin{textblock*}{\paperwidth}[0,1](0mm,30\TPVertModule)
@@ -121,42 +75,6 @@
   \pgfsetfillopacity{1}
 \end{textblock*}
 
-\null\newpage
-
-%% bandeau identitaire
-\begin{textblock*}{\paperwidth}[0,1](0mm,30\TPVertModule)
-  \textcolor{rouge}{\rule{\banderougewidth}{\banderougeheight}}% % bande rouge
-  \rule{\gapwidth}{0pt}%                                         % filet
-  \textcolor{or}{\rule{\bandeorwidth}{\bandeorheight}}           % bande or
-\end{textblock*}
-
-%% logo UL
-\begin{textblock*}{\TPHorizModule}(2\TPHorizModule,31\TPVertModule)
-  \rule{\gapwidth}{0pt}%                                         % filet
-  \includegraphics[height=\logoheight,%
-                   keepaspectratio=true]{ul_p}
-\end{textblock*}
-
-%% image de fond
-\begin{textblock*}{\paperwidth}(0mm,0mm)
-  \includegraphics[width=\paperwidth,%
-                   keepaspectratio=true]{Steinbock}
-\end{textblock*}
-
-%% titre
-\begin{textblock*}{2.3\TPHorizModule}(0.25\TPHorizModule,12.7\TPVertModule)
-  \pgfsetfillopacity{0.85}
-  \textcolor{white}{\titlefmt}
-  \pgfsetfillopacity{1}
-\end{textblock*}
-
-%% auteur
-\begin{textblock*}{1\TPHorizModule}(0.25\TPHorizModule,3.5\TPVertModule)
-  \pgfsetfillopacity{0.85}
-  \textcolor{white}{\authorfmt}
-  \pgfsetfillopacity{1}
-\end{textblock*}
-
 \null\cleardoublepage
 
 %%%
@@ -164,17 +82,17 @@
 %%%
 
 %% titre
-\begin{textblock*}{\paperwidth}(0.35\TPHorizModule,3.7\TPVertModule)
+\begin{textblock*}{2.3\TPHorizModule}(0.35\TPHorizModule,3.5\TPVertModule)
   \titlefmt
 \end{textblock*}
 
 %% auteur
-\begin{textblock*}{2\TPHorizModule}(0.35\TPHorizModule,7.2\TPVertModule)
+\begin{textblock*}{2\TPHorizModule}(0.35\TPHorizModule,8.5\TPVertModule)
   \authorfmt
 \end{textblock*}
 
 %% affiliation
-\begin{textblock*}{2\TPHorizModule}(0.35\TPHorizModule,9.7\TPVertModule)
+\begin{textblock*}{2\TPHorizModule}(0.35\TPHorizModule,10.5\TPVertModule)
   \affiliation
 \end{textblock*}
 
