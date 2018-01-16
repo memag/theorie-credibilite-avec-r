@@ -1,11 +1,6 @@
 \chapter{Paramétrisation des lois de probabilité}
 \label{chap:distributions}
 
-%% Liste à puce compacte et sans puce, justement. Pour cette annexe
-%% seulement.
-\begingroup
-\setlist[itemize]{label={},leftmargin=0pt,align=left,nosep}
-
 Cette annexe précise la paramétrisation des lois de probabilité
 utilisée dans les énoncés des exercices des chapitres
 \ref{chap:stabilite} à \ref{chap:buhlmann-straub} ainsi que dans le
@@ -18,6 +13,10 @@ lois.
 La prise en charge de certaines lois dans R requiert le paquetage
 \pkg{actuar} \citep{actuar}.
 
+
+%% Listes à puce compactes et sans puce, justement.
+\begingroup
+\setlist[itemize]{label={},leftmargin=0pt,align=left,nosep}
 
 \section{Distributions discrètes}
 
@@ -98,7 +97,7 @@ La prise en charge de certaines lois dans R requiert le paquetage
       \code{shape2} ($b > 0$)
 \end{itemize}
 \begin{itemize}
-\item Cas spécial: Uniforme$(0, 1)$ lorsque $\alpha = \beta = 1$.
+\item Cas spécial: Uniforme$(0, 1)$ lorsque $a = b = 1$.
 \end{itemize}
 \begin{align*}
   f(x)
@@ -160,8 +159,6 @@ La prise en charge de certaines lois dans R requiert le paquetage
 \subsection{Log-normale}
 \label{distributions:log-normale}
 
-Si $X \sim \text{Normale}(\mu, \sigma^2)$, alors $Y = e^X \sim
-\text{Log-normale}(\mu, \sigma^2)$.
 \begin{itemize}
 \item Racine: \code{lnorm}
 \item Paramètres: \code{meanlog} ($-\infty < \mu < \infty$), \code{sdlog}
@@ -182,7 +179,7 @@ Si $X \sim \text{Normale}(\mu, \sigma^2)$, alors $Y = e^X \sim
 \label{distributions:pareto}
 
 \begin{itemize}
-\item Racine: \code{pareto}, \code{pareto2} [\pkg{actuar}]
+\item Racine: \code{pareto}, \code{pareto2} (\pkg{actuar})
 \item Paramètres: \code{shape} ($\alpha > 0$),
       \code{scale}  ($\lambda > 0$)
 \end{itemize}
@@ -201,7 +198,7 @@ Si $X \sim \text{Normale}(\mu, \sigma^2)$, alors $Y = e^X \sim
 \label{distributions:paretogen}
 
 \begin{itemize}
-\item Racine: \code{genpareto} [\pkg{actuar}]
+\item Racine: \code{genpareto} (\pkg{actuar})
 \item Paramètres: \code{shape1} ($\alpha > 0$),
       \code{shape2} ($\tau > 0$),
       \code{rate}   ($\lambda = 1/\theta$),
