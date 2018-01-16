@@ -1665,7 +1665,7 @@ curve(dbeta(x, 4, 2), from = 0, to = 1)
       chaque lancer sont les suivants, dans l'ordre: $(1, 2)$, $(2,
       2)$, $(3, 2)$, $(3, 3)$, $(4, 3)$, $(4, 4)$, $(5, 4)$, $(6, 4)$,
       $(6, 5)$, $(6, 6)$.  Quelques distributions à postériori sont
-      présentées aux figures \ref{fig:beta0}--\ref{fig:bayesienne:beta5}. Une
+      présentées aux figures \ref{fig:bayesienne:beta0}--\ref{fig:bayesienne:beta5}. Une
       première observation est le déplacement vers la gauche ou vers
       la droite de la distribution selon le nombre de résultats piles
       et de résultats faces obtenus.  Une deuxième observation est la
