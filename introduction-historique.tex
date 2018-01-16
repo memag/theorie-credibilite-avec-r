@@ -12,7 +12,6 @@
 \chapter{Introduction et perspective historique}
 \label{chap:introduction-historique:introduction}
 
-
 Théorie de la crédibilité: ensemble de techniques utilisées par les
 actuaires pour déterminer la prime d'un assuré/contrat dans un
 portefeuille hétérogène.
@@ -60,9 +59,9 @@ Elle ne peut toutefois être utilisée, par exemple, en
   suivantes prévalent:
   \begin{itemize}
   \item tout contrat ne peut avoir qu'au plus un sinistre par année;
-  \item le montant de ce sinistre est 1;
-  \item la prime collective est 0,20, c'est-à-dire que l'assureur
-    s'attend à ce qu'en moyenne deux assurés sur 10 aient un sinistre au
+  \item le montant de ce sinistre est $1$;
+  \item la prime collective est $0,20$, c'est-à-dire que l'assureur
+    s'attend à ce qu'en moyenne deux assurés sur dix aient un sinistre au
     cours d'une année.
   \end{itemize}
 
@@ -78,13 +77,13 @@ Voici l'expérience au sein du portefeuille après une année.
     \cmidrule{2-11}
     Année & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
     \midrule
-    1 &   &   &   &   &   &   &   &   & 1 &   \\
+    $1$ &   &   &   &   &   &   &   &   & 1 &   \\
     \bottomrule
   \end{tabularx}
 \end{center}
 
 \begin{itemize}
-\item Montant de sinistre moyen par contrat = 1/10 = 0,10.
+\item Montant de sinistre moyen par contrat $= 1/10 = 0,10$.
 \item La prime collective est \emph{peut-être} trop élevée.
 \item Trop peu de données pour tirer une conclusion.
 \end{itemize}
@@ -101,17 +100,17 @@ Après deux années, l'expérience est maintenant comme suit.
     \cmidrule{2-11}
     Année & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
     \midrule
-    1 &   &   &   &   &   &   &   &   & 1 &   \\
+    $1$ &   &   &   &   &   &   &   &   & 1 &   \\
     \midrule
-    2 & 1 & 1 &   &   &   &   &   &   & 1 &   \\
+    $2$ & 1 & 1 &   &   &   &   &   &   & 1 &   \\
     \bottomrule
   \end{tabularx}
 \end{center}
 
 \begin{itemize}
-\item Montant de sinistre moyen par contrat = 4/20 = 0,20.
+\item Montant de sinistre moyen par contrat $= 4/20 = 0,20$.
 \item La prime collective est adéquate.
-\item Le contrat 9 a déjà eu deux sinistres.
+\item Le contrat $9$ a déjà eu deux sinistres.
 \end{itemize}
 
 
@@ -126,25 +125,25 @@ Observons maintenant la situation après dix années.
     \cmidrule{2-11}
     Année & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
     \midrule
-    1 &   &   &   &   &   &   &   &   & 1 &   \\
+    $1$ &   &   &   &   &   &   &   &   & 1 &   \\
     \midrule
-    2 & 1 & 1 & 1 &   &   &   &   &   & 1 &   \\
+    $2$ & 1 & 1 & 1 &   &   &   &   &   & 1 &   \\
     \midrule
-    3 & 1 &   &   &   &   &   &   &   & 1 &   \\
+    $3$ & 1 &   &   &   &   &   &   &   & 1 &   \\
     \midrule
-    4 &   &   & 1 &   &   &   &   &   & 1 &   \\
+    $4$ &   &   & 1 &   &   &   &   &   & 1 &   \\
     \midrule
-    5 &   &   &   &   &   &   &   &   & 1 &   \\
+    $5$ &   &   &   &   &   &   &   &   & 1 &   \\
     \midrule
-    6 &   & 1 &   &   &   &   &   &   &   &   \\
+    $6$ &   & 1 &   &   &   &   &   &   &   &   \\
     \midrule
-    7 & 1 & 1 &   & 1 & 1 &   &   &   &   &   \\
+    $7$ & 1 & 1 &   & 1 & 1 &   &   &   &   &   \\
     \midrule
-    8 & 1 &   &   & 1 &   & 1 &   &   & 1 &   \\
+    $8$ & 1 &   &   & 1 &   & 1 &   &   & 1 &   \\
     \midrule
-    9 & 1 &   &   &   & 1 &   &   &   &   &   \\
+    $9$ & 1 &   &   &   & 1 &   &   &   &   &   \\
     \midrule
-    10 & 1 &   &   &   &   &   &   &   & 1 &   \\
+    $10$ & 1 &   &   &   &   &   &   &   & 1 &   \\
     \midrule
     $\bar{S}_i$ & 0,6 & 0,3 & 0,2 & 0,2 & 0,2 & 0,1 & 0 & 0 & 0,7 & 0 \\
     \midrule
@@ -154,10 +153,10 @@ Observons maintenant la situation après dix années.
 \end{center}
 
 \begin{itemize}
-\item Montant de sinistre moyen par contrat = 23/100 = 0,23.
+\item Montant de sinistre moyen par contrat $= 23/100 = 0,23$.
 \item La prime collective est raisonnablement adéquate.
-\item Le contrat 9, avec ses 7 sinistres, est en effet plus risqué.
-\item Les contrats 7, 8 et 10 n'ont eu aucun sinistre.
+\item Le contrat $9$, avec ses sept sinistres, est en effet plus risqué.
+\item Les contrats $7$, $8$ et $10$ n'ont eu aucun sinistre.
 \end{itemize}
 
 
