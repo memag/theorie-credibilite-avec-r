@@ -1,0 +1,847 @@
+%%% Copyright (C) 2018 Vincent Goulet
+%%%
+%%% Ce fichier fait partie du projet
+%%% «Théorie de la crédibilité avec R»
+%%% http://github.com/vigou3/theorie-credibilite-avec-r
+%%%
+%%% Cette création est mise à disposition selon le contrat
+%%% Attribution-Partage dans les mêmes conditions 4.0
+%%% International de Creative Commons.
+%%% http://creativecommons.org/licenses/by-sa/4.0/
+
+\chapter{Introduction et perspective historique}
+\label{chap:introduction-historique:introduction}
+
+
+Théorie de la crédibilité: ensemble de techniques utilisées par les
+actuaires pour déterminer la prime d'un assuré/contrat dans un
+portefeuille hétérogène.
+
+En faisant une tarification, un assureur cherche
+\begin{enumerate}
+\item d'abord à charger assez de primes pour poyer les sinistres; puis
+\item distribuer équitablement ces primes entre les assurés.
+\end{enumerate}
+
+Plusieurs façons d'atteindre le second but:
+\begin{enumerate}
+\item d'abord par une structure de classification; puis
+\item par la tarification basée sur l'expérience (\emph{experience
+    rating}) $\Rightarrow$ théorie de la crédibilité.
+\end{enumerate}
+
+\begin{definition}[\emph{Experience rating}]
+  La tarification basée sur l'expérience vise à assigner à chaque
+  risque sa prime juste et équitable. Cette prime pour une période
+  dépend exclusivement de la distribution des sinistres (inconnue) de
+  ce risque pour la période. \citep{Buhlmann:credibility:1969}
+\end{definition}
+
+La tarification basée sur l'expérience exige un volume d'expérience
+important. Elle est donc principalement utilisée en
+\begin{itemize}
+\item assurance automobile
+\item accidents du travail.
+\end{itemize}
+Elle ne peut toutefois être utilisée, par exemple, en
+\begin{itemize}
+\item assurance-vie (on ne meurt qu'une fois)
+\item assurance habitation (fréquence trop faible)
+\end{itemize}
+
+
+\section{Illustration des principes de base}
+\label{sec:introduction-historique:illustration}
+
+\begin{exemple}
+  \label{ex:introduction-historique:simplifie}
+  Un portefeuille d'assurance est composé de dix contrats. Les
+  contrats sont a priori considérés équivalents. Les conditions
+  suivantes prévalent:
+  \begin{itemize}
+  \item tout contrat ne peut avoir qu'au plus un sinistre par année;
+  \item le montant de ce sinistre est 1;
+  \item la prime collective est 0,20, c'est-à-dire que l'assureur
+    s'attend à ce qu'en moyenne deux assurés sur 10 aient un sinistre au
+    cours d'une année.
+  \end{itemize}
+
+
+\subsection*{Situation après une année}
+
+Voici l'expérience au sein du portefeuille après une année.
+
+\begin{center}
+  \begin{tabularx}{\tablewidth}{c*{10}{Y}}
+    \toprule
+    & \multicolumn{10}{c}{Contrat} \\
+    \cmidrule{2-11}
+    Année & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \midrule
+    1 &   &   &   &   &   &   &   &   & 1 &   \\
+    \bottomrule
+  \end{tabularx}
+\end{center}
+
+\begin{itemize}
+\item Montant de sinistre moyen par contrat = 1/10 = 0,10.
+\item La prime collective est \emph{peut-être} trop élevée.
+\item Trop peu de données pour tirer une conclusion.
+\end{itemize}
+
+
+\subsection*{Situation après deux années}
+
+Après deux années, l'expérience est maintenant comme suit.
+
+\begin{center}
+  \begin{tabularx}{\tablewidth}{c*{10}{Y}}
+    \toprule
+    & \multicolumn{10}{c}{Contrat} \\
+    \cmidrule{2-11}
+    Année & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \midrule
+    1 &   &   &   &   &   &   &   &   & 1 &   \\
+    \midrule
+    2 & 1 & 1 &   &   &   &   &   &   & 1 &   \\
+    \bottomrule
+  \end{tabularx}
+\end{center}
+
+\begin{itemize}
+\item Montant de sinistre moyen par contrat = 4/20 = 0,20.
+\item La prime collective est adéquate.
+\item Le contrat 9 a déjà eu deux sinistres.
+\end{itemize}
+
+
+\subsection*{Situation après dix années}
+
+Observons maintenant la situation après dix années.
+
+\begin{center}
+  \begin{tabularx}{\tablewidth}{c*{10}{Y}}
+    \toprule
+    & \multicolumn{10}{c}{Contrat} \\
+    \cmidrule{2-11}
+    Année & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \midrule
+    1 &   &   &   &   &   &   &   &   & 1 &   \\
+    \midrule
+    2 & 1 & 1 & 1 &   &   &   &   &   & 1 &   \\
+    \midrule
+    3 & 1 &   &   &   &   &   &   &   & 1 &   \\
+    \midrule
+    4 &   &   & 1 &   &   &   &   &   & 1 &   \\
+    \midrule
+    5 &   &   &   &   &   &   &   &   & 1 &   \\
+    \midrule
+    6 &   & 1 &   &   &   &   &   &   &   &   \\
+    \midrule
+    7 & 1 & 1 &   & 1 & 1 &   &   &   &   &   \\
+    \midrule
+    8 & 1 &   &   & 1 &   & 1 &   &   & 1 &   \\
+    \midrule
+    9 & 1 &   &   &   & 1 &   &   &   &   &   \\
+    \midrule
+    10 & 1 &   &   &   &   &   &   &   & 1 &   \\
+    \midrule
+    $\bar{S}_i$ & 0,6 & 0,3 & 0,2 & 0,2 & 0,2 & 0,1 & 0 & 0 & 0,7 & 0 \\
+    \midrule
+    $\bar{S}$ & \multicolumn{10}{c}{0,23} \\
+    \bottomrule
+  \end{tabularx}
+\end{center}
+
+\begin{itemize}
+\item Montant de sinistre moyen par contrat = 23/100 = 0,23.
+\item La prime collective est raisonnablement adéquate.
+\item Le contrat 9, avec ses 7 sinistres, est en effet plus risqué.
+\item Les contrats 7, 8 et 10 n'ont eu aucun sinistre.
+\end{itemize}
+
+
+
+\subsection*{Conclusions}
+
+\begin{itemize}
+\item La prime collective, si elle est globalement \emph{adéquate},
+  n'est en revanche clairement pas \emph{équitable}.
+\item Contrairement à l'hypothèse de départ de l'assureur, le
+  portefeuille est \emph{hétérogène}.
+\item Besoin d'une technique de tarification basée sur l'expérience
+  (\emph{experience rating}) pour adéquatement distribuer les primes
+  entre les assurés.
+\end{itemize}
+  \qed
+\end{exemple}
+
+Deux grandes branches en théorie de la crédibilité:
+\begin{enumerate}
+\item Credibilité de stabilité, ou américaine, \emph{limited
+    fluctuations}.
+
+  L'assureur tient compte de l'expérience individuelle seulement si
+  celle-ci est suffisamment stable dans le temps.
+
+\item Crédibilité de précision, ou européenne, \emph{greatest
+    accuracy}.
+
+  L'assureur tient compte de l'expérience individuelle de façon à
+  obtenir la meilleure estimation de l'expérience future. Le poids de
+  l'expérience individuelle augmente avec l'hétérogénéité du
+  portefeuille.
+\end{enumerate}
+
+
+\section{Historique et évolution de la théorie de la crédibilité}
+\label{sec:introduction-historique:historique}
+
+\vspace*{-1.5\baselineskip}
+\begin{quote}
+  \itshape Ce chapitre est une version révisée du chapitre 1 de
+  \cite{Goulet:masters}
+\end{quote}
+
+La personne qui mentionne qu'elle étudie «la crédibilité» obtient
+habituellement de grands yeux incrédules et interrogateurs comme seule
+réponse de la part de son interlocuteur, fut-il même parfois actuaire.
+Pour l'actuaire la crédibilité n'est souvent qu'un vague concept parmi
+tant d'autres rencontrés au fil des examens professionnels, concept
+qui eut tôt fait de fuir à toutes jambes sa mémoire une fois l'examen
+réussi. Quant au non actuaire, l'étude de la crédibilité ne lui
+apparaît d'aucun intérêt puisqu'il n'applique habituellement la notion
+qu'aux personnes physiques: le juge est crédible lorsqu'il interprète
+la loi, certains critiques de cinéma sont crédibles alors que d'autres
+le sont moins, nul politicien n'est considéré crédible... Pourtant, la
+définition que donne le \emph{Petit Robert} du mot crédibilité, «ce
+qui fait qu'une chose mérite d'être crue; caractère de ce qui est
+croyable», est assez vaste pour laisser place à d'autres
+interprétations.
+
+La population accorde donc de la crédibilité aux gens, et ce selon
+leur notoriété, leurs réalisations, du fait d'expériences concluantes,
+de leur honnêteté et leur droiture reconnues ou tout simplement par
+affinité. En fin de compte, une personne est crédible à nos yeux s'il
+est \emph{probable} que ce qu'elle dit ou fait se réalise ou soit un
+succès. Par exemple, il est fort probable que l'interprétation que le
+juge fait de la loi soit la bonne; ou j'irai voir le nouveau film à
+l'affiche louangé par tel critique car je sais qu'il est probable que
+je l'aime moi aussi.
+
+On voit donc qu'il existe une étroite relation entre les notions de
+«probabilité» et de «crédibilité». C'est pour cette raison qu'avant
+d'aborder l'historique de la théorie actuarielle de la crédibilité, il
+s'avérera intéressant d'étudier l'évolution de l'approche probabiliste
+privilégiée en actuariat, l'approche bayesienne. Avec en plus l'étude
+des réflexions sur le sujet du philosophe anglais Bertrand Russell le
+lien entre les deux notions se clarifiera et la perspective historique
+n'en sera que meilleure.
+
+\subsection{L'émergence de l'approche bayesienne}
+
+Bien que Thomas Bayes eut présenté son fameux théorème dans un essai
+en 1763, ce n'est que dans la seconde moitié des années 1950 que la
+philosophie probabiliste basée sur ce théorème gagne suffisamment
+d'adeptes, et donc de popularité, pour aspirer au respect. L'approche
+classique monopolisait auparavant la foi des probabilistes et
+statisticiens, et c'est encore aujourd'hui la philosophie enseignée en
+premier lieu dans les écoles.
+
+Le statisticien classique%
+\footnote{Souvent appelé \emph{objectivist} en anglais. L'expression
+  est toutefois difficile à traduire adéquatement en français et c'est
+  pourquoi usage on utilisera le terme «classique»} %
+a une vision très stricte, objective et mathématique de la probabilité
+et de l'usage qu'il est possible d'en faire pour inférer un résultat à
+partir de données. Pour lui, une probabilité est essentiellement la
+limite d'une série de fréquences relatives où la symétrie joue un rôle
+primordial: si un événement peut connaître $n$ réalisations
+différentes mutuellement exclusives et ayant une chance égale de se
+réaliser, et si de ces réalisations $m$ ont l'attribut $A$, alors la
+probabilité de $A$ est $m/n$. Des énoncés du type «il est probable que
+le Québec devienne indépendant au cours des deux prochaines années» ou
+«il est probable qu'il neige demain» n'ont donc aucun sens à ses yeux.
+D'ailleurs, les statisticiens classiques croient que leur travail se
+limite exclusivement à l'analyse des données et qu'il ne leur
+appartient pas de prendre des décisions à la lumière des résultats
+obtenus. Il sera expliqué plus loin que, par opposition, les bayesiens
+voient en la prise de décision le but de tout travail statistique.
+
+Un autre élément majeur qui caractérise l'approche classique --- et
+c'est celui qui concerne particulièrement la théorie de la crédibilité
+--- est l'absence de prise en compte de toute information a priori
+relative au problème étudié. On préfère «laisser les données parler
+d'elles-mêmes». C'est ce qui fut à l'origine de la contestation devant
+mener à l'émergence de l'approche bayesienne.
+
+Leonard J.\ Savage publie en 1954 \citep{Savage:foundations:1954} un des premiers
+livres consacrés à l'étude de la statistique dans une optique
+bayesienne. Il défend alors la vision individualiste de la probabilité
+(\emph{personalistic view of probability}) qu'il qualifie de «seul
+concept de probabilité». Comme son nom l'indique, cette vision tâche
+de se rapprocher le plus possible du raisonnement humain.  La
+probabilité devient donc un indicateur de l'opinion d'une personne à
+propos d'un événement et, puisqu'une opinion est --- habituellement!
+--- sujette à changement suite à l'ajout d'informations, l'inférence
+statistique à partir de nouvelles données constitue alors le mécanisme
+de révision de l'opinion. De plus, l'adhérant à cette vision refuse
+obstinément de rejeter toute information parallèle ou a priori au
+problème sous prétexte que, justement, l'humain tire profit de ces
+informations lorsqu'il prend une décision. Si la question «quel degré
+de conviction puis-je atteindre à la suite de l'ajout de cette information?»
+est hors du champ de la statistique pour le statisticien classique,
+elle est au contraire au c{\oe}ur même du problème pour
+l'individualiste.  Ce dernier répond d'ailleurs à la question en
+utilisant le théorème de Bayes --- d'où le qualificatif de bayesien.
+Cet algorithme donne la nouvelle probabilité d'un événement $A$ à
+partir de sa probabilité originale et des nouveaux faits marquants
+venant s'y rattacher. Ainsi, si $B$ constitue l'ensemble des nouveaux
+faits, alors
+\begin{equation*}
+  P[A|B]= \frac{P[B|A]P[A]}{P[B]},
+\end{equation*}
+où $P[A]$ est la probabilité a priori que l'événement $A$ se réalise.
+
+De plus, les bayesiens évitent l'apparente contradiction entre
+l'objectivité scientifique et l'irrationalité humaine en postulant un
+individu idéal, conséquent dans ses décisions. Par exemple, cet
+individu, lorsque confronté à un choix, choisira toujours l'option la
+plus probable.
+
+Savage donne dans son ouvrage \emph{The foundations of statistics}
+\citeyearpar{Savage:foundations:1954} quelques expressions synonymes,
+qu'il est sans doute préférable de ne pas traduire, pour
+\emph{personal probability}. Ce sont \emph{subjective probability,
+  psychological probability} et finalement \emph{degree of
+  conviction}. Le lecteur est invité à conserver tout particulièrement
+en mémoire la dernière expression. En effet, la section suivante
+étudie sommairement les travaux du philosophe Bertrand Russell et il
+sera intéressant de constater à quel point les travaux de deux
+disciplines différentes ont su converger.
+
+\subsubsection{Les réflexions de Russell}
+
+Lord Bertrand Russell (1872-1970) est un éminent philosophe et
+logicien britannique, pacifiste invétéré et dont l'activité la plus
+marquante se rapporta aux mathématiques et à la logique. Il est entre
+autres le fondateur du logicisme, doctrine selon laquelle «les
+mathématiques seraient soumises à la formalisation de la logique et
+s'y réduiraient» (\emph{Le Petit Larousse}).Il fut récipiendaire du
+Prix Nobel de littérature en 1950.
+
+Joseph Butler (1692--1752) disait: «la probabilité est le guide de la
+vie d'une personne».  En effet, il est raisonnable de croire que
+lorsque deux événements ou plus ont des chances de se réaliser, la
+décision d'une personne sera basée sur celui qui se réalisera avec la
+plus forte probabilité. Mais ce type de probabilité est-il le même que
+dans l'énoncé: «la probabilité d'obtenir un double six au lancer de
+deux dés est de un sur trente-six»? Russell soutient que non. Voici
+son raisonnement, que l'ont peut retrouver de façon plus exhaustive
+dans son ouvrage de 1948 \citep{Russell:human:1948}.
+
+De toute évidence, cette dernière est la probabilité dite
+\emph{mathématique}, obéissant aux axiomes de la théorie des
+probabilités, que l'ont peut grossièrement réduire au quotient de deux
+nombres: le cardinal d'une classe spécifique (double six) et celui
+d'une classe fondamentale (les réalisations possibles du lancer de
+deux dés). Elle s'attarde aux énoncés d'ordre général, se référant à
+des classes «anonymes». Un autre exemple serait, en assurance-vie: «la
+probabilité qu'un homme non-fumeur âgé de 30 ans décède dans l'année
+qui vient est, selon la table CSO 1958, de $0,00213$». Jamais dans ces
+deux exemples il n'est fait référence à une personne ou un objet en
+particulier.
+
+Cependant, en passant à un cas particulier du genre «la probabilité
+que je vive jusqu'à 90 ans est de $60~\%$», est-on toujours dans le
+domaine de la probabilité mathématique? Au passage d'un cas général à
+un cas particulier (et en ne considérant pas le cas particulier comme
+une simple réalisation du phénomène général), une personne devrait
+être en mesure d'intégrer \emph{tous} les éléments d'importance à sa
+prise de décision. Cette masse d'information lui permettrait alors de
+savoir avec certitude si oui ou non sa longévité atteindra les 90 ans.
+Et dès lors elle se retrouverait hors du champ de la probabilité.
+
+Bien entendu, il est pour ainsi dire impossible d'atteindre un tel
+niveau de certitude. C'est pourquoi la probabilité demeure le guide de
+la vie de la personne, parce que \emph{son devoir s'avère
+  insuffisant}. Mais encore, si ce guide est la probabilité
+mathématique, il doit être possible de calculer et d'identifier
+\emph{la} probabilité (c'est-à-dire \emph{la} classe fondamentale),
+sinon le guide fait faux bon à son utilisateur! La personne en quête
+de cette probabilité évaluera donc d'abord elle-même ses chances de
+vivre jusqu'à 90 ans, puis ira probablement consulter un médecin, ou
+même une voyante, qui chacun lui donnera son avis, pas nécessairement
+objectif. Cette personne ne pourra que croire en totalité ou en partie
+les divers jugements colligés, aussi lorsqu'il affirmera «la
+probabilité que je vive jusqu'à 90 ans est de $60~\%$», il attribuera
+en réalité une \emph{crédibilité} de $60~\%$ à l'expression «je vais
+vivre jusqu'à 90 ans». C'est le mieux qu'il pourra faire, tout le
+savoir de l'humain comportant une part de doute ou, à
+l'inverse, seulement un \emph{degré de crédibilité}.
+
+Crédibilité, voilà donc le nom qu'attribue Russell à ce second type de
+probabilité, la distinction entre la probabilité mathématique et la
+crédibilité se faisait au \emph{passage du général au particulier}.
+Une relation subsiste néanmoins entre les deux notions, et c'est que
+la probabilité mathématique est un instrument de mesure de la
+crédibilité. De plus, toujours selon Russell, tout énoncé comporte un
+degré de crédibilité intrinsèque, si minime soit-il, car une personne
+a toujours un certain bagage de connaissances lui permettant de se
+faire une opinion a priori. Finalement, la crédibilité peut être
+augmentée par l'ajout d'information, le gain marginal allant en
+décroissant.
+
+Cette théorie de Bertrand Russell date de 1948 (ou du moins sa
+publication). L'énoncé sommaire ci-dessus suffit pour constater à quel
+point cette théorie est près de l'approche bayesienne en statistique
+qui commençait alors à sortir de l'anonymat. Cela n'est pas surprenant
+si l'on se rappelle que les fondateurs de l'école bayesienne ont,
+comme des philosophes le font, basé leur théorie sur le comportement
+humain. Ainsi, ce que Russell nomme probabilité mathématique correspond
+en fait à l'approche classique en statistique et il ne la considère
+pas comme un fin en soi, mais bien comme un outil pour une prise de
+décision. C'est cette prise de décision, via la détermination d'un
+degré de crédibilité, qui constitue la fin de l'utilisation de la
+probabilité (ou de la statistique). D'ailleurs, l'expression
+\emph{degree of conviction} proposée par Savage n'est-elle pas
+synonyme de celle de Russell, degré de crédibilité?
+
+Cependant, là où le philosophe fortifie le plus la thèse bayesienne,
+c'est lorsqu'il soutient que tout énoncé comporte un degré de
+crédibilité intrinsèque car, ce faisant, il défend l'apport non
+négligeable de l'information a priori.
+
+\subsection{Et les actuaires dans tout ça?}
+
+Longtemps avant l'apparition de l'approche bayesienne ou même les
+théories de Russell, l'information a priori était prise en compte par
+les actuaires. En effet, lorsqu'ils évaluaient une prime, jamais ils
+n'auraient considéré ne \emph{rien} connaître du risque. À partir de
+différents critères, ils arrivaient au moins à le regrouper avec
+d'autres risques semblables. Toutefois, le mécanisme de prise en
+compte de cette information était souvent ad hoc et mal compris à
+la fois par les actuaires et les statisticiens. C'était la
+crédibilité.
+
+Si la crédibilité a su se développer et faire le bonheur de ses
+utilisateurs pendant de nombreuses années sans les bases statistiques
+de l'approche bayesienne, il n'en demeure pas moins que l'arrivée de
+celle-ci marqua un virage important dans l'évolution de la
+crédibilité, contribuant d'ailleurs à en faire davantage une théorie.
+Les lignes suivantes tâcheront de retracer l'évolution historique de
+la théorie de la crédibilité, de ses balbutiements aux débuts du
+siècle à son adolescence actuelle, tout en faisant le lien avec les
+théories présentées plus haut.
+
+La petite histoire suivante, inventée par le Dr François Dufresne pour
+un cours d'introduction à la théorie de la crédibilité à l'Université
+Laval, illustre sans doute bien comment cette théorie a pu voir le
+jour.
+
+Vers les années 1910, aux États-Unis, la multinationale General Motors
+et le petit constructeur indépendant Tucker sont assurés chez Allstate
+contre les accidents de travail (\emph{workers compensation}), avec
+quelques autres fabricants d'automobiles. Un taux moyen est calculé à
+partir de l'expérience de l'ensemble de ces fabricants et c'est ce
+taux qui est chargé à chacun. Or, la GM calcule elle-même son taux et
+s'aperçoit qu'il serait, année après année, inférieur à celui qu'on
+lui charge et ce, grâce à une expérience meilleure que celle du
+groupe. Exaspérée par une telle situation, elle demande à Allstate
+qu'on lui charge son propre taux, ceci sous prétexte que son nombre
+d'employés important est un gage de stabilité de l'expérience entre
+les années.
+
+Les actuaires de Allstate sont intuitivement d'accord avec
+l'argumentation de GM, aussi s'apprêtent-ils à accéder à sa demande.
+Un petit problème les fait cependant hésiter: si le nombre d'employés
+de GM est clairement assez gros pour que l'on se fie à son expérience
+et celui de Tucker trop petit pour faire de même, où fixera-t-on la
+limite entre un nombre d'employés fiable et un non fiable?
+
+Il est généralement reconnu que le premier actuaire à avoir proposé
+une solution au problème dans la littérature est Arthur H.\ Mowbray,
+dans le premier numéro, des Proceedings de la Casualty Actuarial
+Society, en 1914 \citep{Mowbray:1914}. En supposant connue la
+probabilité $q$ qu'un accident survienne, il désire calculer le nombre
+minimal d'employés assurés $n$ de telle sorte que la probabilité que
+le nombre d'accidents ne s'éloigne pas de plus de $100k$~\% de la
+moyenne (ou du mode%
+\footnote{Mowbray privilégie la valeur la plus fréquente, le mode,
+  mais s'en remet à la moyenne par simplicité et sous prétexte que ces
+  deux valeurs sont presque égales.}) %
+soit supérieure à $100p$~\%. Si l'on note $N$ la distribution du
+nombre d'accidents, alors l'énoncé précédent s'écrit en langage
+mathématique
+\begin{equation*}
+  P \left[ (1 - k)E[N] \leq N \leq (1 + k)E[N] \right] \geq p,
+\end{equation*}
+où $N \sim \text{Binomiale}(n, q)$. Par la suite, l'utilisation de
+l'approximation normale pour la distribution de $N$ permet d'éviter
+l'arbitrage entre le mode et la moyenne et d'obtenir aisément une
+réponse.
+
+Les bases de la crédibilité de stabilité, ou \emph{limited
+  fluctuations}, étaient dès lors posées.
+
+La solution de Mowbray était intéressante car appuyée par des
+arguments probabilistes. Elle connut d'ailleurs de multiples
+adaptations qui lui permirent de rester d'actualité jusqu'à nos jours.
+Moyennant la détermination d'une distribution pour le nombre de
+sinistres, les praticiens pouvaient désormais résoudre par un calcul
+simple le problème auquel ils faisaient face: fixer un seuil
+d'admissibilité à la pleine crédibilité.
+
+Les assurés eurent cependant tôt fait de soumettre un autre problème
+aux actuaires. Telle que présentée jusqu'à maintenant, la théorie de
+la crédibilité n'admettait que deux niveaux: 0 et 1. Or, cette
+situation pouvait se traduire, pour un employeur situé tout juste sous
+le seuil d'admissibilité, en une différence significative dans la
+prime à payer. De plus, la notion même de pleine crédibilité ne
+ralliait pas l'ensemble des actuaires, certains croyant que jamais les
+données ne sont fiables à $100\%$.
+
+C'est pour répondre à ces critiques que fut introduit le concept de
+crédibilité partielle, dont on attribue la première véritable théorie
+sur le sujet à \cite{Whitney:1918}. Dès 1918 donc, Whitney mentionne la
+«nécessité, par souci d'équité pour l'assuré, de pondérer d'un côté
+l'expérience collective et de l'autre l'expérience individuelle».
+L'essence de la crédibilité consistait à calculer cette pondération.
+
+À au moins deux reprises dans l'histoire, la crédibilité de précision
+(\emph{greatest accuracy}) a eu la chance de s'imposer avant la
+contribution de Bühlmann en 1967. La première se trouve dans les
+travaux de Whitney. Dans son article, ce dernier retient quatre
+éléments qui influenceront la pondération à donner à l'expérience
+individuelle: l'exposition, le niveau de risque, la crédibilité de la
+prime collective et l'homogénéité du groupe. D'ailleurs, il mentionne:
+
+\begin{quote}
+  «Il n'y aurait pas de problème d'\emph{experience rating} si chaque
+  risque dans le groupe était typique du groupe, car dans ce cas les
+  variations dans l'expérience ne seraient que purement aléatoires.»
+  (Traduction libre)
+\end{quote}
+
+Or, la notion d'homogénéité du collectif est au c{\oe}ur même de la
+crédibilité de précision. Whitney modélise l'hétérogénéité du
+collectif en supposant que les moyennes des divers risques sont
+distribuées selon une loi normale. De là, par un développement
+mathématique lourd et laborieux, il obtient une expression pour la
+prime individuelle ($P$) de la forme
+\begin{equation*}
+  P=zX+(1-z)C,
+\end{equation*}
+où $X$ est l'expérience individuelle et $C$ l'expérience collective.
+Ces valeurs sont pondérées par le facteur de crédibilité, $z$, dont
+Whitney obtient une formule de la forme \begin{math} n/(n+K)
+\end{math}. $K$ n'est alors pas une constante arbitraire, mais bien
+une expression explicite dépendant des divers paramètres du modèle.
+Par souci de simplicité, Whitney suggère cependant de fixer $K$ comme
+une constante à déterminer au jugement de manière à éviter les trop
+grandes fluctuations entre la prime individuelle et la prime
+collective. Ce faisant, il s'écarte d'une conception de la crédibilité
+visant la précision pour encourager plutôt celle visant la stabilité.
+La crédibilité de précision meurt dans l'{\oe}uf à cause de
+considérations d'ordre pratique.
+
+Whitney fut de plus critiqué par \cite{Fisher:Whitney:discussion:1919}
+pour avoir utilisé une méthode jugée hérétique à l'époque en
+statistique, la règle de Bayes. Fischer cite d'ailleurs quelques
+personnes faisant autorité s'étant prononcées contre l'usage de cette
+règle. En fait, Whitney utilise la version la plus simple de la règle,
+celle même proposée par Bayes\footnote{%
+  Selon \cite{Bailey:1950}.}, %
+qui suppose qu'a priori tous les événements ont une chance égale de se
+réaliser. Cette modélisation était appelée par ses adeptes le
+«Principe de la raison insuffisante» et par ses détracteurs
+«L'hypothèse de distribution uniforme de l'ignorance»%
+\footnote{\emph{Principe of insufficient reason} et \emph{Assumption
+    of the equal distribution of ignorance.}}. %
+Dans le développement de Whitney, cela revient à supposer que toutes
+les valeurs possibles pour la moyenne du groupe sont équiprobables.
+Les réserves de Fischer sur ce point étaient donc justifiées...
+
+Il est difficile aujourd'hui de mesurer l'impact que la volte-face de
+Whitney en faveur des arguments de stabilité a pu avoir sur la
+pratique de la crédibilité. Toujours est-il que les actuaires ont
+utilisé intensivement pendant un demi-siècle la forme $z=n/(n+K)$ pour
+calculer des facteurs de crédibilité basés essentiellement sur la
+stabilité. Encore aujourd'hui, c'est l'approche privilégiée aux
+États-Unis. Pourtant, si les pratiques se sont quelque peu figées, la
+théorie, elle, n'a pas cessé d'évoluer.
+
+L'approche de précision tente à nouveau sa chance par l'entremise de
+Arthur L.\ Bailey, et ce à deux reprises (\cite{Bailey:1945} et
+\cite{Bailey:1950}). En 1945 d'abord, Bailey obtient une expression pour
+la crédibilité dans ce qui semble être l'univers non paramétrique
+exploré plus tard par Bühlmann. Seulement, une notation confuse rend
+le texte difficilement déchiffrable et le condamne à la marginalité.
+
+L'article de 1950 avait, lui, davantage le potentiel pour ébranler les
+acquis en théorie de la crédibilité. Bailey débute son article en
+relevant les confrontations historiques entre statisticiens et
+actuaires au sujet de la crédibilité. On apprend alors qu'il y a plus
+de trente ans, la polémique au sujet de la crédibilité était la même
+que de nos jours: les statisticiens «purs» crient au scandale,
+estimant les méthodes actuarielles contraires à toute théorie
+statistique, et les actuaires leur répondent que «peut-être, mais ça
+fonctionne!» Le point majeur de discorde est l'utilisation par les
+actuaires de la règle de Bayes. Ainsi, \cite{Bailey:1950} écrit:
+
+\begin{quote}
+  «Présentement, presque toutes les méthodes d'estimation présentées
+  dans les livres de méthode statistiques ou enseignées dans les
+  universités américaines sont basées sur un équivalent de l'hypothèse
+  selon laquelle toute information parallèle ou connaissance a priori
+  est inutile. (...) Des philosophes [Russell] ont récemment étudié la
+  crédibilité à accorder à divers éléments de savoir, remettant par
+  conséquent en doute la philosophie adoptée par les statisticiens.
+  Par contre, il semble que ce ne soit que dans le domaine de
+  l'actuariat qu'on ait assisté à une réelle révolte contre la mise de
+  côté de tout savoir a priori au moment d'estimer une quantité à
+  l'aide de nouvelles données.» (Traduction libre)
+\end{quote}
+
+Bailey se prononce donc clairement en faveur de la philosophie
+bayesienne. Il semble même qu'il fut le premier à en défendre si
+énergiquement la pertinence dans le processus de tarification. Mais
+ceci, fait-il remarquer, à condition d'utiliser une généralisation de
+la règle de Bayes, faite par Laplace en 1820, de manière à éviter le
+controversé «Principe de la raison insuffisante». Cette généralisation
+rend la règle de Bayes applicable même si les événements n'ont pas a
+priori une chance égale de se réaliser.
+
+À partir de ces prémisses, Bailey démontre qu'en minimisant l'erreur
+quadratique dans un contexte bayesien, l'estimateur obtenu est une
+fonction linéaire des observations%
+\footnote{De la forme $c_0 + \sum_{i,j} c_{ij} X_{ij}$.} %
+qui correspond exactement à la prime de crédibilité, et ce pour les
+combinaisons de distributions binomiale/bêta, Poisson/gamma et
+normale/normale. Il est possible d'en déduire un facteur de
+crédibilité encore une fois de la forme $z = n/(n + K)$ où $K$ est une
+combinaison des paramètres du modèle.  Contrairement à Whitney, Bailey
+ne propose pas d'évaluer $K$ au jugement, mais bien de s'en tenir à
+l'expression développée algébriquement.
+
+De plus, conscient que la procédure utilisée est une modélisation de
+l'hétérogénéité d'un groupe, Bailey mentionne pour la première fois
+que la crédibilité pourrait être utilisée hors du domaine de
+l'assurance générale. Malheureusement pour Bailey, le manque de
+popularité de l'approche bayesienne au sein de la communauté
+statistique au moment de la parution reléguera son article dans
+l'ombre. Sans doute l'approche très «théorique» de l'article, publié
+dans une revue essentiellement de praticiens, aura-t-elle aussi
+contribué à cet état de fait. Pourtant, dans un avenir pas si
+lointain, les travaux de Bailey seront reconnus pour leur importance
+et leur avant-gardisme. Cette reconnaissance proviendra cependant
+majoritairement d'outre-Atlantique.
+
+L'apport de Bailey à la théorie de la crédibilité peut être résumé en
+deux points principaux: l'introduction explicite du principe de Bayes
+dans le processus de tarification et la découverte de la linéarité de
+l'estimateur bayesien sous certaines conditions%
+\footnote{Sur ce point toutefois, il est difficile de savoir qui fut
+  le pionnier. \cite{Norberg:credibility:1979} relève que
+  \cite{Keffer:1929} a obtenu le même résultat pour le modèle
+  Poisson/gamma. Toujours selon Norberg, il existerait aussi des
+  références antérieures à 1929.} %
+Ces développements parvinrent aux oreilles de la communauté
+actuarielle européenne par la bouche de Bruno de Finetti au colloque
+de ASTIN à Trieste, en 1963. Depuis quelques années déjà, les
+chercheurs européens tâchaient de trouver une justification théorique
+à ces formules de crédibilité américaines qui fonctionnaient si bien.
+L'approche bayesienne avait là aussi fait des progrès importants,
+notamment grâce à Bruno de Finetti dans les années 30 et Ove Lundberg
+dans les années 40.
+
+Parallèlement à tout cela, une nouvelle branche de la théorie
+bayesienne voyait le jour sous l'initiative de Herbert Robbins:
+l'approche bayesienne empirique. Celle-ci sera d'une importance
+capitale dans le développement futur de la crédibilité de précision
+puisqu'elle lui permettra de sauter le mur entre la théorie et la
+pratique. L'approche bayesienne empirique
+\citep{Robbins:empiricalbayes:1955,Robbins:empiricalbayes:1964}
+s'attaque au principal problème pratique de l'approche bayesienne
+pure, soit la fréquente ignorance de la distribution a priori.
+Jusqu'alors, lorsqu'une telle situation se présentait, il était
+coutume d'éviter le problème en réfutant l'aspect aléatoire d'une
+partie de la décision \citep{Neyman:1962}. Grossièrement, la thèse de
+Robbins consiste à supposer que, bien qu'elle soit inconnue, la
+distribution a priori existe et qu'il est possible de l'estimer --- ne
+serait-ce qu'indirectement --- à partir de données issues de plusieurs
+expériences similaires. Selon lui \citep{Robbins:empiricalbayes:1964}:
+\begin{quote}
+  «L'approche bayesienne empirique de problèmes statistiques de prise
+  de décision est applicable lorsque la même décision se présente à
+  répétition et indépendamment avec une distribution fixe, mais
+  inconnue du paramètre.» (Traduction libre)
+\end{quote}
+
+Comme devait plus tard le mentionner Bühlmann, cela cadre
+admirablement bien avec le problème de l'\emph{experience rating}.
+
+Tous ces éléments --- les travaux de Bailey, la popularité
+grandissante des approches bayesienne et bayesienne empirique ---
+étaient réunis lors du con\-grès de ASTIN de 1965, à Lucerne. Hans
+Bühlmann y redéfinit alors le problème fondamental en \emph{experience
+  rating} et présente la solution qui allait révolutionner la théorie
+de la crédibilité. En forçant la prime bayesienne à être linéaire,
+Bühlmann (1967, 1969) obtient, dans un cadre non paramétrique, un
+facteur de crédibilité de la forme $z = n/(n+K)$, avec une expression
+simple et générale pour $K$. Le virage sera alors définitivement pris
+en faveur de l'approche de précision et l'essentiel de la recherche se
+fera en Europe. C'est pourquoi l'approche traitant l'hétérogénéité est
+aujourd'hui souvent appelée «crédibilité européenne» malgré qu'elle
+origine des États-Unis (notamment dans les travaux de Bailey).
+L'approche de stabilité, \emph{limited fluctuations}, a par conséquent
+reçu l'appellation «crédibilité américaine».
+
+On peut sans crainte poser que le célèbre modèle de Bühlmann
+marque le début de l'histoire contemporaine de la théorie de la
+crédibilité. Celle-ci étant bien davantage documentée et connue, on va
+maintenant se contenter de présenter chronologiquement les principaux
+modèles qui suivirent celui de Bühlmann%
+\footnote{La liste ne comporte que les principaux modèles et n'est
+  donc en rien exhaustive.}. %
+La plupart de ces modèles se veulent des généralisations, de plus en
+plus poussées, du modèle original de Bühlmann et bon nombre d'entres
+eux seront étudiés ultérieurement dans ce mémoire.
+
+Le modèle de Bühlmann se décompose lui-même en deux parties
+communément appelées «modèle original» et «modèle classique». Le
+premier pose les bases de la nouvelle théorie, tandis que l'apport de
+la théorie bayesienne empirique fait du second un modèle plus
+pratique. La première généralisation de ces modèles voit le jour en
+1970, alors que Bühlmann s'adjoint son étudiant au doctorat Erwin
+Straub pour développer le très célèbre modèle qui portera leurs noms
+\citep{BuhlmannStraub:1970}. L'ajout de poids aux données et la
+définition d'estimateurs des paramètres de structure constituent les
+principales améliorations au modèle de Bühlmann. Elles sont toutefois
+de taille et permettront à la crédibilité de précision de
+véritablement faire une percée dans la pratique de l'assurance. Le
+modèle de Bühlmann--Straub constitue encore aujourd'hui un standard et
+est couramment utilisé dans les compagnies d'assurance, en Europe
+surtout.
+
+En 1974, Jewell fait la première de ses deux plus grandes
+contributions au développement de la théorie de la crédibilité. Il
+démontre \citep{Jewell:exact:1974} que l'estimateur bayesien est
+linéaire pour toute fonction de vraisemblance membre de la famille
+exponentielle utilisée avec sa conjuguée naturelle. Ce faisant, Jewell
+ne fait que confirmer certains des résultats obtenus avant lui par
+\cite{Bailey:1950} et \cite{Mayerson:bayesian:1964}, mais les unifie
+en une formulation générale.
+
+Les deux années suivantes furent fastes pour la théorie de la
+crédibilité. D'abord, \cite{Hachemeister:1975} généralise le modèle de
+Bühlmann--Straub en incorporant la régression linéaire à la théorie de
+la crédibilité de précision. Plus tard, on poussera même cette idée un
+peu plus loin en étudiant la régression non-linéaire
+\citep{DeVylder:non-linear:1985}. Puis, non satisfait de la manière
+qu'a le modèle de Bühlmann--Straub d'intégrer à la prime les données
+collatérales, \cite{Jewell:hierarchical:1975} présente sa solution: la
+crédibilité hiérarchique. Ce qui est maintenant appelé le modèle
+hiérarchique de Jewell constitue une importante généralisation de
+plusieurs modèles de crédibilité. Toujours en 1975,
+\cite{Gerber:updating:1975} définissent les propriétés et les
+conditions menant à des primes de crédibilité de type «mise à jour»
+(\emph{updating type}). En 1976, \citep{DeVylder:semilinear:1976}
+présente ses modèles de crédibilité semi-linéaire et semi-linéaire
+optimal. La même année, il propose une formulation du problème de la
+crédibilité en termes d'espaces de Hilbert
+\citep{DeVylder:geometrical:1976}. Norberg et
+\cite{Taylor:abstractcredibility:1977} se sont également intéressés à
+l'étude de la théorie de la crédibilité dans le cadre abstrait des
+espaces de Hilbert. \cite{Norberg:credibility:1979} a publié un imposant
+article révisant l'essentiel de la théorie de la crédibilité connu
+jusqu'alors. Il s'agit, encore aujourd'hui, d'une référence de choix
+pour qui désire approfondir des connaissances de base en théorie de la
+crédibilité.
+
+Si les années 70 furent celles de l'apparition de nombreux modèles de
+crédibilité de précision, les années 80 furent plutôt celles de
+l'étude des estimateurs des paramètres de structure.
+\cite{DeVylder:estimation:1978,DeVylder:estimation:1981,DeVylder:estimation:PCiI:1984}
+s'est alors avéré un acteur important, de même que
+\cite{Norberg:empiricalbayes:1980}, \cite{Gisler:trimming:1980} et
+\cite{Dubey:estimation:1981}. On doit à ces derniers la première étude
+exhaustive des propriétés asymptotiques des estimateurs de variance
+dans le modèle de Bühlmann--Straub. La découverte de nouveaux
+estimateurs et leur maîtrise va permettre la plus large diffusion de
+la crédibilité de précision. Des volumes sur le sujet sont publiés
+\citep{Goovaerts:EAM:1990} dont certains
+\citep{Goovaerts:credibility:1987} sont expressément destinés aux
+actuaires {\oe}uvrant dans les compagnies d'assurance. De nombreux
+articles importants en théorie de la crédibilité sont publiés par des
+chercheurs au service de compagnies d'assurance: mentionnons Straub,
+Sundt, Dubey, Gisler, Reinhard ou même Goovaerts, à titre de
+consultant. Cela contribue donc à populariser l'utilisation de la
+théorie dans des applications pratiques.
+
+La période s'étendant du milieu des années 80 jusqu'au début des
+années 90 a été marquée par un ralentissement dans la recherche en
+théorie de la crédibilité. Au cours des dernières années cependant, on
+note un regain d'intérêt pour la recherche d'estimateurs des
+paramètres de structure plus efficaces et dont les propriétés seraient
+davantage connues. Ainsi, \cite{Kunsch:robust:1992} et
+\cite{Gisler:robust:1993} introduisent la statistique robuste en
+théorie de la crédibilité, ce qui ouvre par le fait même un nouveau et
+vaste champ de recherche. De leur côté, De~Vylder et Goovaerts,
+toujours très actifs dans le domaine, proposent dans une série
+d'articles des estimateurs optimaux sous certaines conditions
+\citep{DeVylder:zeroexcess:summary:1991,%
+  DeVylder:zeroexcess:classical:1992,%
+  DeVylder:zeroexcess:BS:1992}. Des recherches sont présentement en
+cours desquelles, nous promet-on, devraient ressortir de toutes
+nouvelles façons de trouver des estimateurs pour les principaux
+modèles de crédibilité.
+
+La grande majorité des intéressés à la théorie de la crédibilité se
+rallient au modèle de base proposé par Bühlmann de même qu'à ses
+extensions. De plus, l'historique tracé ci-dessus correspondant à ce
+qui est généralement admis dans le domaine. À une exception près
+semble-t-il: \cite{Zehnwirth:studyguide:1991} qui, sans renier les
+travaux de Bühlmann, a une manière bien à lui de concevoir et
+présenter la théorie de la crédibilité de précision. Selon lui, les
+formules de crédibilité sont si étroitement liées à la régression
+linéaires qu'elles n'en seraient que de simples dérivés. Karl
+Friedrick Gauss étant à l'origine de certains types de formules de
+régression, Zehnwirth en arrive à la conclusion suivante: «cela
+signifie que Gauss~(1795) a dérivé la plupart des formules de
+crédibilité».
+
+\subsection{En conclusion}
+
+Ce chapitre s'est ouvert sur une présentation de l'approche bayesienne
+en statistiques. Celle-ci allait en quelque sorte devenir le
+dénominateur commun des deux théories par la suite étudiées, celle de
+Bertrand Russell et la théorie actuarielle de la crédibilité. Ce pont
+permet l'intéressante comparaison de la définition donnée par Russell
+au mot «crédibilité» à sa signification actuarielle. On voit ainsi
+qu'en actuariat comme dans la philosophie de Russell, la crédibilité
+apparaît lors du passage du général au particulier, soit lors de la
+tarification d'un assuré pris isolément et non plus comme simple
+membre d'un groupe. Le traitement de l'information a priori ainsi que
+le gain marginal de crédibilité décroissant en théorie de la
+crédibilité de stabilité ou à la crédibilité de précision. Là n'en est
+pas le bus de toute façon, puisque chacune de ces deux théories est
+valable en soi, seuls leurs buts étant différents.
+
+Au début de la section précédente, il a été mentionné que la théorie
+de la crédibilité en était à son adolescence. Ce n'est là que
+l'opinion de l'auteur, qu'il justifie en mentionnant qu'il serait
+prématuré de croire que la théorie a atteint sa pleine maturité. Le
+récent regain d'intérêt pour le sujet de la part des chercheurs en
+témoigne d'ailleurs et démontre que son potentiel n'est pas épuisé. De
+plus, constatant à quel point la théorie est galvaudée en Amérique du
+Nord, force est d'affirmer que pour prétendre à la majorité, la
+crédibilité devra d'abord savoir s'affirmer dans ses différentes
+facettes.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "theorie-credibilite-avec-r"
+%%% coding: utf-8
+%%% End:

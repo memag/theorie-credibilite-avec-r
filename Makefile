@@ -1,4 +1,4 @@
-### -*-Makefile-*- pour préparer "Provisionnement en assurance IARD"
+### -*-Makefile-*- pour préparer "Théorie de la crédibilité avec R"
 ##
 ## Copyright (C) 2018 Vincent Goulet
 ##
@@ -17,7 +17,7 @@
 ## Auteur: Vincent Goulet
 ##
 ## Ce fichier fait partie du projet
-## "Provisionnement en assurance IARD"
+## "Théorie de la crédibilité avec R"
 ## http://github.com/vigou3/theorie-credibilite-avec-r
 
 
@@ -25,8 +25,7 @@
 MASTER = theorie-credibilite-avec-r.pdf
 ARCHIVE = ${MASTER:.pdf=.zip}
 README = README.md
-OTHER = LICENSE \
-	100metres.data
+OTHER = LICENSE
 
 ## Le document maître dépend de tous les fichiers .Rnw et des fichiers
 ## .tex et .R mentionnés ci-dessous.
@@ -35,6 +34,8 @@ TEXFILES = \
 	couverture-avant.tex \
 	notices.tex \
 	introduction.tex \
+	formules-credibilite-exacte.tex \
+	distributions.tex \
 	solutions.tex \
 	colophon.tex \
 	couverture-arriere.tex

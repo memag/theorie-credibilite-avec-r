@@ -1,0 +1,118 @@
+\chapter{Formules de crédibilité exacte}
+\label{chap:formules}
+
+Le tableau de la page suivante contient les principaux résultats de
+crédibilité bayesienne pour les combinaisons de distributions de la
+famille exponentielle univariée. Le contenu des colonnes du tableau
+est le suivant, dans l'ordre:
+\begin{quote}
+  \begin{enumerate}
+  \item La distribution de $S|\Theta = \theta$;
+  \item La distribution a priori de $\Theta$;
+  \item La distribution marginale de $S$;
+  \item La distribution a posteriori de $\Theta|S_1 = x_1, \dots, S_n
+    = x_n$, toujours du même type que la distribution a priori, mais
+    avec des paramètres mis à jour;
+  \item La prime de risque $\mu(\theta) = \esp{S|\Theta = \theta}$;
+  \item La prime collective $m = \esp{\mu(\Theta)}$;
+  \item La prime bayesienne $B_{n+1} = \esp{\mu(\Theta)|S_1, \dots,
+      S_n}$, toujours égale à la prime collective évaluée avec les
+    paramètres de la distribution a posteriori;
+  \item Le facteur de crédibilité dans l'expression de la prime
+    bayesienne sous forme de prime de crédibilité.
+  \end{enumerate}
+\end{quote}
+
+Les fonctions de masse ou de densité de probabilité des lois figurant
+au tableau se trouvent à l'annexe \ref{chap:distributions}.
+
+\newpage
+
+\begin{center}
+  \begin{sideways}
+    \begin{tabular}{lllp{30mm}cccc}
+      \toprule
+      %% Entêtes
+      \multicolumn{1}{c}{$f(x|\theta)$} &
+      \multicolumn{1}{c}{$u(\theta)$} &
+      \multicolumn{1}{c}{$f(x)$} &
+      \multicolumn{1}{c}{$u(\theta|x_1, \dots, x_n)$} &
+      $\mu(\theta)$ &
+      $m$ &
+      $B_{n+1}$ &
+      $z$ \\
+      \midrule
+      %% Cas Bernoulli/bêta
+      Bernoulli$(\theta)$ &
+      Bêta$(\alpha, \beta)$ &
+      Bernoulli$(\alpha/(\alpha + \beta))$ &
+      Bêta$(\tilde{\alpha}, \tilde{\beta})$ \newline
+      $\tilde{\alpha} = \alpha + \sum_t x_t$ \newline
+      $\tilde{\beta} = \beta + n - \sum_t x_t$ &
+      $\theta$ &
+      $\dfrac{\alpha}{\alpha + \beta}$ &
+      $\dfrac{\alpha + \sum_t S_t}{\alpha + \beta + n}$ &
+      $\dfrac{n}{n + \alpha + \beta}$ \\
+      \midrule
+      %% Cas géometrique/bêta
+      Géometrique$(\theta)$ &
+      Bêta$(\alpha, \beta)$ &
+      $\dfrac{\Gamma(\alpha + \beta) \Gamma(\alpha + 1) \Gamma(\beta + x)}
+      {\Gamma(\alpha) \Gamma(\beta) \Gamma(\alpha + \beta + x + 1)}$ &
+      Bêta$(\tilde{\alpha}, \tilde{\beta})$ \newline
+      $\tilde{\alpha} = \alpha + n$ \newline
+      $\tilde{\beta} = \beta + \sum_t x_t$ &
+      $\dfrac{1 - \theta}{\theta}$ &
+      $\dfrac{\beta}{\alpha - 1}$ &
+      $\dfrac{\beta + \sum_t S_t}{\alpha + n - 1}$ &
+      $\dfrac{n}{n + \alpha - 1}$ \\
+      \midrule
+      %% Cas Poisson/gamma
+      Poisson$(\theta)$ &
+      Gamma$(\alpha, \lambda)$ &
+      Bin.\ nég.$(\alpha, \lambda/(\lambda + 1))$ &
+      Gamma($\tilde{\alpha}$, $\tilde{\lambda}$) \newline
+      $\tilde{\alpha} = \alpha + \sum_t x_t$ \newline
+      $\tilde{\lambda} = \lambda + n$ &
+      $\theta$ &
+      $\dfrac{\alpha}{\lambda}$ &
+      $\dfrac{\alpha + \sum_t S_t}{\lambda + n}$ &
+      $\dfrac{n}{n + \lambda}$ \\
+      \midrule
+      %% Cas exponentielle/gamma
+      Exponentielle$(\theta)$ &
+      Gamma$(\alpha, \lambda)$ &
+      Pareto$(\alpha, \lambda)$ &
+      Gamma$(\tilde{\alpha}, \tilde{\lambda})$ \newline
+      $\tilde{\alpha} = \alpha + n$ \newline
+      $\tilde{\lambda} = \lambda + \sum_t x_t$ &
+      $\dfrac{1}{\theta}$ &
+      $\dfrac{\lambda}{\alpha - 1}$ &
+      $\dfrac{\lambda + \sum_t S_t}{\alpha + n - 1}$ &
+      $\dfrac{n}{n + \alpha - 1}$ \\
+      \midrule
+      %% Cas normale/normale
+      Normale$(\theta, \sigma_2^2)$ &
+      Normale$(\mu, \sigma_1^2)$ &
+      Normale$(\mu, \sigma_1^2 + \sigma_2^2)$ &
+      Normale$(\tilde{\mu}, \tilde{\sigma}_1^2)$ \newline
+      $\tilde{\mu} =
+      \dfrac{\sigma_1^2 \sum_t x_t + \sigma_2^2 \mu}{n \sigma_1^2 +
+        \sigma_2^2}$ \newline
+      $\tilde{\sigma}_1^2 = \dfrac{\sigma_1^2 \sigma_2^2}{n
+        \sigma_1^2 + \sigma_2^2}$ &
+      $\theta$ &
+      $\mu$ &
+      $\dfrac{\sigma_1^2 \sum_t S_t + \sigma_2^2 \mu}{n \sigma_1^2 +
+        \sigma_2^2}$ &
+      $\dfrac{n}{n + \sigma_2^2/\sigma_1^2}$ \\
+      \bottomrule
+    \end{tabular}
+  \end{sideways}
+\end{center}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "exercices_credibilite"
+%%% coding: utf-8
+%%% End:

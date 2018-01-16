@@ -16,16 +16,13 @@
   \usepackage{amsmath,amsthm}
   \usepackage[noae]{Sweave}
   \usepackage{graphicx}
+  \usepackage{rotating}                % env. sideways pour annexe A
   \usepackage{framed}                  % env. snugshade*, oframed
   \usepackage[absolute]{textpos}       % éléments des pages de titre
   \usepackage[shortlabels]{enumitem}   % configuration listes
-  \usepackage{multicol}                % environnement multicols
-  \usepackage{float}                   % positionnement [H] annexe C
   \usepackage{relsize}                 % \smaller et al.
   \usepackage{manfnt}                  % \mantriangleright (puce)
   \usepackage{metalogo}                % \XeLaTeX logo
-  \usepackage{applekeys}               % touches Mac
-  \usepackage{dirtree}                 % arbre pour exercice sur \include
   \usepackage{fontawesome}             % icônes \fa*
   \usepackage{awesomebox}              % boites info, important, etc.
   \usepackage{answers}                 % exercices et solutions
@@ -64,7 +61,9 @@
   \definecolor{url}{rgb}{0.6,0,0}           % liens externes
   \definecolor{citation}{rgb}{0,0.5,0}      % citations
   \definecolor{codebg}{named}{LightYellow1} % fond code R
-  \definecolor{prob}{named}{orange}         % encadrés «problème»
+  \definecolor{darkblue}{rgb}{0,0,0.7}      % pour théorème 4.1
+  \colorlet{darkred}{comments}              % idem
+  \colorlet{darkgreen}{citation}            % idem
   \definecolor{rouge}{rgb}{0.85,0,0.07} % rouge bandeau identitaire
   \definecolor{or}{rgb}{1,0.8,0}        % or bandeau identitaire
 
@@ -146,27 +145,26 @@
   %%%  Sections de code source
   %%% =========================
   \lstloadlanguages{R}
-  \lstdefinelanguage{Renhanced}[]{R}{%
-    morekeywords={colMeans,colSums,head,is.na,is.null,mapply,ms,na.rm,%
-      nlmin,replicate,row.names,rowMeans,rowSums,sys.time,system.time,%
-      tail,which.max,which.min,letters,LETTERS},
-    deletekeywords={c,start},
-    alsoletter={.\%},%
-    alsoother={:_\$}}
-  \lstset{language=Renhanced,
+  \lstset{language=R,
     extendedchars=true,
     basicstyle=\small\ttfamily\NoAutoSpacing,
     commentstyle=\color{comments}\slshape,
     keywordstyle=\mdseries,
-    showstringspaces=false,
-    index=[1][keywords],
-    indexstyle=\indexcode}
+    showstringspaces=false}
 
   %%% =========================
   %%%  Nouveaux environnements
   %%% =========================
 
   %% Environnements d'exemples et al.
+  \theoremstyle{plain}
+  \newtheorem{thm}{Théorème}[chapter]
+  \newtheorem{corrolaire}{Corollaire}[chapter]
+
+  \theoremstyle{definition}
+  \newtheorem*{definition}{Définition}
+  \newtheorem{exemple}{Exemple}[chapter]
+
   \theoremstyle{remark}
   \newtheorem*{rem}{Remarque}
   \newtheorem*{rems}{Remarques}
@@ -206,19 +204,6 @@
         \small\sffamily}%
       {\end{itemize}\end{emphbox}}
 
-  %% Problèmes (mises en situation) des chapitres: énoncé au début du
-  %% chapitre; astuces en cours de chapitre; solution à la fin
-  %% du chapitre.
-  \newenvironment{prob-enonce}{%
-    \begin{emphbox}[prob]{{\normalfont\faCogs}\; Énoncé du problème}}%
-    {\end{emphbox}}
-  \newenvironment{prob-astuce}{%
-    \begin{emphbox}[prob]{{\normalfont\faBolt}\; Astuce}}%
-    {\end{emphbox}}
-  \newenvironment{prob-solution}{%
-    \begin{emphbox}[prob]{{\normalfont\faLightbulbO}\; Solution du problème}}%
-    {\end{emphbox}}
-
   %% Environnements de Sweave. Les environnements Sinput et Soutput
   %% utilisent Verbatim (de fancyvrb). On les réinitialise pour
   %% enlever la configuration par défaut de Sweave, puis on réduit
@@ -245,6 +230,7 @@
 
   %% Exercices et réponses
   \Newassociation{sol}{solution}{solutions}
+  \Newassociation{rep}{reponse}{reponses}
   \newcounter{exercice}[chapter]
   \renewcommand{\theexercice}{\thechapter.\arabic{exercice}}
   \newenvironment{exercice}[1][]{%
@@ -274,18 +260,10 @@
         \setlist[enumerate,2]{label=\roman*),labelsep=0.5em,align=right}}
       \item}
     {\end{list}}
-
-  %% Listes de commandes
-  \newenvironment{ttscript}[1]{%
-    \begin{list}{}{%
-        \setlength{\labelsep}{1.5ex}
-        \settowidth{\labelwidth}{\fbox{#1}}
-        \setlength{\leftmargin}{\labelwidth}
-        \addtolength{\leftmargin}{\labelsep}
-        \setlength{\parsep}{0.5ex plus0.2ex minus0.2ex}
-        \setlength{\itemsep}{0.3ex}
-        \renewcommand{\makelabel}[1]{\vphantom{|}##1\hfill}}}
-    {\end{list}}
+  \renewenvironment{reponse}[1]{%
+    \begin{enumerate}[label=\textbf{#1}]
+    \item}%
+    {\end{enumerate}}
 
   %%% =====================
   %%%  Nouvelles commandes
@@ -308,16 +286,10 @@
     \fi
   }
 
-  %% Indications de capsule vidéo
-  \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%
-      \href{#1}{\raisebox{-0.5em}[0em][0em]{\Huge\faYoutubePlay}}}}
-
-  %% Boites additionnelles (basées sur awesomebox.sty) pour remarques
-  %% spécifiques à macOS et Windows
-  \newcommand{\osxbox}[1]{%
-    \awesomebox{\faApple}{\aweboxrulewidth}{black}{#1}}
-  \newcommand{\windowsbox}[1]{%
-    \awesomebox{\faWindows}{\aweboxrulewidth}{black}{#1}}
+  %% Boite additionnelle (basée sur awesomebox.sty) pour changements
+  %% au fil de la lecture.
+  \newcommand{\gotorbox}[1]{%
+    \awesomebox{\faMapSigns}{\aweboxrulewidth}{black}{\sffamily #1}}
 
   %% Boite pour le nom du fichier de script correspondant au début des
   %% sections d'exemples.
@@ -334,28 +306,23 @@
     \href{#1}{%
       Voir sur GitHub \raisebox{-1pt}{\footnotesize\faGithub}}}
 
-  %% «Logo» C++
-  \newcommand{\Rplus}{\protect\hspace{-.05em}\protect\raisebox{.2ex}{\smaller\textbf{+}}}
-  \newcommand{\Cpp}{\mbox{C\Rplus\Rplus}\xspace}
-
   %% Raccourcis usuels vg
   \newcommand{\pt}{{\scriptscriptstyle \Sigma}}
-  \newcommand{\mat}[1]{\mathbf{#1}}
+  \newcommand{\Esp}[1]{E\! \left[ #1 \right]}
+  \newcommand{\esp}[1]{E [ #1 ]}
+  \newcommand{\Var}[1]{\operatorname{Var}\! \left[ #1 \right]}
   \newcommand{\var}[1]{\operatorname{Var} [ #1 ]}
-
-  %%% =======
-  %%%  Index
-  %%% =======
-  \newcommand{\bfhyperpage}[1]{\textbf{\hyperpage{#1}}}
-  \renewcommand{\preindexhook}{%
-    Les numéros de page en caractères gras indiquent les pages où les
-    concepts sont introduits, définis ou expliqués.\vskip\onelineskip}
-  \newcommand{\Index}[1]{\index{#1|bfhyperpage}}
-  \newcommand{\indexcode}[1]{\index{#1@\code{#1}}}
-  \newcommand{\Indexcode}[1]{\Index{#1@\code{#1}}}
-  \newcommand{\icode}[1]{\indexcode{#1}\code{#1}}
-  \newcommand{\Icode}[1]{\Indexcode{#1}\code{#1}}
-  \makeindex
+  \newcommand{\Cov}{\operatorname{Cov}}
+  \ifxetex
+    \newcommand{\mat}[1]{\symbf{#1}}
+  \else
+    \newcommand{\mat}[1]{\mathbf{#1}}
+  \fi
+  \ifxetex
+    \newcommand{\Z}{\symbb{Z}}
+  \else
+    \newcommand{\Z}{\mathbb{Z}}
+  \fi
 
   %%% =======
   %%%  Varia
@@ -375,15 +342,14 @@
   \newlength{\logoheight}
   \newlength{\gapwidth}
 
+  %% Longueurs et type de colonne pour les tableaux du chapitre 1.
+  \newlength{\tablewidth}
+  \setlength{\tablewidth}{\textwidth}
+  \addtolength{\tablewidth}{-2\parindent}
+  \newcolumntype{Y}{>{\centering\arraybackslash}X}
+
   %% Aide pour la césure
   \hyphenation{%
-    con-nai-tre
-    con-sole
-    cons-tante
-    con-tenu
-    con-trôle
-    nom-bre
-    puis-que
   }
 
 %  \includeonly{}
@@ -402,30 +368,36 @@
 
 \pagestyle{companion}
 
-%\include{introduction}
+\include{introduction}
 \tableofcontents*
 
-%% Vignette tirée de xkcd.com
-% \cleartoverso
-% \thispagestyle{empty}
-% \begin{vplace}[0.45]
-%   \centering
-%   \begin{minipage}{0.9\linewidth}
-%     \setkeys{Gin}{width=\textwidth}
-%     \includegraphics{images/compiling.png} \\
-%     \footnotesize\sffamily%
-%     Tiré de \href{http://xkcd.com/303/}{XKCD.com}
-%   \end{minipage}
-% \end{vplace}
+%% Vignette xkcd.com
+\cleartoverso
+\thispagestyle{empty}
+\begin{vplace}[0.45]
+  \centering
+  \begin{minipage}{0.9\linewidth}
+    \setkeys{Gin}{width=\textwidth}
+    \includegraphics{insurance.png} \\
+    \footnotesize\sffamily%
+    Tiré de \href{http://xkcd.com/1494/}{XKCD.com}
+  \end{minipage}
+\end{vplace}
 
 \mainmatter
 
-%\include{}
+\include{introduction-historique}
+\include{stabilite}
+\include{bayesienne}
+\include{buhlmann}
+\include{buhlmann-straub}
 
 \appendix
-%\include{solutions}
+\include{formules-credibilite-exacte}
+\include{distributions}
+\include{solutions}
 
-\bibliography{r,stat,informatique,vg}
+\bibliography{cred,actu,stat,r,vg}
 
 \cleardoublepage
 \printindex

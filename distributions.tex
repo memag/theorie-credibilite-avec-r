@@ -1,0 +1,273 @@
+\chapter{Paramétrisation des lois de probabilité}
+\label{chap:distributions}
+
+%% Liste à puce compacte et sans puce, justement. Pour cette annexe
+%% seulement.
+\begingroup
+\setlist[itemize]{label={},leftmargin=0pt,align=left,nosep}
+
+Cette annexe précise la paramétrisation des lois de probabilité
+utilisée dans les énoncés des exercices des chapitres
+\ref{chap:stabilite} à \ref{chap:buhlmann-straub} ainsi que dans le
+tableau des formules de crédibilité exacte de l'annexe
+\ref{chap:formules}; la racine des noms de fonctions pour calculer les
+caractéristiques des lois dans R; l'espérance, la variance et la
+fonction génératrice des moments (lorsqu'elle existe) des différentes
+lois.
+
+La prise en charge de certaines lois dans R requiert le paquetage
+\pkg{actuar} \citep{actuar}.
+
+
+\section{Distributions discrètes}
+
+\subsection{Binomiale}
+\label{distributions:binomiale}
+
+\begin{itemize}
+\item Racine: \code{binom}
+\item Paramètres: \code{size} ($n = 0, 1, 2, \dots$),
+  \code{prob} ($0 \leq \theta \leq 1$)
+\end{itemize}
+\begin{itemize}
+\item Cas spécial: Bernoulli($\theta)$ lorsque $n = 1$.
+\end{itemize}
+\begin{align*}
+  \Pr[X = x]
+  &= \binom{n}{x} \theta^x (1 - \theta)^{n - x}, \quad
+  x = 0, 1, \dots \\
+  \esp{X}
+  &= n \theta \\
+  \var{X}
+  &= n \theta (1 - \theta) \\
+  M(t)
+  &= (1 - \theta + \theta e^t)^n
+\end{align*}
+
+\subsection{Binomiale négative}
+\label{distributions:binomialeneg}
+
+\begin{itemize}
+\item Racine: \code{nbinom}
+\item Paramètres: \code{size} ($r \geq 0$),
+  \code{prob} ($0 < \theta \leq 1$),
+  \code{mu} ($r(1 - \theta)/\theta$)
+\end{itemize}
+\begin{itemize}
+\item Cas spécial: Géométrique($\theta)$ lorsque $r = 1$.
+\end{itemize}
+\begin{align*}
+  \Pr[X = x]
+  &= \binom{x + r - 1}{r - 1} \theta^r (1 - \theta)^x, \quad
+  x = 0, 1, \dots \\
+  \esp{X}
+  &= \frac{r (1 - \theta)}{\theta} \\
+  \var{X}
+  &= \frac{r (1 - \theta)}{\theta^2} \\
+  M(t)
+  &= \left( \frac{\theta}{1 - (1 - \theta)e^t} \right)^r
+\end{align*}
+
+\subsection{Poisson}
+\label{distributions:poisson}
+
+\begin{itemize}
+\item Racine: \code{pois}
+\item Paramètre: \code{lambda} ($\lambda \geq 0$)
+\end{itemize}
+\begin{align*}
+  \Pr[X = x]
+  &= \frac{\lambda^x e^{-\lambda}}{x!}, \quad x = 0, 1, \dots \\
+  \esp{X}
+  &= \lambda \\
+  \var{X}
+  &= \lambda \\
+  M(t)
+  &= e^{\lambda (e^t - 1)}
+\end{align*}
+
+
+\section{Distributions continues}
+
+\subsection{Bêta}
+\label{distributions:beta}
+
+\begin{itemize}
+\item Racine: \code{beta}
+\item Paramètres: \code{shape1} ($a > 0$),
+      \code{shape2} ($b > 0$)
+\end{itemize}
+\begin{itemize}
+\item Cas spécial: Uniforme$(0, 1)$ lorsque $\alpha = \beta = 1$.
+\end{itemize}
+\begin{align*}
+  f(x)
+  &= \frac{\Gamma(a + b)}{\Gamma(a) \Gamma(b)}\,
+  x^{a - 1} (1 - x)^{b - 1}, \quad 0 < x < 1 \\
+  \esp{X}
+  &= \frac{a}{a + b} \\
+  \var{X}
+  &= \frac{a b}{(a + b)^2 (a + b + 1)}
+\end{align*}
+
+
+\subsection{Gamma}
+\label{distributions:gamma}
+
+\begin{itemize}
+\item Racine: \code{gamma}
+\item Paramètres: \code{shape} ($\alpha > 0$),
+      \code{rate}   ($\lambda = 1/\theta$),
+      \code{scale}  ($\theta > 0$)
+\end{itemize}
+\begin{itemize}
+\item Cas spéciaux: Exponentielle$(\lambda)$ lorsque $\alpha = 1$,
+  $\chi^2(r)$ lorsque $\alpha = r/2$ et $\lambda = 1/2$.
+\end{itemize}
+\begin{align*}
+  f(x)
+  &= \frac{\lambda^\alpha}{\Gamma(\alpha)}\, x^{\alpha - 1} e^{-\lambda x},
+  \quad x > 0 \\
+  \esp{X}
+  &= \frac{\alpha}{\lambda} \\
+  \var{X}
+  &= \frac{\alpha}{\lambda^2} \\
+  M(t)
+  &= \left( \frac{\lambda}{\lambda - t} \right)^\alpha
+\end{align*}
+
+
+\subsection{Normale}
+\label{distributions:normale}
+\begin{itemize}
+\item Racine: \code{norm}
+\item Paramètres: \code{mean} ($-\infty < \mu < \infty$), \code{sd}
+  ($\sigma > 0$)
+\end{itemize}
+\begin{align*}
+  f(x)
+  &= \frac{1}{\sqrt{2\pi} \sigma}\,
+  \exp\left\{ -\frac{(x - \mu)^2}{2\sigma^2} \right\}, \quad
+  -\infty < x < \infty \\
+  \esp{X}
+  &= \mu \\
+  \var{X}
+  &= \sigma^2 \\
+  M(t)
+  &= e^{\mu t + \sigma^2 t^2/2}
+\end{align*}
+
+\subsection{Log-normale}
+\label{distributions:log-normale}
+
+Si $X \sim \text{Normale}(\mu, \sigma^2)$, alors $Y = e^X \sim
+\text{Log-normale}(\mu, \sigma^2)$.
+\begin{itemize}
+\item Racine: \code{lnorm}
+\item Paramètres: \code{meanlog} ($-\infty < \mu < \infty$), \code{sdlog}
+  ($\sigma > 0$)
+\end{itemize}
+\begin{align*}
+  f(x)
+  &= \frac{1}{\sqrt{2\pi} \sigma} \frac{1}{x}\,
+  \exp\left\{ -\frac{(\ln x - \mu)^2}{2\sigma^2} \right\}, \quad
+  x > 0 \\
+  \esp{X}
+  &= e^{\mu + \sigma^2/2} \\
+  \var{X}
+  &= e^{2\mu + \sigma^2}(e^{\sigma^2} - 1) \\
+\end{align*}
+
+\subsection{Pareto}
+\label{distributions:pareto}
+
+\begin{itemize}
+\item Racine: \code{pareto}, \code{pareto2} [\pkg{actuar}]
+\item Paramètres: \code{shape} ($\alpha > 0$),
+      \code{scale}  ($\lambda > 0$)
+\end{itemize}
+\begin{align*}
+  f(x) &=
+  \frac{\alpha \lambda^\alpha}{(x + \lambda)^{\alpha+1}},
+  \quad x > 0 \\
+  \esp{X}
+  &= \frac{\lambda}{\alpha - 1}, \quad \alpha > 1 \\
+  \var{X}
+  &= \frac{\alpha \lambda^2}{(\alpha - 1)^2 (\alpha - 2)}, \quad
+  \alpha > 2
+\end{align*}
+
+\subsection{Pareto généralisée}
+\label{distributions:paretogen}
+
+\begin{itemize}
+\item Racine: \code{genpareto} [\pkg{actuar}]
+\item Paramètres: \code{shape1} ($\alpha > 0$),
+      \code{shape2} ($\tau > 0$),
+      \code{rate}   ($\lambda = 1/\theta$),
+      \code{scale}  ($\theta > 0$)
+\end{itemize}
+Paramètres: $\alpha > 0$, $\lambda > 0$, $\tau > 0$. Cas spécial:
+Pareto$(\alpha, \lambda)$ lorsque $\tau = 1$.
+\begin{align*}
+  f(x) &=
+  \frac{\Gamma(\alpha + \tau)}{\Gamma(\alpha) \Gamma(\tau)}\,
+  \frac{\theta^\alpha x^{\tau - 1}}{(x + \theta)^{\alpha+\tau}},
+  \quad x > 0 \\
+  \esp{X}
+  &= \frac{\theta \tau}{\alpha - 1}, \quad \alpha > 1 \\
+  \var{X}
+  &= \frac{\theta^2 \tau (\alpha + \tau - 1)}{(\alpha - 1)^2 (\alpha
+    - 2)}, \quad \alpha > 2
+\end{align*}
+
+
+\section{Distributions composées}
+
+Soit $S = X_1 + \dots + X_N$, où $X_1, \dots, X_n$ sont des variables
+aléatoires mutuellement indépendantes, identiquement distribuées et
+toutes indépendantes de $N$. On a toujours
+\begin{align*}
+  \esp{S} &= \esp{N} \esp{X} \\
+  \var{S} &= \var{N} \esp{X}^2 + \esp{N} \var{X}.
+\end{align*}
+
+\subsection{Binomiale composée}
+\label{distributions:binomialecomposée}
+
+Distribution de $S$ lorsque $N \sim \text{Binomiale}(n, \theta)$ et
+$\Pr[X \leq x] = F_X(x)$.
+\begin{align*}
+  \esp{S} &= n \theta \esp{X} \\
+  \var{S} &= n\theta(1 - \theta) \esp{X}^2 + n \theta \var{X}
+\end{align*}
+
+\subsection{Binomiale négative composée}
+\label{distributions:binomialenegativecomposée}
+
+Distribution de $S$ lorsque $N \sim \text{Binomiale négative}(r,
+\theta)$ et $\Pr[X \leq x] = F_X(x)$.
+\begin{align*}
+  \esp{S} &= \frac{r(1 - \theta)}{\theta}\, \esp{X} \\
+  \var{S} &= \frac{r(1 - \theta)}{\theta^2}\, \esp{X}^2 + \frac{r(1 -
+    \theta)}{\theta}\, \var{X}
+\end{align*}
+
+\subsection{Poisson composée}
+\label{distributions:poissoncomposée}
+
+Distribution de $S$ lorsque $N \sim \text{Poisson}(\lambda)$ et $\Pr[X
+\leq x] = F_X(x)$.
+\begin{align*}
+  \esp{S} &= \lambda \esp{X} \\
+  \var{S} &= \lambda \esp{X^2}
+\end{align*}
+
+\endgroup
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "theorie-credibilite-avec-r"
+%%% coding: utf-8
+%%% End:
