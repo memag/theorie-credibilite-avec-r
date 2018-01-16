@@ -14,32 +14,32 @@ a {
 }
 
 .btn {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.8);
   
   &:hover {
     color: #fff;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.9);
   }
 }
 
 .page-header {
-  color: #fff;
-  background: #000;
-  background-image: url('../../images/Furcifer-pardalis.jpg');
+  color: rgba(255, 255, 255, 0.85);
+  background: #344655;
+  background-image: url('../../images/Steinbock.jpg');
   background-repeat: no-repeat;
-  -webkit-background-size: 70%;
-  -moz-background-size: 70%;
-  -o-background-size: 70%;
-  background-size: 70%;
-  background-position: right bottom;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
 }
 
-.project-tagline {
-  opacity: 0.95;
+.page-header h1 {
+  margin: 0 auto 2rem auto;
 }
 
 .main-content {
