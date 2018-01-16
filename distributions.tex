@@ -181,16 +181,16 @@ La prise en charge de certaines lois dans R requiert le paquetage
 \begin{itemize}
 \item Racine: \code{pareto}, \code{pareto2} (\pkg{actuar})
 \item Paramètres: \code{shape} ($\alpha > 0$),
-      \code{scale}  ($\lambda > 0$)
+      \code{scale}  ($\theta > 0$)
 \end{itemize}
 \begin{align*}
   f(x) &=
-  \frac{\alpha \lambda^\alpha}{(x + \lambda)^{\alpha+1}},
-  \quad x > 0 \\
+  \frac{\alpha \theta^\alpha}{(x + \theta)^{\alpha+1}},
+  \quad x > 0 \displaybreak[0] \\
   \esp{X}
-  &= \frac{\lambda}{\alpha - 1}, \quad \alpha > 1 \\
+  &= \frac{\theta}{\alpha - 1}, \quad \alpha > 1 \displaybreak[0] \\
   \var{X}
-  &= \frac{\alpha \lambda^2}{(\alpha - 1)^2 (\alpha - 2)}, \quad
+  &= \frac{\alpha \theta^2}{(\alpha - 1)^2 (\alpha - 2)}, \quad
   \alpha > 2
 \end{align*}
 
@@ -204,8 +204,9 @@ La prise en charge de certaines lois dans R requiert le paquetage
       \code{rate}   ($\lambda = 1/\theta$),
       \code{scale}  ($\theta > 0$)
 \end{itemize}
-Paramètres: $\alpha > 0$, $\lambda > 0$, $\tau > 0$. Cas spécial:
-Pareto$(\alpha, \lambda)$ lorsque $\tau = 1$.
+\begin{itemize}
+\item Cas spécial: Pareto$(\alpha, \lambda)$ lorsque $\tau = 1$.
+\end{itemize}
 \begin{align*}
   f(x) &=
   \frac{\Gamma(\alpha + \tau)}{\Gamma(\alpha) \Gamma(\tau)}\,
