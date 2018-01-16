@@ -282,7 +282,7 @@ moins restrictive).
   hypothèses (B1) et (B2), la meilleure approximation linéaire non
   homogène de la prime de risque $\mu(\Theta_i)$ est
   \begin{displaymath}
-    \pi_{i, n + 1}^{\mathrm{B}} = z \bar{S}_i + (1 - z) m
+    \pi_{i, n + 1}^{\text{B}} = z \bar{S}_i + (1 - z) m
   \end{displaymath}
   où
   \begin{align*}
@@ -343,7 +343,7 @@ moins restrictive).
   \end{displaymath}
   et donc
   \begin{align*}
-    \pi_{i, n + 1}^{\mathrm{B}}
+    \pi_{i, n + 1}^{\text{B}}
     &= c_0 + \sum_{t=1}^n c_t S_{it} \\
     &= \frac{an}{an + s^2} \sum_{t=1}^n \frac{S_{it}}{n} +
     \left(
@@ -368,7 +368,7 @@ moins restrictive).
     \begin{enumerate}
     \item elle est sans biais, c'est-à-dire que
       \begin{displaymath}
-        \esp{\pi_{i,n + 1}^{\mathrm{B}}} = z \esp{\bar{S}_i} + (1 - z) m = m.
+        \esp{\pi_{i,n + 1}^{\text{B}}} = z \esp{\bar{S}_i} + (1 - z) m = m.
       \end{displaymath}
       En moyenne, l'assureur perçoit donc suffisamment de primes pour
       payer les sinistres;
@@ -380,11 +380,11 @@ moins restrictive).
       $z
       \stackrel{n \rightarrow \infty}{\longrightarrow} 1$
       alors
-      $\pi_{i, n + 1}^{\mathrm{B}}
+      $\pi_{i, n + 1}^{\text{B}}
       \stackrel{n \rightarrow \infty}{\longrightarrow}
       \mu(\Theta_i)$.
     \end{enumerate}
-  \item Puisque $\pi_{i, n + 1}^{\mathrm{B}}$ est sans biais, une
+  \item Puisque $\pi_{i, n + 1}^{\text{B}}$ est sans biais, une
     mauvaise estimation du facteur de crédibilité n'a pas d'impact
     négatif sur le montant des primes perçu par l'assureur.
   \item À cause de l'indépendance des contrats, les \emph{données
@@ -403,7 +403,7 @@ moins restrictive).
     \end{displaymath}
   \item La prime de crédibilité peut aussi s'écrire sous la forme
     \begin{displaymath}
-      \pi_{i, n + 1}^{\mathrm{B}} = m + z (\bar{S}_i - m).
+      \pi_{i, n + 1}^{\text{B}} = m + z (\bar{S}_i - m).
     \end{displaymath}
   \end{enumerate}
 \end{rems}
@@ -413,7 +413,7 @@ linéaire de la prime de risque est également la meilleure
 approximation linéaire de la prime bayésienne.
 
 \begin{thm}
-  Si $\pi_{i, n + 1}^{\mathrm{B}}$ est la combinaison linéaire des
+  Si $\pi_{i, n + 1}^{\text{B}}$ est la combinaison linéaire des
   observations minimisant
   \begin{displaymath}
     E \bigg[
@@ -422,7 +422,7 @@ approximation linéaire de la prime bayésienne.
       \Big)^2
     \bigg],
   \end{displaymath}
-  alors $\pi_{i, n + 1}^{\mathrm{B}}$  minimise également
+  alors $\pi_{i, n + 1}^{\text{B}}$  minimise également
   \begin{displaymath}
     E \bigg[
       \Big(
@@ -477,7 +477,7 @@ approximation linéaire de la prime bayésienne.
 \begin{corrolaire}
   On a
   \begin{displaymath}
-    \esp{(\mu(\Theta_i) - \pi_{i, n + 1}^{\mathrm{B}})^2}
+    \esp{(\mu(\Theta_i) - \pi_{i, n + 1}^{\text{B}})^2}
     \geq
     \esp{(\mu(\Theta_i) - B_{i, n + 1})^2},
   \end{displaymath}
@@ -534,7 +534,7 @@ Bühlmann pour n'importe quelle combinaison de distributions.
     &= \frac{s^2}{a} \\
     &= \frac{6(a + b) - 4(a^2 + ab + s^2)}{(b - a)^2} \\
     \intertext{et}
-    \pi_{n + 1}^{\mathrm{B}}
+    \pi_{n + 1}^{\text{B}}
     &= \frac{n}{n + K} \bar{S} + \left( 1 - \frac{n}{n + K} \right)
     \frac{a + b}{2}.
   \end{align*}
@@ -560,7 +560,7 @@ Bühlmann pour n'importe quelle combinaison de distributions.
     K
     &= \frac{s^2}{a} = \lambda
     \intertext{et}
-    \pi_{n + 1}^{\mathrm{B}}
+    \pi_{n + 1}^{\text{B}}
     &= \frac{n}{n + \lambda} \bar{S} + \frac{\lambda}{n + \lambda}
     \frac{\alpha}{\lambda}.
   \end{align*}
@@ -785,7 +785,7 @@ qui est un estimateur biaisé.
 On estime la prime de crédibilité en remplaçant chaque paramètre
 inconnu par son estimateur:
 \begin{align*}
-  \hat{\pi}_{i, n + 1}^{\mathrm{B}}
+  \hat{\pi}_{i, n + 1}^{\text{B}}
   &= \hat{z} \bar{S}_i + (1 - \hat{z}) \hat{m} \\
   \hat{z}
   &= \frac{n}{n + \hat{s}^2/\hat{a}}.
@@ -846,11 +846,11 @@ probablement biaisé.
   \end{displaymath}
   d'où
   \begin{align*}
-    \hat{\pi}_{1, 7}^{\mathrm{B}}
+    \hat{\pi}_{1, 7}^{\text{B}}
     &= 0,82 (1) + 0,18 (2) = 1,18 \\
-    \hat{\pi}_{2, 7}^{\mathrm{B}}
+    \hat{\pi}_{2, 7}^{\text{B}}
     &= 2,82 \\
-    \hat{\pi}_{3, 7}^{\mathrm{B}}
+    \hat{\pi}_{3, 7}^{\text{B}}
     &= 2.
   \end{align*}
   On peut obtenir les mêmes résultats avec la fonction \code{cm} de
@@ -902,7 +902,7 @@ grand dans le graphique de droite.
   \item Si $s^2$ et $a$ varient en des directions opposées, il devient
     difficile d'interpréter les résultats.
   \item Si $\bar{S}_1 = \dots = \bar{S}_I = \bar{S}$, alors $a = 0$ et
-    la prime de crédibilité est $\pi_{i, n + 1}^{\mathrm{B}} = \bar{S} =
+    la prime de crédibilité est $\pi_{i, n + 1}^{\text{B}} = \bar{S} =
     \bar{S}_i$ pour chaque contrat. Pourquoi alors ne pas charger tout
     simplement $\bar{S}_i$? Parce que dans une telle situation, il
     n'est pas nécessaire de faire de la tarification basée sur

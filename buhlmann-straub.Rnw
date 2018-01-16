@@ -172,7 +172,7 @@ approximation linéaire de la prime de risque d'un contrat.
   homogène de la prime de risque $\mu(\Theta_i)$ --- ou de $X_{i, n +
     1}$ --- est
   \begin{displaymath}
-    \pi_{i, n + 1}^{\mathrm{BS}} = z_i X_{iw} + (1 - z_i) m
+    \pi_{i, n + 1}^{\text{BS}} = z_i X_{iw} + (1 - z_i) m
   \end{displaymath}
   où
   \begin{align*}
@@ -237,7 +237,7 @@ approximation linéaire de la prime de risque d'un contrat.
   \end{align*}
   et donc
   \begin{align*}
-    \pi_{i, n + 1}^{\mathrm{BS}}
+    \pi_{i, n + 1}^{\text{BS}}
     &= c_0 + \sum_{t = 1}^n c_t X_{it} \\
     &= (1 - z_i) m
     + \sum_{t = 1}^n \frac{w_{it}}{w_{i\pt}}\, z_i X_{it} \\
@@ -382,7 +382,7 @@ toujours positif:
   \end{enumerate}
 \item Calculer les primes de crédibilité
   \begin{displaymath}
-    \hat{\pi}_{i, n + 1}^{\mathrm{BS}} = \hat{z}_i X_{iw}
+    \hat{\pi}_{i, n + 1}^{\text{BS}} = \hat{z}_i X_{iw}
     + (1 - \hat{z}_i) \hat{m}, \quad i = 1, \dots, I.
   \end{displaymath}
 \end{enumerate}
@@ -513,7 +513,7 @@ individuelle (\nombre{2064}).
     Prime individuelle $\bar{X}_i$ &
     \nombre{2064} & \nombre{1511} & \nombre{1822} & \nombre{1360} &
     \nombre{1599} \\
-    Prime de crédibilité $\pi_{i, 13}^{\mathrm{B}}$ &
+    Prime de crédibilité $\pi_{i, 13}^{\text{B}}$ &
     \nombre{2044} & \nombre{1519} & \nombre{1814} & \nombre{1376} &
     \nombre{1602} \\
     Facteur de crédibilité $z$ &
@@ -555,7 +555,7 @@ avec l'estimateur $\tilde{a}$ de la variance entre les moyennes.
     Prime individuelle $X_{iw}$ &
     \nombre{2061} & \nombre{1511} & \nombre{1806} & \nombre{1353} &
     \nombre{1600} \\
-    Prime de crédibilité $\pi_{i, 13}^{\mathrm{BS}}$ &
+    Prime de crédibilité $\pi_{i, 13}^{\text{BS}}$ &
     \nombre{2053} & \nombre{1529} & \nombre{1790} & \nombre{1468} &
     \nombre{1605} \\
     Facteur de crédibilité $z$ &

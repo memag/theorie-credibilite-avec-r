@@ -103,9 +103,9 @@ $\Theta$:
   &= \frac{\Pr[\mat{X} = \mat{x}|\Theta = \theta] \Pr[\Theta =
      \theta]}{\Pr[\mat{X} = \mat{x}]} \\
   &= \frac{\Pr[\mat{X} = \mat{x}|\Theta = \theta] \Pr[\Theta =
-    \theta]}{\sum_{\theta=-\infty}^\infty \mathrm{Pr}[\mat{X} =
+    \theta]}{\sum_{\theta=-\infty}^\infty \Pr[\mat{X} =
     \mat{x}|\Theta = \theta]
-    \mathrm{Pr}[\Theta = \theta]}.
+    \Pr[\Theta = \theta]}.
 \end{align*}
 Enfin, l'estimateur bayésien minimisant l'erreur quadratique moyenne
 demeure inchangé:
@@ -2604,7 +2604,7 @@ pgamma(10, 6, 2)
 \begin{exercice}
   Soit un modèle géométrique/bêta, c'est-à-dire
   \begin{gather*}
-    \mathrm{Pr}[S = x|\Theta = \theta]
+    \Pr[S = x|\Theta = \theta]
     = \theta (1 - \theta)^x,   \quad x = 0, 1, \dots \\
     \intertext{et}
     u(\theta)
@@ -2862,8 +2862,8 @@ pgamma(10, 6, 2)
 \end{exercice}
 
 \begin{exercice}
-  Soit $S|\Theta = \theta \sim \mathrm{Exponentielle}(\theta)$,
-  $\Theta \sim \mathrm{Gamma}(7, 42)$, la prime bayésienne de
+  Soit $S|\Theta = \theta \sim \text{Exponentielle}(\theta)$,
+  $\Theta \sim \text{Gamma}(7, 42)$, la prime bayésienne de
   cinquième année est $9$ et celle de sixième année, $8,5$. Trouver
   $x_5$.
   \begin{rep}
