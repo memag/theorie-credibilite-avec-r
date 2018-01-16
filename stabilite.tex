@@ -172,18 +172,18 @@ sinistres, et non à la sévérité de ceux-ci.
     \left(
       \frac{\zeta_{\varepsilon/2}}{k}
     \right)^2
-    (1 + \text{CV}(X)^2),
+    (1 + \CV(X)^2),
   \end{align*}
   où
   \begin{displaymath}
-    \text{CV}(X) = \frac{\sqrt{\var{X}}}{\esp{X}}.
+    \CV(X) = \frac{\sqrt{\var{X}}}{\esp{X}}.
   \end{displaymath}
   \qed
 \end{exemple}
 
 \begin{rems}
   \begin{enumerate}
-  \item Plus $\text{CV}(X)$ augmente, plus $\lambda$ augmente.
+  \item Plus $\CV(X)$ augmente, plus $\lambda$ augmente.
   \item Si $k = 0,05$ et $p = 0,90$, alors $\zeta_{0,05} = 1,645$ et
     \begin{displaymath}
       \lambda
@@ -331,8 +331,8 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \end{rep}
   \begin{sol}
     On a $S = X_1, \dots, X_N$ avec
-    $N \sim \mathrm{Binomiale}(\nombre{1000},\, 0,6)$ et
-    $X \sim \mathrm{Log-normale}(3, 4)$, d'où
+    $N \sim \text{Binomiale}(\nombre{1000},\, 0,6)$ et
+    $X \sim \text{Log-normale}(3, 4)$, d'où
     $\esp{N} = (\nombre{1000})(0,6) = 600$,
     $\var{N} = (\nombre{1000})(0,6)(1 - 0,6) = 240$,
     $\esp{X} = e^{3 + 4/2} = e^5$ et
@@ -401,7 +401,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   S_n)/n$ lorsque la distribution du montant total des sinistres est
   une Poisson composée.
   \begin{rep}
-    $n \geq \lambda^{-1} (\zeta_{\varepsilon/2}/k)^2 (1 + \mathrm{CV}(X)^2)$
+    $n \geq \lambda^{-1} (\zeta_{\varepsilon/2}/k)^2 (1 + \CV(X)^2)$
   \end{rep}
   \begin{sol}
     Puisque $\esp{\bar{S}} = \esp{S}$ et $\var{S} = \var{S}/n$,
@@ -429,9 +429,9 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
       \right)^2 \left( 1 + \frac{\var{X}}{\esp{X}^2}
       \right) \\
       &= \frac{1}{\lambda} \left( \frac{\zeta_{\varepsilon/2}}{k}
-      \right)^2 (1 + \mathrm{CV}(X)^2),
+      \right)^2 (1 + \CV(X)^2),
     \end{align*}
-    où $\mathrm{CV}(X)$ est le coefficient de variation de $X$.
+    où $\CV(X)$ est le coefficient de variation de $X$.
   \end{sol}
 \end{exercice}
 
@@ -680,9 +680,9 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
       \left(
         \frac{\zeta_{\varepsilon/2}}{k}
       \right)^2
-      (1 + \mathrm{CV}(X)^2).
+      (1 + \CV(X)^2).
     \end{displaymath}
-    Or, dans le cas présent, $\mathrm{CV}(X) = 0$ puisque $\Pr[X = M]
+    Or, dans le cas présent, $\CV(X) = 0$ puisque $\Pr[X = M]
     = 1$ (distribution dégénérée en $M$), $k = 0,04$ et $\zeta_{0,05}
     = 1,645$, d'où $n \lambda \geq \nombre{1692}$.
   \end{sol}
@@ -755,12 +755,12 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
       \left(
         \frac{\zeta_{\varepsilon/2}}{k}
       \right)^2
-      (1 + \mathrm{CV}(X)^2).
+      (1 + \CV(X)^2).
     \end{displaymath}
     Pour le groupe A, on a $\lambda_A = \nombre{1000}$ et
-    $\mathrm{CV}(X_A) = 0$, d'où $(\zeta_{\varepsilon/2}/k)^2 =
+    $\CV(X_A) = 0$, d'où $(\zeta_{\varepsilon/2}/k)^2 =
     \nombre{1000}$. Ce facteur est identique pour le groupe B, mais
-    $\lambda_B = \nombre{3000}$ et $\mathrm{CV}(X_B) = 1/\sqrt{\alpha}$. On
+    $\lambda_B = \nombre{3000}$ et $\CV(X_B) = 1/\sqrt{\alpha}$. On
     a donc
     \begin{displaymath}
       \nombre{3000} = \nombre{1000}
@@ -803,7 +803,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
       \left(
         \frac{\zeta_{\varepsilon/2}}{k}
       \right)^2
-      (1 + \mathrm{CV}(X)^2)
+      (1 + \CV(X)^2)
     \end{displaymath}
     on trouve dans un premier temps que
     \begin{displaymath}
@@ -871,17 +871,17 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
         \frac{\zeta_{\varepsilon/2}}{k}
       \right)^2
       \left(
-        \frac{1}{\theta}\, \mathrm{CV}(X)^2 +
+        \frac{1}{\theta}\, \CV(X)^2 +
         \frac{1 - \theta}{\theta}
       \right).
     \end{displaymath}
     (À noter que cette dernière équation revient à la première si $X =
-    1$ avec probabilité 1, c'est-à-dire si $\mathrm{CV}(X) = 0$.) On a
+    1$ avec probabilité 1, c'est-à-dire si $\CV(X) = 0$.) On a
     que $\theta = 0,04$ et, dans le cas d'une binomiale pure, un
     niveau de crédibilité complète de $n = \nombre{6494}$. Par
     conséquent, $(\zeta_{\varepsilon/2}/k)^2 = 270,5833$. En insérant
     cette valeur dans la formule pour la binomiale composée avec
-    $\mathrm{CV}(X) = 2$, on obtient un niveau de crédibilité complète
+    $\CV(X) = 2$, on obtient un niveau de crédibilité complète
     de $n = \nombre{33552}$ employés.
   \end{sol}
 \end{exercice}
@@ -1006,9 +1006,9 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     \item Avec $X \equiv 1$, $S$ est une Poisson pure et le seuil de
       crédibilité complète est $\lambda \geq
       (\zeta_{\varepsilon/2}/k)^2 = (1,645/0,05)^2 = 1082,41$.
-    \item Dans le cas Poisson composée avec $\mathrm{CV}(X) = 1$, le
+    \item Dans le cas Poisson composée avec $\CV(X) = 1$, le
       seuil de crédibilité complète est $\lambda \geq
-      (\zeta_{\varepsilon/2}/k)^2 (1 + \mathrm{CV}(X)^2) = 2
+      (\zeta_{\varepsilon/2}/k)^2 (1 + \CV(X)^2) = 2
       (1,96/0,04)^2 = \nombre{4802}$.
     \item Sans plus de précisions sur la formule de crédibilité
       partielle à utiliser, on se rabattra sur la formule de la racine
@@ -1039,9 +1039,9 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \begin{sol}
     On a un modèle Poisson composée pour le montant total des
     sinistres. Le seuil de crédibilité complète de \nombre{3000} est
-    atteint lorsque $\mathrm{CV}(X) = 0$, donc
+    atteint lorsque $\CV(X) = 0$, donc
     $(\zeta_{\varepsilon/2}/k)^2 = \nombre{3000}$. Si on a plutôt
-    $\mathrm{CV}(X)^2 = \alpha/(\alpha - 2) = 3$, alors le seuil de
+    $\CV(X)^2 = \alpha/(\alpha - 2) = 3$, alors le seuil de
     crédibilité complète est $\lambda_0 = \nombre{3000}(1 + 3) =
     \nombre{12000}$. Enfin, si l'on a accordé à l'assuré une
     crédibilité partielle de $z = \sqrt{\lambda/\nombre{12000}} = 0,5$,
@@ -1077,7 +1077,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \begin{sol}
     Il faut déduire de l'énoncé que la crédibilité complète est donnée
     en années d'expérience et que $\zeta_{\varepsilon/2} = 1,96$, $k =
-    0,05$, $\mathrm{CV}(X) = 3$ et $\lambda = \nombre{1000}$. Puisque
+    0,05$, $\CV(X) = 3$ et $\lambda = \nombre{1000}$. Puisque
     l'on a un modèle Poisson composée, le niveau de crédibilité
     complète $n_0$ est
     \begin{displaymath}
