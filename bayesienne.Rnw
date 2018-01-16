@@ -9,10 +9,10 @@
 %%% International de Creative Commons.
 %%% http://creativecommons.org/licenses/by-sa/4.0/
 
-\chapter{Crédibilité bayesienne}
+\chapter{Crédibilité bayésienne}
 \label{chap:bayesienne}
 
-\section{Estimation bayesienne}
+\section{Estimation bayésienne}
 \label{sec:bayesienne:estimation}
 
 \subsection{Cas continu}
@@ -27,7 +27,7 @@ d'un critère quelconque: absence de biais, maximum de vraisemblance,
 etc. On remarquera qu'aucune hypothèse a priori n'est faite sur
 $\theta$, on «laisse parler les données».
 
-Dans l'approche bayesienne, l'opinion a priori d'un individu sur la
+Dans l'approche bayésienne, l'opinion a priori d'un individu sur la
 valeur du paramètre $\theta$ est prise en compte dans l'estimation de
 ce dernier. On considère alors le paramètre comme une simple
 réalisation d'une variable aléatoire $\Theta$ avec f.d.p.\
@@ -65,7 +65,7 @@ fréquemment employée est l'erreur quadratique, c'est-à-dire
   L(\hat{\theta}, \theta) = (\hat{\theta} - \theta)^2.
 \end{displaymath}
 
-Dans un tel cas l'estimateur bayesien minimisant
+Dans un tel cas l'estimateur bayésien minimisant
 \begin{displaymath}
   \esp{L(\hat{\theta}, \theta)|X_1, \dots, X_n} =
   \esp{(\hat{\theta} - \theta)^2|X_1, \dots, X_n}
@@ -107,7 +107,7 @@ $\Theta$:
     \mat{x}|\Theta = \theta]
     \mathrm{Pr}[\Theta = \theta]}.
 \end{align*}
-Enfin, l'estimateur bayesien minimisant l'erreur quadratique moyenne
+Enfin, l'estimateur bayésien minimisant l'erreur quadratique moyenne
 demeure inchangé:
 \begin{align*}
   \hat{\theta}
@@ -383,7 +383,7 @@ Cette approximation sera la même pour tous les contrats; c'est la
   soit le montant moyen des sinistres dans le portefeuille.
 \end{rem}
 
-\subsection{Prime bayesienne}
+\subsection{Prime bayésienne}
 \label{sec:bayesienne:prevision:bayesienne}
 
 On l'a vu, la prime collective est globalement adéquate, mais pas
@@ -400,7 +400,7 @@ $g^*(S_{i1}, \dots, S_{in})$ minimisant l'erreur quadratique moyenne
 où $g()$ est une fonction quelconque.
 
 On peut démontrer (voir un livre de statistique mathématique) que la
-fonction $g^*(S_{i1}, \dots, S_{in})$ est la \emph{prime bayesienne}
+fonction $g^*(S_{i1}, \dots, S_{in})$ est la \emph{prime bayésienne}
 \begin{align*}
   B_{i, n + 1}
   &\equiv g^*(S_{i1}, \dots, S_{in}) \\
@@ -429,9 +429,9 @@ des observations,
 
 \begin{rems}
   \begin{enumerate}
-  \item La prime bayesienne est la meilleure prévision de $S_{i, n +
+  \item La prime bayésienne est la meilleure prévision de $S_{i, n +
       1}$ que l'on puisse calculer.
-  \item Comme la prime collective, la prime bayesienne est une moyenne
+  \item Comme la prime collective, la prime bayésienne est une moyenne
     pondérée des primes de risque, mais utilisant la distribution a
     posteriori de $\Theta$ plutôt que la distribution a priori;
     comparer
@@ -441,7 +441,7 @@ des observations,
       u(\theta|S_{i1}, \dots, S_{in})\, d\theta.
     \end{align*}
   \item À l'inverse, on peut interpréter la prime collective comme la
-    prime bayesienne de première année, lorsque aucune expérience
+    prime bayésienne de première année, lorsque aucune expérience
     n'est disponible.
   \item L'ordre des sinistres n'est pas pris en compte dans les
     calculs puisque
@@ -487,7 +487,7 @@ des observations,
     On ne peut calculer la prime collective avec la formule
     $m = \esp{S_t}$ puisque la distribution marginale est inconnue.
 
-  \item Calculer la prime bayesienne pour la troisième année si
+  \item Calculer la prime bayésienne pour la troisième année si
     $S_1 = 2$ et $S_2 = 1$.
 
     \begin{enumerate}[1.]
@@ -513,7 +513,7 @@ des observations,
           0,2646, & \theta = 2.
         \end{cases}
       \end{displaymath}
-    \item Calculer la prime bayesienne:
+    \item Calculer la prime bayésienne:
       \begin{align*}
         B_3
         &= \esp{\mu(\Theta)|S_1 = 2, S_2 = 1} \\
@@ -524,7 +524,7 @@ des observations,
     \end{enumerate}
     Dans le cas présent, $1,05 = m < B_3 < \bar{S} = 1,5$. Il importe
     de noter que ce n'est pas toujours le cas avec la prime
-    bayesienne.
+    bayésienne.
   \end{enumerate}
   \qed
 \end{exemple}
@@ -570,7 +570,7 @@ des observations,
       &= \esp{\Theta} \\
       &= \frac{\alpha}{\alpha + \beta}.
     \end{align*}
-  \item Calculer la prime bayesienne après $n$ années.
+  \item Calculer la prime bayésienne après $n$ années.
 
     Tout d'abord, la distribution a posteriori de $\Theta$ après $n$
     années d'expérience est, à une constante de proportionnalité près,
@@ -587,7 +587,7 @@ des observations,
     toujours une bêta, mais avec de nouveaux paramètres
     $\tilde{\alpha} = \alpha + \sum_{t = 1}^n x_t$ et
     $\tilde{\beta} = \beta + n - \sum_{t = 1}^n x_t$. Par conséquent,
-    la prime bayesienne pour l'année $n + 1$ est
+    la prime bayésienne pour l'année $n + 1$ est
     \begin{align*}
       B_{n + 1}
       &= \esp{\mu(\Theta)|S_1, \dots, S_n} \\
@@ -611,7 +611,7 @@ des observations,
 
   Soit $n \bar{S} = \sum_{t = 1}^n S_t$ le montant total des sinistres
   d'un contrat. \cite{Norberg:credibility:1979} démontre que la prime
-  bayesienne avec ce modèle est
+  bayésienne avec ce modèle est
   \begin{displaymath}
     B_{n + 1} =
     \dfrac{\sum_{j = 1}^{n - n \bar{S}} (-1)^j
@@ -622,7 +622,7 @@ des observations,
       {(n - n \bar{S} - j)!\, j!\, (n \bar{S} + j + 1)}}.
   \end{displaymath}
 
-  Cette prime bayesienne n'est pas linéaire et, de plus, elle ne se
+  Cette prime bayésienne n'est pas linéaire et, de plus, elle ne se
   trouve pas nécessairement entre l'expérience individuelle $\bar{S}$
   et la prime collective $m$. %
   \qed
@@ -718,15 +718,15 @@ Du théorème \ref{thm:bayesienne:predictive}, on a
   &= \esp{S_{i, n + 1}|S_{i1} = x_1, \dots, S_{in} = x_n}.
 \end{align*}
 
-Avec cette approche, la prime collective et la prime bayesienne
+Avec cette approche, la prime collective et la prime bayésienne
 s'interprètent toutes deux comme le montant moyen des sinistres dans
 le portefeuille, mais avec des pondérations différentes.
 
 
-\section{Crédibilité bayesienne linéaire (ou exacte)}
+\section{Crédibilité bayésienne linéaire (ou exacte)}
 \label{sec:bayesienne:lineaire}
 
-La prime bayesienne de l'exemple \ref{ex:bayesienne:bernoulli-beta}
+La prime bayésienne de l'exemple \ref{ex:bayesienne:bernoulli-beta}
 peut se réécrire sous la forme
 \begin{align*}
   B_{n + 1}
@@ -748,7 +748,7 @@ est appelée \emph{prime de crédibilité} et $0 \leq z \leq 1$ est le
 \emph{facteur de crédibilité}.
 
 \cite{Whitney:1918} et \cite{Bailey:1950} furent les premiers à démontrer
-que la prime bayesienne est une prime de crédibilité pour certaines
+que la prime bayésienne est une prime de crédibilité pour certaines
 combinaisons de distributions.
 
 \begin{exemple}[Cas Poisson/gamma]
@@ -786,7 +786,7 @@ combinaisons de distributions.
       m = \esp{\mu(\Theta)} = \esp{\Theta} = \frac{\alpha}{\lambda}.
     \end{displaymath}
 
-  \item Calculer la prime bayesienne à partir de la distribution a
+  \item Calculer la prime bayésienne à partir de la distribution a
     posteriori de $\Theta$.
 
     Tout d'abord, on a
@@ -800,7 +800,7 @@ combinaisons de distributions.
     \end{align*}
     d'où $\Theta|S_1, \dots, S_n \sim \text{Gamma}(\tilde{\alpha} =
     \alpha + \sum_{t = 1}^n S_t, \tilde{\lambda} = \lambda + n)$. Par
-    conséquent, la prime bayesienne est
+    conséquent, la prime bayésienne est
     \begin{align*}
       B_{n + 1}
       &= \esp{\mu(\Theta)|S_1, \dots, S_n} \\
@@ -815,7 +815,7 @@ combinaisons de distributions.
     \begin{displaymath}
       z = \frac{n}{n + \lambda}.
     \end{displaymath}
-    La prime bayesienne est donc linéaire dans le cas Poisson/gamma.
+    La prime bayésienne est donc linéaire dans le cas Poisson/gamma.
 
   \item Calculer la distribution marginale de $S_t$.
 
@@ -867,7 +867,7 @@ combinaisons de distributions.
     \end{align*}
     ce qui est la fonction génératrice des moments d'une binomiale
     négative de paramètres $\alpha$ et $\frac{\lambda}{\lambda + 1}$.
-  \item Calculer la prime bayesienne à partir de la distribution
+  \item Calculer la prime bayésienne à partir de la distribution
     prédictive.
 
     Puisque
@@ -920,12 +920,12 @@ combinaisons de distributions.
         &= \frac{\alpha (\lambda + 1)}{\lambda^2}.
       \end{align*}
     \end{enumerate}
-  \item Calculer la prime bayesienne pour les dix prochaines années si
+  \item Calculer la prime bayésienne pour les dix prochaines années si
     a priori $\Theta \sim \text{Gamma}(3, 3)$ et que les montants de
     sinistres au cours de ces années sont les suivants: 5, 3, 0, 1, 1,
     2, 0, 2, 0, 2.
 
-    La prime bayesienne dans le cas Poisson/gamma est
+    La prime bayésienne dans le cas Poisson/gamma est
     \begin{displaymath}
       B_{n+1} = \frac{\alpha + \sum_{t=1}^n x_t}{\lambda + n}.
     \end{displaymath}
@@ -962,7 +962,7 @@ combinaisons de distributions.
       concentrée autour de sa moyenne au fur et à mesure que
       l'expérience s'accumule (voir les figures
       \ref{fig:bayesienne:gamma1}--\ref{fig:bayesienne:gamma4}).
-    \item La précision de la prime bayesienne s'améliore (la vraie
+    \item La précision de la prime bayésienne s'améliore (la vraie
       valeur de $\theta$ est 1,48 dans cet exemple).
     \end{itemize}
 
@@ -1073,7 +1073,7 @@ curve(dgamma(x, 19, 13), xlim = c(0, 4), main = "Après 10 années")
     + \sum_{t = 1}^n x_t).
   \end{displaymath}
 
-  La prime bayesienne est donc
+  La prime bayésienne est donc
   \begin{align*}
     B_{n + 1}
     &= \esp{\Theta^{-1}|S_1, \dots, S_n} \\
@@ -1087,7 +1087,7 @@ curve(dgamma(x, 19, 13), xlim = c(0, 4), main = "Après 10 années")
     z
     &= \frac{n}{n + \alpha - 1}.
   \end{align*}
-  La prime bayesienne est donc linéaire.
+  La prime bayésienne est donc linéaire.
   \qed
 \end{exemple}
 
@@ -1207,7 +1207,7 @@ curve(dgamma(x, 19, 13), xlim = c(0, 4), main = "Après 10 années")
     \text{Normale}(\tilde{\mu}, \tilde{\sigma}_1^2 + \tilde{\sigma}_2^2).
   \end{displaymath}
 
-  La prime bayesienne est donc, en utilisant indifféremment l'approche
+  La prime bayésienne est donc, en utilisant indifféremment l'approche
   de la distribution a posteriori ou de la prédictive,
   \begin{align*}
     B_{n+1}
@@ -1223,7 +1223,7 @@ curve(dgamma(x, 19, 13), xlim = c(0, 4), main = "Après 10 années")
 \end{exemple}
 
 Il y a en fait cinq combinaisons de distributions qui résultent en une
-prime bayesienne linéaire (plus leurs convolutions):
+prime bayésienne linéaire (plus leurs convolutions):
 \begin{enumerate}
 \item Poisson/gamma
 \item Exponentielle/gamma
@@ -1300,7 +1300,7 @@ legend(6, 0.8, c("Gamma(3, 3)", "Gamma(3, 1/2)"), lwd=c(1, 2))
 Le modèle de crédibilité exacte de Jewell unifie les résultats des
 cinq cas spéciaux étudiés précédemment.
 \begin{itemize}
-\item En analyse bayesienne, si $u(\theta|x_1, \dots, x_n)$ appartient
+\item En analyse bayésienne, si $u(\theta|x_1, \dots, x_n)$ appartient
   à la même famille que $u(\theta)$, on dit de $u(\theta)$ et
   $f(x|\theta)$ qu'elles sont des \emph{conjuguées naturelles}.
 \item Les lois de Poisson, exponentielle, normale, Bernouilli et
@@ -1312,7 +1312,7 @@ cinq cas spéciaux étudiés précédemment.
   \end{displaymath}
 \item \citet{Jewell:exact:1974} démontre que lorsqu'une fonction de
   vraisemblance est combinée avec sa conjuguée naturelle, alors la
-  prime bayesienne est toujours une prime de crédibilité exacte.
+  prime bayésienne est toujours une prime de crédibilité exacte.
 \item \citet{Goel:conjecture:1982} conjecture que ceci n'arrive
   qu'avec les membres de la famille exponentielle:
   \begin{itemize}
@@ -1325,8 +1325,8 @@ cinq cas spéciaux étudiés précédemment.
 \section{Exercices}
 \label{sec:bayesienne:exercices}
 
-\Opensolutionfile{reponses}[reponses-bayesienne]
-\Opensolutionfile{solutions}[solutions-bayesienne]
+\Opensolutionfile{reponses}[reponses-bayésienne]
+\Opensolutionfile{solutions}[solutions-bayésienne]
 
 \begin{Filesave}{solutions}
 \section*{Chapitre \ref{chap:bayesienne}}
@@ -1335,7 +1335,7 @@ cinq cas spéciaux étudiés précédemment.
 \end{Filesave}
 
 %%%
-%%% Bayesien pur
+%%% bayésien pur
 %%%
 
 \begin{exercice}
@@ -1353,7 +1353,7 @@ cinq cas spéciaux étudiés précédemment.
   \item Calculer la prime de risque pour chacun des trois types de
     conducteurs.
   \item Calculer la prime collective.
-  \item Calculer la prime bayesienne de sixième année d'un contrat
+  \item Calculer la prime bayésienne de sixième année d'un contrat
     ayant le dossier suivant au cours des cinq premières années: 1, 0,
     1, 1, 0.
   \end{enumerate}
@@ -1413,7 +1413,7 @@ cinq cas spéciaux étudiés précédemment.
           0,6592, & \theta = 0,6
         \end{cases}
       \end{displaymath}
-      et, finalement, la prime bayesienne de sixième année est
+      et, finalement, la prime bayésienne de sixième année est
       $\esp{\Theta|\mat{S} = \mat{x}} = 0,0521(0,1) + 0,2887(0,2) +
       0,6592(0,6) = 0,4585$.
     \end{enumerate}
@@ -1836,7 +1836,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
 
 
 %%%
-%%% Crédibilité bayesienne
+%%% Crédibilité bayésienne
 %%%
 
 \begin{exercice}
@@ -1872,7 +1872,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
   \begin{enumerate}
   \item Calculer $\Pr[S = 2]$.
   \item Calculer $\Pr[S_3 = 0|S_1 = 1, S_2 = 1]$.
-  \item Calculer la prime bayesienne de troisième année étant donné
+  \item Calculer la prime bayésienne de troisième année étant donné
     l'expérience en b).
   \end{enumerate}
   \begin{rep}
@@ -1950,7 +1950,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
   équiprobables: A, B et C. La probabilité qu'une maison prenne feu
   dans une année est de $\frac{1}{4}$, quelle que soit la classe. La
   distribution du montant à payer sachant qu'il y a eu incendie est
-  donnée dans le tableau ci-dessous.  Quelle est la prime bayesienne
+  donnée dans le tableau ci-dessous.  Quelle est la prime bayésienne
   pour la deuxième année pour un assuré qui a eu un sinistre de
   \nombre{30000}~\$ l'année dernière?
   \begin{center}
@@ -2035,7 +2035,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
         \mu(B) = \esp{X|\Theta = B} &= \nombre{6250} \\
         \mu(C) = \esp{X|\Theta = C} &= \nombre{6000},
       \end{align*}
-      d'où la prime bayesienne pour la deuxième année est
+      d'où la prime bayésienne pour la deuxième année est
       \begin{align*}
         \esp{\mu(\Theta)|X_1 = \nombre{30000}}
         &= \nombre{4000} \left( \frac{2}{13} \right)
@@ -2102,7 +2102,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
   tout sinistre est d'un montant de 1~\$.
   \begin{enumerate}
   \item Trouver la prime qui devrait être exigée d'un nouvel assuré.
-  \item Trouver la prime bayesienne pour la quatrième année si cet
+  \item Trouver la prime bayésienne pour la quatrième année si cet
     assuré a eu huit sinistres au cours de ses trois premières années.
   \end{enumerate}
   \begin{rep}
@@ -2218,7 +2218,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
         &= 0,7078.
       \end{align*}
       L'autre méthode, plus rapide, consiste à calculer la prime
-      bayesienne à partir de la prime de risque:
+      bayésienne à partir de la prime de risque:
       \begin{align*}
         \esp{N_3|N_1 = 0, N_2 = 2}
         &= \esp{\mu(\Theta)|N_1 = 0, N_2 = 2} \\
@@ -2241,9 +2241,9 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
   simule un nombre aléatoire d'une distribution uniforme sur $[0,\,
   100\theta]$.
   \begin{enumerate}
-  \item Trouver la prime bayesienne si des résultats de 80 et 340 ont
+  \item Trouver la prime bayésienne si des résultats de 80 et 340 ont
     été obtenus lors des deux premiers essais.
-  \item Est-il possible d'écrire la prime bayesienne sous forme d'une
+  \item Est-il possible d'écrire la prime bayésienne sous forme d'une
     prime de crédibilité? Si oui, trouver le facteur de crédibilité.
   \end{enumerate}
   \begin{rep}
@@ -2296,7 +2296,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
         \end{cases}
       \end{align*}
       Ainsi, puisque $\mu(\theta) = \esp{S|\Theta = \theta} = 50
-      \theta$, la prime bayesienne est
+      \theta$, la prime bayésienne est
       \begin{align*}
         \esp{\mu(\Theta)|S_1 = 80, S_2 = 340}
         &=50 [(4)(0,4798) + (5)(0,3070) + (6)(0,2132)] \\
@@ -2313,7 +2313,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
         &= 175 - 35 z,
       \end{align*}
       soit $z = 1,76$. Comme $z$ ne peut être plus grand que $1$ par
-      définition, il est impossible d'écrire la prime bayesienne sous
+      définition, il est impossible d'écrire la prime bayésienne sous
       la forme d'une prime de crédibilité.
     \end{enumerate}
   \end{sol}
@@ -2385,7 +2385,7 @@ pgamma(10, 6, 2)
   sinistres dans chacune des deux premières années.
   \begin{enumerate}
   \item Énoncer le modèle complet utilisé ici par l'assureur.
-  \item Déterminer l'estimateur bayesien du nombre de sinistres de cet
+  \item Déterminer l'estimateur bayésien du nombre de sinistres de cet
     assuré pour la troisième année.
   \end{enumerate}
   \begin{rep}
@@ -2422,7 +2422,7 @@ pgamma(10, 6, 2)
           \frac{0,038168(0,5)}{0,023154} = 0,824221, & \theta=4.
         \end{cases}
       \end{displaymath}
-      Ainsi, puisque $\mu(\Theta) = \Theta$, la prime bayesienne
+      Ainsi, puisque $\mu(\Theta) = \Theta$, la prime bayésienne
       pour la troisième année est $\esp{\Theta|N_1=4, N_2=4} = 2
       (0,175779) + 4 (0,824221) = 3,6484$.
     \end{enumerate}
@@ -2446,7 +2446,7 @@ pgamma(10, 6, 2)
     \end{tabular}
   \end{center}
   Le dossier de sinistre d'un risque choisi au hasard est de 1 et 2 au
-  cours des deux premières années. Calculer la prime bayesienne de ce
+  cours des deux premières années. Calculer la prime bayésienne de ce
   risque pour la troisième année.
   \begin{rep}
     2,3107
@@ -2476,7 +2476,7 @@ pgamma(10, 6, 2)
       \end{cases}
     \end{displaymath}
     De plus $\mu(\theta_1) = 2$, $\mu(\theta_2) = 4$ et $\mu(\theta_3)
-    = 5$.  Le calcul de la prime bayesienne requiert la distribution a
+    = 5$.  Le calcul de la prime bayésienne requiert la distribution a
     posteriori de $\Theta$:
     \begin{align*}
       \Pr[\Theta = \theta_i|S_1 = 1, S_2 = 2]
@@ -2490,7 +2490,7 @@ pgamma(10, 6, 2)
         0,000036, & i = 3.
       \end{cases}
     \end{align*}
-    Finalement, la prime bayesienne pour la troisième année est
+    Finalement, la prime bayésienne pour la troisième année est
     $\esp{\mu(\Theta)|S_1 = 1, S_2 = 2} = 2 (0,841507) + 4(0,158457) +
     5(0,000036) = 2,3170$.
   \end{sol}
@@ -2598,7 +2598,7 @@ pgamma(10, 6, 2)
 
 
 %%%
-%%% Crédibilité bayesienne exacte
+%%% Crédibilité bayésienne exacte
 %%%
 
 \begin{exercice}
@@ -2617,10 +2617,10 @@ pgamma(10, 6, 2)
   \item Calculer la distribution a posteriori de $\Theta$ après $n$
     années d'expérience $S_1, \dots, S_n$.
   \item Calculer la distribution prédictive de $S_{n+1}$.
-  \item Calculer la prime bayesienne à partir du résultat en c) ou
+  \item Calculer la prime bayésienne à partir du résultat en c) ou
     celui en d). Pourquoi avoir choisi une approche plutôt qu'une
     autre?
-  \item Exprimer la prime bayesienne en e) comme une prime de
+  \item Exprimer la prime bayésienne en e) comme une prime de
     crédibilité.
   \end{enumerate}
   \begin{rep}
@@ -2703,7 +2703,7 @@ pgamma(10, 6, 2)
   \item Déterminer la prime collective.
   \item Déterminer la distribution a posteriori de $\Theta$ après $n$
     années.
-  \item Déterminer la prime bayesienne pour la ($n+1$){\ieme} année et
+  \item Déterminer la prime bayésienne pour la ($n+1$){\ieme} année et
     vérifier si celle-ci peut s'exprimer comme une prime de
     crédibilité ou non.
   \end{enumerate}
@@ -2738,7 +2738,7 @@ pgamma(10, 6, 2)
       \alpha + \sum_{t=1}^n S_t$ et $\tilde{\beta} = \beta + n \nu -
       \sum_{t=1}^n S_t$.
     \item Comme la distribution a posteriori est de même famille que
-      la distribution a priori, la prime bayesienne est de la même
+      la distribution a priori, la prime bayésienne est de la même
       forme que la prime collective, mais avec des paramètres
       modifiés:
       \begin{align*}
@@ -2776,10 +2776,10 @@ pgamma(10, 6, 2)
   \item Déterminer la distribution a posteriori de $\Theta$ après $n$
     années d'expérience $S_1, \dots, S_n$.
   \item Déterminer la distribution prédictive de $S_{n+1}$.
-  \item Calculer la prime bayesienne, d'abord à partir de la
+  \item Calculer la prime bayésienne, d'abord à partir de la
     distribution a posteriori de $\Theta$, puis à partir de la
     distribution prédictive.
-  \item La prime bayesienne est-elle une prime de crédibilité?
+  \item La prime bayésienne est-elle une prime de crédibilité?
   \end{enumerate}
   \begin{rep}
     \begin{inparaenum}
@@ -2834,7 +2834,7 @@ pgamma(10, 6, 2)
       paramètres $\tilde{\alpha} = \alpha + n\tau$, $\tilde{\lambda} =
       \lambda + \sum_{t=1}^n x_t$ et $\tau$.
     \item En utilisant la distribution a posteriori ou la distribution
-      prédictive, la prime bayesienne pour l'année $n + 1$ est
+      prédictive, la prime bayésienne pour l'année $n + 1$ est
       simplement la prime collective avec les paramètres modifiés.
       Donc,
       \begin{align*}
@@ -2845,7 +2845,7 @@ pgamma(10, 6, 2)
           \frac{\lambda + \sum_{t=1}^n S_t}{\alpha + n\tau - 1}
         \right).
       \end{align*}
-    \item La prime bayesienne ci-dessus peut être réécrite comme suit:
+    \item La prime bayésienne ci-dessus peut être réécrite comme suit:
       \begin{align*}
         \esp{\mu(\Theta)|S_1, \dots, S_n}
         &= \left(\frac{n\tau}{n\tau + \alpha - 1}\right) \sum_{t=1}^n
@@ -2863,14 +2863,14 @@ pgamma(10, 6, 2)
 
 \begin{exercice}
   Soit $S|\Theta = \theta \sim \mathrm{Exponentielle}(\theta)$,
-  $\Theta \sim \mathrm{Gamma}(7, 42)$, la prime bayesienne de
+  $\Theta \sim \mathrm{Gamma}(7, 42)$, la prime bayésienne de
   cinquième année est $9$ et celle de sixième année, $8,5$. Trouver
   $x_5$.
   \begin{rep}
     $3,5$
   \end{rep}
   \begin{sol}
-    Dans le cas exponentielle/gamma, la prime bayesienne est
+    Dans le cas exponentielle/gamma, la prime bayésienne est
     \begin{displaymath}
       B_{n + 1} = \frac{\lambda + \sum_{t=1}^n x_t}{\alpha + n - 1}.
     \end{displaymath}
@@ -3026,7 +3026,7 @@ pgamma(10, 6, 2)
     u(\theta)
     &= 504\, \theta^5 (1 - \theta)^3, \quad 0 < \theta < 1.
   \end{align*}
-  Calculer la prime bayesienne de cinquième année.
+  Calculer la prime bayésienne de cinquième année.
   \begin{rep}
     5,8
   \end{rep}
@@ -3094,7 +3094,7 @@ pgamma(10, 6, 2)
 
 \begin{exercice}
   On démontre dans cet exercice le résultat obtenu par
-  \cite{Jewell:exact:1974}, à savoir que la prime bayesienne issue d'un
+  \cite{Jewell:exact:1974}, à savoir que la prime bayésienne issue d'un
   mélange d'une distribution de la famille exponentielle avec sa
   conjuguée naturelle est une prime de crédibilité.  Soit donc la
   variable aléatoire $S|\Theta = \theta$ dont la distribution est
@@ -3126,7 +3126,7 @@ pgamma(10, 6, 2)
     $\theta$ et en supposant que $u(\theta) = 0$ aux deux extrémités
     de son domaine de définition, démontrer que la prime collective
     est $\esp{\mu(\Theta)} = x_0/t_0$.
-  \item Avec ce qui précède, trouver la prime bayesienne et démontrer
+  \item Avec ce qui précède, trouver la prime bayésienne et démontrer
     qu'il s'agit d'une prime de crédibilité.
   \end{enumerate}
   \begin{sol}
@@ -3186,7 +3186,7 @@ pgamma(10, 6, 2)
         &= t_0 \esp{\mu(\Theta)} - x_0,
       \end{align*}
       d'où $\esp{\mu(\Theta)} = x_0/t_0$.
-    \item On sait que la prime bayesienne est de la même forme que la
+    \item On sait que la prime bayésienne est de la même forme que la
       prime collective, mais avec des paramètres modifiés. On a donc
       \begin{align*}
         \esp{\mu(\Theta)|X_1, \dots, X_n}

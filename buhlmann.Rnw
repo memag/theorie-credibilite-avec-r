@@ -12,9 +12,9 @@
 \chapter{Le modèle de crédibilité de Bühlmann}
 \label{chap:buhlmann}
 
-On a deux problèmes pratiques en crédibilité bayesienne:
+On a deux problèmes pratiques en crédibilité bayésienne:
 \begin{enumerate}
-\item la prime bayesienne est une prime de crédibilité dans certains
+\item la prime bayésienne est une prime de crédibilité dans certains
   cas seulement;
 \item la prime repose sur des hypothèses très subjectives pour les
   distributions de $\Theta_i$ et $S_{it}|\Theta_i$.
@@ -219,7 +219,7 @@ On définit la notation suivante:
 \label{sec:buhlmann:modele}
 
 Le modèle pour portefeuille hétérogène est similaire à celui utilisé
-en crédibilité bayesienne, mais on relâche légèrement les hypothèses.
+en crédibilité bayésienne, mais on relâche légèrement les hypothèses.
 
 Schématiquement, on a
 \begin{center}
@@ -410,7 +410,7 @@ moins restrictive).
 
 Il est intéressant de constater que la meilleure approximation
 linéaire de la prime de risque est également la meilleure
-approximation linéaire de la prime bayesienne.
+approximation linéaire de la prime bayésienne.
 
 \begin{thm}
   Si $\pi_{i, n + 1}^{\mathrm{B}}$ est la combinaison linéaire des
@@ -481,16 +481,16 @@ approximation linéaire de la prime bayesienne.
     \geq
     \esp{(\mu(\Theta_i) - B_{i, n + 1})^2},
   \end{displaymath}
-  l'égalité survenant lorsque la prime bayesienne est une prime de
+  l'égalité survenant lorsque la prime bayésienne est une prime de
   crédibilité.
 \end{corrolaire}
 
 Ce résultat s'interprète comme une minimisation en deux étapes:
 \begin{enumerate}
 \item trouver la meilleure approximation de la prime de risque (prime
-  bayesienne);
+  bayésienne);
 \item trouver la meilleure approximation linéaire de la prime
-  bayesienne (prime de crédibilité).
+  bayésienne (prime de crédibilité).
 \end{enumerate}
 
 
@@ -499,7 +499,7 @@ Ce résultat s'interprète comme une minimisation en deux étapes:
 
 Dans un premier temps, on peut considérer que les distributions de
 $S_{it}|\Theta_i$ et de $\Theta_i$ sont connues, comme en crédibilité
-bayesienne.
+bayésienne.
 
 La notion de portefeuille n'est alors pas nécessaire puisque l'on
 détermine les distributions pour chaque contrat. On peut laisser
@@ -514,7 +514,7 @@ Bühlmann pour n'importe quelle combinaison de distributions.
     S_t|\Theta = \theta &\sim \text{Bernoulli}(\theta) \\
     \Theta &\sim U(a, b),
   \end{align*}
-  alors la prime bayesienne est très compliquée. Ici, $\mu(\theta)
+  alors la prime bayésienne est très compliquée. Ici, $\mu(\theta)
   = \theta$ et $\sigma^2(\theta) = \theta (1 - \theta)$, d'où
   \begin{align*}
     m
@@ -643,8 +643,8 @@ En pratique, l'approche paramétrique est d'un intérêt limité
 puisqu'elle nécessite toujours de déterminer les distributions de
 $S_{it}|\Theta_i$ et $\Theta_i$.
 
-Avec l'approche non paramétrique, nous délaissons l'approche bayesienne
-pure pour l'approche bayesienne \emph{empirique}.
+Avec l'approche non paramétrique, nous délaissons l'approche bayésienne
+pure pour l'approche bayésienne \emph{empirique}.
 
 \begin{itemize}
 \item Nous avons plusieurs réalisations de la variable aléatoire $\Theta$.
@@ -1517,7 +1517,7 @@ curve(dnorm(x, mean = 15, sd = 1), xlim = c(12, 18), lwd = 3, add = TRUE)
   \end{displaymath}
   \begin{enumerate}
   \item Calculer $\esp{N_t}$.
-  \item Sachant que $N_1 = 0$, estimer $N_2$ par l'approche bayesienne
+  \item Sachant que $N_1 = 0$, estimer $N_2$ par l'approche bayésienne
     pure.
   \item Répéter la partie b) à l'aide du modèle de Bühlmann.
   \end{enumerate}
@@ -1530,7 +1530,7 @@ curve(dnorm(x, mean = 15, sd = 1), xlim = c(12, 18), lwd = 3, add = TRUE)
   \end{rep}
   \begin{sol}
     Cas géométrique/bêta avec $\alpha = \beta = 3$. Voir les formules
-    de l'annexe \ref{chap:formules}. La prime bayesienne et la prime
+    de l'annexe \ref{chap:formules}. La prime bayésienne et la prime
     de Bühlmann sont égales dans un tel cas.
   \end{sol}
 \end{exercice}
@@ -2202,7 +2202,7 @@ curve(dnorm(x, mean = 15, sd = 1), xlim = c(12, 18), lwd = 3, add = TRUE)
     \begin{enumerate}
     \item On a $m = \alpha/\lambda
       = 0,75$.
-    \item La prime de crédibilité est égale à la prime bayesienne,
+    \item La prime de crédibilité est égale à la prime bayésienne,
       soit
       \begin{align*}
         \pi_{n + 1}
