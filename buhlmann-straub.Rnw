@@ -140,8 +140,8 @@ On définit la notation suivante:
   Tout d'abord, toutes les covariance sont nulles lorsque $i \neq k$
   par indépendance entre les contrats.
 
-  Les deux premiers résultats sont équivalents à ceux du théorème
-  \ref{thm:buhlmann:covariances} à la seule différence que
+  Les deux premiers résultats sont équivalents à ceux du
+  \autoref{thm:buhlmann:covariances} à la seule différence que
   \begin{align*}
     \esp{\var{X_{it}|\Theta_i}}
     &= \Esp{\frac{\sigma^2(\Theta_i)}{w_{it}}} \\
@@ -183,8 +183,8 @@ approximation linéaire de la prime de risque d'un contrat.
 \end{thm}
 
 \begin{proof}
-  La démonstration est similaire à celle du théorème
-  \ref{thm:buhlmann:prime}. Comme précédemment, on peut se restreindre
+  La démonstration est similaire à celle du
+  \autoref{thm:buhlmann:prime}. Comme précédemment, on peut se restreindre
   à trouver les constantes $c_0, c_1, \dots, c_n$ minimisant
   \begin{displaymath}
     E \bigg[
@@ -286,7 +286,7 @@ Bühlmann, on obtient l'estimateur sans biais
 \subsection{Estimation de la variance inter}
 \label{sec:buhlmann-straub:estimation:ac}
 
-Du chapitre \ref{chap:buhlmann}, on soupçonne que l'estimateur intuitif
+Du \autoref{chap:buhlmann}, on soupçonne que l'estimateur intuitif
 \begin{displaymath}
   \sum_{i = 1}^I w_{i\pt} (X_{iw} - X_{ww})^2
 \end{displaymath}
@@ -422,8 +422,8 @@ Les résultats de cette section sont tirés de
 sinistres moyens au chapitre de la responsabilité civile en assurance
 automobile entre juillet 1970 et juin 1973 dans cinq états américains.
 On a donc $I = 5$ contrats et $n = 12$ périodes d'expérience. Les
-montants de sinistres moyens $X_{it}$ sont présentés au tableau
-\ref{tab:ratios} (à noter que le tableau est transposé par rapport à
+montants de sinistres moyens $X_{it}$ sont présentés au
+\autoref{tab:buhlmann-straub:ratios} (à noter que le tableau est transposé par rapport à
 la notation usuelle).
 
 \begin{table}[p]
@@ -448,10 +448,10 @@ la notation usuelle).
   \end{tabular}
   \caption{Montants de sinistres moyens (ratios $X_{it}$) dans le portefeuille
     de Hachemeister}
-  \label{tab:ratios}
+  \label{tab:buhlmann-straub:ratios}
 \end{table}
 
-Au tableau \ref{tab:poids}, on trouvera les poids $w_{it}$ associés
+Au \autoref{tab:buhlmann-straub:poids}, on trouvera les poids $w_{it}$ associés
 aux données précédentes. Il s'agit ici du nombre total de sinistres
 dans chaque période pour chaque état, soit le dénominateur des ratios
 $X_{it}$. On remarquera que le nombre de sinistres est beaucoup plus
@@ -480,7 +480,7 @@ $X_{it}$. On remarquera que le nombre de sinistres est beaucoup plus
   \end{tabular}
   \caption{Nombres totaux de sinistres (poids $w_{it}$) dans le portefeuille
     de Hachemeister}
-  \label{tab:poids}
+  \label{tab:buhlmann-straub:poids}
 \end{table}
 
 \subsection{Résultats avec le modèle de Bühlmann}
@@ -493,7 +493,7 @@ sont les suivants:
   \hat{s}^2 &= \nombre{46040} \\
   \hat{a}   &= \nombre{72310},
 \end{align*}
-ce qui mène aux résultats du tableau \ref{tab:buhl}. Le facteur de
+ce qui mène aux résultats du \autoref{tab:buhlmann-straub:buhl}. Le facteur de
 crédibilité est plutôt élevé. Une analyse rapide des données suffit
 pour constater que l'expérience des états est relativement stable dans
 le temps. Il en résulte une valeur de $\hat{s}^2$ petite par rapport à
@@ -522,12 +522,12 @@ individuelle (\nombre{2064}).
   \end{tabular}
   \caption{Résultats avec le modèle de Bühlmann pour le portefeuille
     de Hachemeister}
-  \label{tab:buhl}
+  \label{tab:buhlmann-straub:buhl}
 \end{table}
 
 \subsection{Résultats avec le modèle de Bühlmann--Straub}
 
-Le tableau \ref{tab:poids} montre que le poids relatif de chacun des
+Le \autoref{tab:buhlmann-straub:poids} montre que le poids relatif de chacun des
 cinq états (poids mesuré en nombre de sinistres) est très différent:
 l'État 1 compte pour 57,5\% des sinistres du portefeuille, alors qu'à
 l'opposé l'État 4 ne compte que pour 2,4\%. Dans une telle situation,
@@ -543,7 +543,7 @@ Les estimateurs des paramètres de structure sont les suivants:
   \tilde{a} &= \nombre{64367}.
 \end{align*}
 On notera que l'estimateur $X_{zw}$ de la moyenne collective ainsi que
-les primes de crédibilité du tableau \ref{tab:bs} ont été calculés
+les primes de crédibilité du \autoref{tab:buhlmann-straub:bs} ont été calculés
 avec l'estimateur $\tilde{a}$ de la variance entre les moyennes.
 
 \begin{table}[tbp]
@@ -564,13 +564,14 @@ avec l'estimateur $\tilde{a}$ de la variance entre les moyennes.
   \end{tabular}
   \caption{Résultats avec le modèle de Bühlmann-Straub pour le portefeuille
     de Hachemeister}
-  \label{tab:bs}
+  \label{tab:buhlmann-straub:bs}
 \end{table}
 
 C'est pour l'État 4 que les différences entre les résultats des
-tableaux \ref{tab:buhl} et \ref{tab:bs} sont les plus marquées. La
-prime de crédibilité de cet état augmente en effet de \nombre{1376} à
-\nombre{1468}.  Ceci est en partie dû à l'augmentation de l'estimateur
+tableaux \ref{tab:buhlmann-straub:buhl} et
+\ref{tab:buhlmann-straub:bs} sont les plus marquées. La prime de
+crédibilité de cet état augmente en effet de \nombre{1376} à
+\nombre{1468}. Ceci est en partie dû à l'augmentation de l'estimateur
 de la prime collective, mais surtout à la forte baisse de son facteur
 de crédibilité. Le modèle de Bühlmann--Straub permet donc de
 reconnaître le rôle minime joué par cet état dans les résultats du
@@ -599,8 +600,8 @@ diminution structurelle des coûts.
 \Opensolutionfile{solutions}[solutions-buhlmann-straub]
 
 \begin{Filesave}{solutions}
-\section*{Chapitre \ref{chap:buhlmann-straub}}
-\addcontentsline{toc}{section}{Chapitre \protect\ref{chap:buhlmann-straub}}
+\section*{Chapitre \ref*{chap:buhlmann-straub}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:buhlmann-straub}}
 
 \end{Filesave}
 
@@ -666,9 +667,9 @@ diminution structurelle des coûts.
 \begin{exercice}
   Démontrer que l'estimateur $\hat{s}^2$ est sans biais.
   \begin{sol}
-    On calcule d'abord l'espérance de la variable aléatoire $(X_{it} -
-    X_{iw})^2$. En utilisant les résultats du problème
-    \ref{prob:buhlmann-straub:covariances}, on a que
+    On calcule d'abord l'espérance de la variable aléatoire
+    $(X_{it} - X_{iw})^2$. En utilisant les résultats de
+    l'\autoref{prob:buhlmann-straub:covariances}, on a que
     \begin{align*}
       \esp{(X_{it} - X_{iw})^2}
       &= \var{X_{it}} + \var{X_{iw}} - 2\, \Cov(X_{it}, X_{iw}) \\
@@ -839,8 +840,7 @@ diminution structurelle des coûts.
       X_{it} = \frac{S_{it}}{w_{it}}.
     \end{displaymath}
     Pour la simulation des variables $S_{it}$, se reporter à la
-    solution de l'exercice
-    \ref{chap:buhlmann}.\ref{ex:buhlmann:simulation}. Il faut
+    solution de l'\autoref{ex:buhlmann:simulation}. Il faut
     toutefois ajouter les poids au modèle de simulation. Puisque la
     taille des contrats a une influence sur leur nombre de sinistres
     et non sur le montant de ceux-ci, on intégrera les poids $w_{it}$

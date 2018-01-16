@@ -275,7 +275,7 @@ risque du contrat $i$. Cette variable aléatoire est
 
 \fancybreak{\pfbreakdisplay}
 \begin{quote}
-  Dans l'exemple \ref{ex:bayesienne:introduction}, la variable
+  Dans l'\autoref{ex:bayesienne:introduction}, la variable
   aléatoire a deux valeurs possibles: $\theta = \frac{1}{15}$ et
   $\theta = \frac{1}{10}$.
 \end{quote}
@@ -288,7 +288,7 @@ $\Theta$.
 
 \fancybreak{\pfbreakdisplay}
 \begin{quote}
-  Dans l'exemple \ref{ex:bayesienne:introduction}, on a
+  Dans l'\autoref{ex:bayesienne:introduction}, on a
   \begin{align*}
     U(\theta)
     &=
@@ -531,13 +531,13 @@ des observations,
 
 \begin{exemple}
   \label{ex:bayesienne:bernoulli-beta}
-  Considérer le portefeuille simplifié de l'exemple
-  \ref{ex:introduction-historique:simplifie}. Un contrat ne peut avoir
-  au maximum qu'un seul sinistre de montant 1 par année. (En d'autres
-  termes, l'expérience consiste en une suite de 1 et de 0 selon qu'il
-  y a eu un sinistre dans une année ou non.) La probabilité d'avoir un
-  sinistre est toutefois inconnue et potentiellement différente pour
-  chaque contrat.
+  Considérer le portefeuille simplifié de
+  l'\autoref{ex:introduction-historique:simplifie}. Un contrat ne peut
+  avoir au maximum qu'un seul sinistre de montant 1 par année. (En
+  d'autres termes, l'expérience consiste en une suite de 1 et de 0
+  selon qu'il y a eu un sinistre dans une année ou non.) La
+  probabilité d'avoir un sinistre est toutefois inconnue et
+  potentiellement différente pour chaque contrat.
 
   On a donc
   \begin{displaymath}
@@ -601,8 +601,8 @@ des observations,
 
 \begin{exemple}
   \label{ex:bayesienne:bernoulli-uniforme}
-  On reprend le modèle de l'exemple
-  \ref{ex:bayesienne:bernoulli-beta}, soit
+  On reprend le modèle de l'\autoref{ex:bayesienne:bernoulli-beta},
+  soit
   \begin{displaymath}
     S_t|\Theta = \theta \sim \text{Bernoulli}(\theta),
   \end{displaymath}
@@ -632,7 +632,7 @@ des observations,
 \section{Approche par la distribution prédictive}
 \label{sec:bayesienne:predictive}
 
-On a déjà vu à la section \ref{sec:bayesienne:prevision:collective} que
+On a déjà vu à la \autoref{sec:bayesienne:prevision:collective} que
 \begin{displaymath}
   m = \esp{\mu(\Theta)} = \esp{S_{it}}.
 \end{displaymath}
@@ -695,7 +695,7 @@ densité de probabilité $f(x|x_1, \dots, x_n)$ est appelée la
   \end{center}
 \end{rem}
 
-Du théorème \ref{thm:bayesienne:predictive}, on a
+Du \autoref{thm:bayesienne:predictive}, on a
 \begin{align*}
   \esp{\mu(\Theta)|S_{i1} = x_1, \dots, S_{in} = x_n}
   &= \int_{-\infty}^\infty
@@ -726,7 +726,7 @@ le portefeuille, mais avec des pondérations différentes.
 \section{Crédibilité bayésienne linéaire (ou exacte)}
 \label{sec:bayesienne:lineaire}
 
-La prime bayésienne de l'exemple \ref{ex:bayesienne:bernoulli-beta}
+La prime bayésienne de l'\autoref{ex:bayesienne:bernoulli-beta}
 peut se réécrire sous la forme
 \begin{align*}
   B_{n + 1}
@@ -1262,8 +1262,8 @@ rapportent à ces résultats.
   et $z \rightarrow 0$ lorsque $K \rightarrow \infty$. Dans le cas
   Poisson/gamma, où $K = \lambda$, une petite valeur de $\lambda$
   correspond à une grande incertitude quant au niveau de risque
-  $\theta$ (la courbe gamma sera très évasée, voir la figure
-  \ref{fig:bayesienne:gamma}). On accorde donc peu de poids à la prime
+  $\theta$ (la courbe gamma sera très évasée, voir la
+  \autoref{fig:bayesienne:gamma}). On accorde donc peu de poids à la prime
   collective, d'où un grand facteur de crédibilité.
 
 \item Dans le cas normale/normale, $K$ est grand si $\sigma_2^2$ est
@@ -1329,8 +1329,8 @@ cinq cas spéciaux étudiés précédemment.
 \Opensolutionfile{solutions}[solutions-bayésienne]
 
 \begin{Filesave}{solutions}
-\section*{Chapitre \ref{chap:bayesienne}}
-\addcontentsline{toc}{section}{Chapitre \protect\ref{chap:bayesienne}}
+\section*{Chapitre \ref*{chap:bayesienne}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:bayesienne}}
 
 \end{Filesave}
 
@@ -1665,7 +1665,7 @@ curve(dbeta(x, 4, 2), from = 0, to = 1)
       chaque lancer sont les suivants, dans l'ordre: $(1, 2)$, $(2,
       2)$, $(3, 2)$, $(3, 3)$, $(4, 3)$, $(4, 4)$, $(5, 4)$, $(6, 4)$,
       $(6, 5)$, $(6, 6)$.  Quelques distributions a posteriori sont
-      présentées aux figures \ref{fig:beta0}--\ref{fig:beta5}. Une
+      présentées aux figures \ref{fig:beta0}--\ref{fig:bayesienne:beta5}. Une
       première observation est le déplacement vers la gauche ou vers
       la droite de la distribution selon le nombre de résultats piles
       et de résultats faces obtenus.  Une deuxième observation est la
@@ -1678,7 +1678,7 @@ par(mar = c(2, 4, 2, 0))
 curve(dbeta(x, 1, 1), xlim = c(0, 1))
 @
           \caption{Distribution a priori (uniforme)}
-          \label{fig:beta0}
+          \label{fig:bayesienne:beta0}
         \end{minipage}
         \hfill
         \begin{minipage}[t]{0.45\textwidth}
@@ -1717,7 +1717,7 @@ par(mar = c(2, 4, 2, 0))
 curve(dbeta(x, 4, 3), xlim = c(0, 1))
 @
           \caption{Distribution après cinq lancers (P, F, F, P, F)}
-          \label{fig:beta5}
+          \label{fig:bayesienne:beta5}
         \end{minipage}
       \end{figure}
     \item Soit $Y$ le résultat du onzième lancer, où $Y = 1$
@@ -2624,7 +2624,7 @@ pgamma(10, 6, 2)
     crédibilité.
   \end{enumerate}
   \begin{rep}
-    Voir le tableau de l'annexe \ref{chap:formules}.
+    Voir le tableau de l'\autoref{chap:formules}.
   \end{rep}
   \begin{sol}
     On a $S|\Theta \sim \text{Géométrique}(\Theta)$ et $\Theta \sim
@@ -2814,7 +2814,7 @@ pgamma(10, 6, 2)
     \item La prime de risque est $\mu(\Theta) = \esp{S|\Theta} =
       \tau/\Theta$.
     \item De la distribution marginale de $S$, on a $m = \esp{S} =
-      \tau \lambda/(\alpha - 1)$ (annexe \ref{distributions:paretogen}).
+      \tau \lambda/(\alpha - 1)$ (\autoref{distributions:paretogen}).
       De la prime de risque, $m = \tau \esp{1/\Theta} = \tau
       \lambda/(\alpha - 1)$. Les deux approches sont équivalentes.
     \item La densité de la distribution a posteriori de $\Theta$ est
@@ -2937,13 +2937,13 @@ pgamma(10, 6, 2)
     0,67
   \end{rep}
   \begin{sol}
-    On a un modèle exponentielle/gamma. Selon le tableau de l'annexe
-    \ref{chap:formules}, la distribution marginale de $S$ dans un tel
-    cas est une Pareto$(\alpha, \lambda)$ et la distribution de
-    $\Theta|S_1 = x_1, \dots, S_n = x_n$ une Gamma$(\alpha + n,
-    \lambda + \sum_{t = 1}^n x_t)$. Par conséquent, la distribution de
-    $S|S_1 = x_1, \dots, S_n = x_n$ est une Pareto$(\alpha + n,
-    \lambda + \sum_{t = 1}^n x_t)$ et
+    On a un modèle exponentielle/gamma. Selon le tableau de
+    l'\autoref{chap:formules}, la distribution marginale de $S$ dans
+    un tel cas est une Pareto$(\alpha, \lambda)$ et la distribution de
+    $\Theta|S_1 = x_1, \dots, S_n = x_n$ une
+    Gamma$(\alpha + n, \lambda + \sum_{t = 1}^n x_t)$. Par conséquent,
+    la distribution de $S|S_1 = x_1, \dots, S_n = x_n$ est une
+    Pareto$(\alpha + n, \lambda + \sum_{t = 1}^n x_t)$ et
     \begin{align*}
       \Pr(S_4 \leq 5|S_1 = 2, S_2 = 3, S_3 = 7)
       &= 1 - \left( \frac{8 + 12}{8 + 12 + 5} \right)^{2 + 3} \\
@@ -3236,8 +3236,7 @@ pgamma(10, 6, 2)
   \theta)$ et trouver les paramètres de la distribution a posteriori
   de $\Theta$.
   \begin{sol}
-    Voir l'exercice
-    \ref{chap:bayesienne}.\ref{ex:bayesienne:gamma_gamma}.
+    Voir l'\autoref{ex:bayesienne:gamma_gamma}.
   \end{sol}
 \end{exercice}
 

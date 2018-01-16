@@ -156,8 +156,8 @@ On définit la notation suivante:
 \end{proof}
 
 \begin{corrolaire}
-  En posant $X \equiv Y$ dans le théorème
-  \ref{thm:buhlmann:covariance_iteree}, on obtient
+  En posant $X \equiv Y$ dans le
+  \autoref{thm:buhlmann:covariance_iteree}, on obtient
   \begin{displaymath}
     \var{X} = \esp{\var{X|\Theta}} + \var{\esp{X|\Theta}}.
   \end{displaymath}
@@ -509,7 +509,7 @@ Il est maintenant très simple de calculer la prime de crédibilité de
 Bühlmann pour n'importe quelle combinaison de distributions.
 
 \begin{exemple}[Bernoulli/uniforme]
-  On a vu à l'exemple \ref{ex:bayesienne:bernoulli-uniforme} que si
+  On a vu à l'\autoref{ex:bayesienne:bernoulli-uniforme} que si
   \begin{align*}
     S_t|\Theta = \theta &\sim \text{Bernoulli}(\theta) \\
     \Theta &\sim U(a, b),
@@ -630,8 +630,7 @@ Bühlmann pour n'importe quelle combinaison de distributions.
     z
     &= \frac{n}{n + \alpha - 1},
   \end{align*}
-  tel qu'obtenu à l'exemple
-  \ref{ex:bayesienne:poisson-exponentielle}. %
+  tel qu'obtenu à l'\autoref{ex:bayesienne:poisson-exponentielle}. %
   \qed
 \end{exemple}
 
@@ -893,7 +892,7 @@ l'expérience individuelle --- dans les situations suivantes:
   portefeuille à un autre.
 \end{enumerate}
 
-Les figure \ref{fig:buhlmann:s2} et \ref{fig:buhlmann:a} illustrent
+Les figures \ref{fig:buhlmann:s2} et \ref{fig:buhlmann:a} illustrent
 les points 2 et 3 ci-dessus. Chaque courbe représente l'expérience
 d'un contrat. Dans les deux cas, le facteur de crédibilité est plus
 grand dans le graphique de droite.
@@ -971,8 +970,8 @@ curve(dnorm(x, mean = 15, sd = 1), xlim = c(12, 18), lwd = 3, add = TRUE)
 \Opensolutionfile{solutions}[solutions-buhlmann]
 
 \begin{Filesave}{solutions}
-\section*{Chapitre \ref{chap:buhlmann}}
-\addcontentsline{toc}{section}{Chapitre \protect\ref{chap:buhlmann}}
+\section*{Chapitre \ref*{chap:buhlmann}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:buhlmann}}
 
 \end{Filesave}
 
@@ -1003,8 +1002,7 @@ curve(dnorm(x, mean = 15, sd = 1), xlim = c(12, 18), lwd = 3, add = TRUE)
   \begin{sol}
     On peut résoudre ce problème de deux façons.
     \begin{enumerate}
-    \item De manière similaire à l'exercice
-      \ref{chap:bayesienne}.\ref{ex:bayesienne:YARD}, on trouve la
+    \item De manière similaire à l'\autoref{ex:bayesienne:YARD}, on trouve la
       distribution du montant total des sinistres $S$ en considérant
       la probabilité de ne pas avoir d'accident. En identifiant les
       femmes par $\theta = 0,2$ et les hommes par $\theta = 0,4$, on a
@@ -1530,7 +1528,7 @@ curve(dnorm(x, mean = 15, sd = 1), xlim = c(12, 18), lwd = 3, add = TRUE)
   \end{rep}
   \begin{sol}
     Cas géométrique/bêta avec $\alpha = \beta = 3$. Voir les formules
-    de l'annexe \ref{chap:formules}. La prime bayésienne et la prime
+    de l'\autoref{chap:formules}. La prime bayésienne et la prime
     de Bühlmann sont égales dans un tel cas.
   \end{sol}
 \end{exercice}
@@ -2198,7 +2196,7 @@ curve(dnorm(x, mean = 15, sd = 1), xlim = c(12, 18), lwd = 3, add = TRUE)
     probabilité d'une loi gamma de paramètres $\alpha = 3$ et $\lambda
     = 4$ (d'où $c = 4^3/\Gamma(3) = 32$). On a donc un modèle
     Poisson/gamma pour lequel on retrouve toutes les formules
-    pertinentes à l'annexe \ref{chap:formules}.
+    pertinentes à l'\autoref{chap:formules}.
     \begin{enumerate}
     \item On a $m = \alpha/\lambda
       = 0,75$.
