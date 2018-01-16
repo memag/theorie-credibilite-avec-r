@@ -9,7 +9,7 @@
 %%% International de Creative Commons.
 %%% http://creativecommons.org/licenses/by-sa/4.0/
 
-\chapter{Le modèle de crédibilité de Bühlmann}
+\chapter{Modèle de crédibilité de Bühlmann}
 \label{chap:buhlmann}
 
 On a deux problèmes pratiques en crédibilité bayésienne:

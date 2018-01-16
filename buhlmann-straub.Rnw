@@ -9,7 +9,7 @@
 %%% International de Creative Commons.
 %%% http://creativecommons.org/licenses/by-sa/4.0/
 
-\chapter{Le modèle de Bühlmann--Straub}
+\chapter{Modèle de Bühlmann--Straub}
 \label{chap:buhlmann-straub}
 
 <<echo=FALSE>>=
