@@ -649,7 +649,7 @@ pure pour l'approche bayésienne \emph{empirique}.
 \item Nous avons plusieurs réalisations de la variable aléatoire $\Theta$.
 \item $U(\theta)$ est la \emph{fonction de structure} du portefeuille:
   \begin{itemize}
-  \item avant: opinion a priori de l'assureur sur le niveau de risque
+  \item avant: opinion à priori de l'assureur sur le niveau de risque
     d'un contrat;
   \item maintenant: proportion de contrats avec un niveau de risque
     inférieur ou égal à $\theta$, distribution des niveaux de risque

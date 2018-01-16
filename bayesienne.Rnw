@@ -24,17 +24,17 @@ par exemple) à partir d'un échantillon aléatoire $X_1, \dots, X_n$.
 
 Les statisticiens classiques développeront des estimateurs à partir
 d'un critère quelconque: absence de biais, maximum de vraisemblance,
-etc. On remarquera qu'aucune hypothèse a priori n'est faite sur
+etc. On remarquera qu'aucune hypothèse à priori n'est faite sur
 $\theta$, on «laisse parler les données».
 
-Dans l'approche bayésienne, l'opinion a priori d'un individu sur la
+Dans l'approche bayésienne, l'opinion à priori d'un individu sur la
 valeur du paramètre $\theta$ est prise en compte dans l'estimation de
 ce dernier. On considère alors le paramètre comme une simple
 réalisation d'une variable aléatoire $\Theta$ avec f.d.p.\
 $u(\theta)$. Au fur et à mesure que les données de l'échantillon
-aléatoire (l'information) s'accumulent, l'opinion a priori sur la valeur
+aléatoire (l'information) s'accumulent, l'opinion à priori sur la valeur
 possible de $\theta$ est révisée et améliorée. On calcule alors
-$u(\theta|x_1, \dots, x_n)$, la distribution a posteriori de $\Theta$,
+$u(\theta|x_1, \dots, x_n)$, la distribution à postériori de $\Theta$,
 à l'aide de la régle de Bayes:
 \begin{align*}
   u(\theta|x_1, \dots, x_n)
@@ -58,7 +58,7 @@ constante de normalisation et, par conséquent, est souvent omise dans
 les calculs.
 
 Enfin, un estimateur ponctuel $\hat{\theta} = g(X_1, \dots, X_n)$ du
-paramètre $\theta$ est obtenu en minimisant l'espérance a posteriori
+paramètre $\theta$ est obtenu en minimisant l'espérance à postériori
 d'une \emph{fonction de perte}. La fonction de perte la plus
 fréquemment employée est l'erreur quadratique, c'est-à-dire
 \begin{displaymath}
@@ -76,8 +76,8 @@ est
   &= \Esp{\Theta|X_1, \dots, X_n} \\
   &= \int_{-\infty}^\infty \theta\, u(\theta|x_1, \dots, x_n)\, d\theta,
 \end{align*}
-soit l'espérance de $\Theta$ calculée par rapport à la distribution a
-posteriori.
+soit l'espérance de $\Theta$ calculée par rapport à la distribution à
+postériori.
 
 \subsection{Cas discret}
 
@@ -87,7 +87,7 @@ notation, soit $\mat{X} = (X_1, \dots, X_n)$ et $\mat{x} = (x_1,
 \dots, x_n)$.
 
 Si la variable aléatoire $\Theta$ ne prend que des valeurs discrètes,
-la distribution a priori est exprimée sous forme d'une fonction de
+la distribution à priori est exprimée sous forme d'une fonction de
 probabilité $\Pr[\Theta = \theta]$. La fonction de probabilité
 conjointe de $X_1, \dots, X_n$ peut toujours être calculée par la loi
 des probabilités totales:
@@ -96,7 +96,7 @@ des probabilités totales:
   = \sum_{\theta=-\infty}^\infty
   \Pr[\mat{X} = \mat{x}|\Theta = \theta] \Pr[\Theta = \theta].
 \end{displaymath}
-La règle de Bayes permet de calculer la distribution a posteriori de
+La règle de Bayes permet de calculer la distribution à postériori de
 $\Theta$:
 \begin{align*}
   \Pr[\Theta = \theta|\mat{X} = \mat{x}]
@@ -408,7 +408,7 @@ fonction $g^*(S_{i1}, \dots, S_{in})$ est la \emph{prime bayésienne}
    = \int_{-\infty}^\infty \mu(\theta)
    u(\theta|S_{i1}, \dots, S_{in})\, d\theta,
 \end{align*}
-où $u(\theta|x_1, \dots, x_n)$ est la distribution a posteriori des
+où $u(\theta|x_1, \dots, x_n)$ est la distribution à postériori des
 niveaux de risque. En d'autres mots, $U(\theta|x_1, \dots, x_n)$ est
 la fonction de structure révisée après l'observation de l'expérience
 $S_{i1} = x_1, \dots, S_{in} = x_n$.
@@ -432,8 +432,8 @@ des observations,
   \item La prime bayésienne est la meilleure prévision de $S_{i, n +
       1}$ que l'on puisse calculer.
   \item Comme la prime collective, la prime bayésienne est une moyenne
-    pondérée des primes de risque, mais utilisant la distribution a
-    posteriori de $\Theta$ plutôt que la distribution a priori;
+    pondérée des primes de risque, mais utilisant la distribution à
+    postériori de $\Theta$ plutôt que la distribution à priori;
     comparer
     \begin{align*}
       m &= \int_{-\infty}^\infty \mu(\theta) u(\theta)\, d\theta \\
@@ -491,7 +491,7 @@ des observations,
     $S_1 = 2$ et $S_2 = 1$.
 
     \begin{enumerate}[1.]
-    \item Calculer la distribution a posteriori de $\Theta$:
+    \item Calculer la distribution à postériori de $\Theta$:
       \begin{displaymath}
         \Pr[\Theta = \theta|S_1 = 2, S_2 = 1] =
         \frac{\Pr[S_1 = 2, S_2 = 1|\Theta = \theta] \Pr[\Theta = \theta]}
@@ -572,7 +572,7 @@ des observations,
     \end{align*}
   \item Calculer la prime bayésienne après $n$ années.
 
-    Tout d'abord, la distribution a posteriori de $\Theta$ après $n$
+    Tout d'abord, la distribution à postériori de $\Theta$ après $n$
     années d'expérience est, à une constante de proportionnalité près,
     \begin{align*}
       u(\theta|x_1, \dots, x_n)
@@ -681,8 +681,8 @@ densité de probabilité $f(x|x_1, \dots, x_n)$ est appelée la
   \end{displaymath}
   alors la seule différence entre l'expression de $f(x)$ et celle de
   $f(x|x_1, \dots, x_n)$ réside dans l'utilisation de la distribution
-  a priori de $\Theta$ pour la première et de la distribution a
-  posteriori pour la seconde. Par conséquent,
+  à priori de $\Theta$ pour la première et de la distribution à
+  postériori pour la seconde. Par conséquent,
   \begin{center}
     \begin{minipage}[c]{0.35\textwidth}
       \flushleft $u(\theta|x_1, \dots, x_n)$ du même type que
@@ -786,8 +786,8 @@ combinaisons de distributions.
       m = \esp{\mu(\Theta)} = \esp{\Theta} = \frac{\alpha}{\lambda}.
     \end{displaymath}
 
-  \item Calculer la prime bayésienne à partir de la distribution a
-    posteriori de $\Theta$.
+  \item Calculer la prime bayésienne à partir de la distribution à
+    postériori de $\Theta$.
 
     Tout d'abord, on a
     \begin{align*}
@@ -921,7 +921,7 @@ combinaisons de distributions.
       \end{align*}
     \end{enumerate}
   \item Calculer la prime bayésienne pour les dix prochaines années si
-    a priori $\Theta \sim \text{Gamma}(3, 3)$ et que les montants de
+    à priori $\Theta \sim \text{Gamma}(3, 3)$ et que les montants de
     sinistres au cours de ces années sont les suivants: 5, 3, 0, 1, 1,
     2, 0, 2, 0, 2.
 
@@ -958,7 +958,7 @@ combinaisons de distributions.
 
     Conclusions:
     \begin{itemize}
-    \item La distribution a posteriori de $\Theta$ est de plus en plus
+    \item La distribution à postériori de $\Theta$ est de plus en plus
       concentrée autour de sa moyenne au fur et à mesure que
       l'expérience s'accumule (voir les figures
       \ref{fig:bayesienne:gamma1}--\ref{fig:bayesienne:gamma4}).
@@ -973,7 +973,7 @@ combinaisons de distributions.
         \centering
 <<echo=FALSE, fig=TRUE>>=
 par(mar = c(3, 2, 3, 2))
-curve(dgamma(x, 3, 3), xlim = c(0, 4), main = "A priori")
+curve(dgamma(x, 3, 3), xlim = c(0, 4), main = "à priori")
 @
         \caption{Distribution gamma avec $\alpha = 3$ et $\lambda =
           3$. L'espérance est égale à $1$.}
@@ -1041,7 +1041,7 @@ curve(dgamma(x, 19, 13), xlim = c(0, 4), main = "Après 10 années")
     &= \frac{\lambda}{\alpha - 1}.
   \end{align*}
 
-  La distribution a posteriori de $\Theta$ est
+  La distribution à postériori de $\Theta$ est
   \begin{align*}
     u(\theta|x_1, \dots, x_n)
     &\propto \theta^{\alpha - 1} e^{-\lambda \theta}
@@ -1110,7 +1110,7 @@ curve(dgamma(x, 19, 13), xlim = c(0, 4), main = "Après 10 années")
     &= \Esp{\Theta} = \mu.
   \end{align*}
 
-  Trouver la distribution a posteriori n'est toutefois pas une
+  Trouver la distribution à postériori n'est toutefois pas une
   sinécure. Tout d'abord,
   \begin{displaymath}
     u(\theta|x_1, \dots, x_n) \propto
@@ -1200,15 +1200,15 @@ curve(dgamma(x, 19, 13), xlim = c(0, 4), main = "Après 10 années")
   \begin{displaymath}
     S \sim \text{Normale}(\mu, \sigma_1^2 + \sigma_2^2).
   \end{displaymath}
-  Puisque la distribution a posteriori de $\Theta$ est du même type
-  que la distribution a priori, on peut immédiatement conclure que
+  Puisque la distribution à postériori de $\Theta$ est du même type
+  que la distribution à priori, on peut immédiatement conclure que
   \begin{displaymath}
     S_{n+1}|S_1, \dots, S_n \sim
     \text{Normale}(\tilde{\mu}, \tilde{\sigma}_1^2 + \tilde{\sigma}_2^2).
   \end{displaymath}
 
   La prime bayésienne est donc, en utilisant indifféremment l'approche
-  de la distribution a posteriori ou de la prédictive,
+  de la distribution à postériori ou de la prédictive,
   \begin{align*}
     B_{n+1}
     &= \tilde{\mu} \\
@@ -1325,8 +1325,8 @@ cinq cas spéciaux étudiés précédemment.
 \section{Exercices}
 \label{sec:bayesienne:exercices}
 
-\Opensolutionfile{reponses}[reponses-bayésienne]
-\Opensolutionfile{solutions}[solutions-bayésienne]
+\Opensolutionfile{reponses}[reponses-bayesienne]
+\Opensolutionfile{solutions}[solutions-bayesienne]
 
 \begin{Filesave}{solutions}
 \section*{Chapitre \ref*{chap:bayesienne}}
@@ -1392,7 +1392,7 @@ cinq cas spéciaux étudiés précédemment.
     \item $\esp{S} = \esp{\mu(\Theta)} = \esp{\Theta} = 0,35 (0,1) +
       0,40 (0,2) + 0,25(0,6) = 0,265$.
     \item La première étape consiste à calculer la fonction de masse
-      de probabilité a posteriori de $\Theta$. Soit $\mat{S} = (S_1,
+      de probabilité à postériori de $\Theta$. Soit $\mat{S} = (S_1,
       S_2, S_3, S_4, S_5)$ et $\mat{x} = (1, 0, 1, 1, 0)$. Alors, par
       l'indépendance conditionnelle de $S_1, \dots, S_5$,
       \begin{displaymath}
@@ -1488,7 +1488,7 @@ cinq cas spéciaux étudiés précédemment.
     de monnaie et $\Theta$ l'urne choisie. On identifie l'urne A par
     $\theta = 0,6$ et l'urne B par $\theta = 0,2$. Ainsi, $S|\Theta =
     \theta \sim \text{Binomiale}(n, \theta)$. On doit calculer
-    $\esp{S_2|S_1 = 4}$. On obtient la distribution a posteriori de
+    $\esp{S_2|S_1 = 4}$. On obtient la distribution à postériori de
     $\Theta|S_1 = 4$ avec
     \begin{displaymath}
       \Pr[\Theta = \theta|S_1 = 4]
@@ -1605,12 +1605,12 @@ cinq cas spéciaux étudiés précédemment.
   \item Trouver $\esp{\Theta}$.
   \item La pièce de monnaie est lancée $n$ fois. La variable aléatoire
     $S$ représente le nombre de fois que la pièce est tombée sur face.
-    Trouver la distribution a posteriori de $\Theta$.
+    Trouver la distribution à postériori de $\Theta$.
   \item Une petite expérience pratique maintenant, aussi ludique
     qu'enrichissante. Jouer à pile ou face une bonne dizaine de fois
     avec une pièce quelconque. Enregistrer une valeur de 0 pour pile
-    et 1 pour face. Après chaque lancer, calculer la distribution a
-    posteriori de $\Theta$ et en faire un graphique approximatif. On
+    et 1 pour face. Après chaque lancer, calculer la distribution à
+    postériori de $\Theta$ et en faire un graphique approximatif. On
     peut aussi utiliser les fonctions \texttt{curve} et \texttt{dbeta}
     de \textsf{R} pour faire les graphiques. Par exemple, pour tracer
     la densité d'une bêta avec $\alpha = 4$ et $\beta = 2$ on fera
@@ -1660,11 +1660,11 @@ curve(dbeta(x, 4, 2), from = 0, to = 1)
       = \alpha + x, \tilde{\beta} = \beta + n - x)$.
     \item Une pièce a été lancée 10 fois et les résultats suivants
       furent obtenus: P, F, F, P, F, P, F, F, P, P. En utilisant les
-      résultats obtenus précédemment, la distribution a posteriori de
+      résultats obtenus précédemment, la distribution à postériori de
       $\Theta$ est une bêta et les paramètres $(\alpha, \beta)$ après
       chaque lancer sont les suivants, dans l'ordre: $(1, 2)$, $(2,
       2)$, $(3, 2)$, $(3, 3)$, $(4, 3)$, $(4, 4)$, $(5, 4)$, $(6, 4)$,
-      $(6, 5)$, $(6, 6)$.  Quelques distributions a posteriori sont
+      $(6, 5)$, $(6, 6)$.  Quelques distributions à postériori sont
       présentées aux figures \ref{fig:beta0}--\ref{fig:bayesienne:beta5}. Une
       première observation est le déplacement vers la gauche ou vers
       la droite de la distribution selon le nombre de résultats piles
@@ -1677,7 +1677,7 @@ curve(dbeta(x, 4, 2), from = 0, to = 1)
 par(mar = c(2, 4, 2, 0))
 curve(dbeta(x, 1, 1), xlim = c(0, 1))
 @
-          \caption{Distribution a priori (uniforme)}
+          \caption{Distribution à priori (uniforme)}
           \label{fig:bayesienne:beta0}
         \end{minipage}
         \hfill
@@ -1746,7 +1746,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
 \end{exercice}
 
 \begin{exercice}
-  Votre opinion a priori quant à la distribution du montant des
+  Votre opinion à priori quant à la distribution du montant des
   sinistres est une loi de Pareto de paramètres $\lambda = 10$ et
   $\theta = 1, 2$ ou 3, ces valeurs de $\theta$ étant toutes
   équiprobables. Pour un contrat choisi au hasard, vous observez par
@@ -1901,7 +1901,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
         &= \left(\frac{5}{8}\right) (e^{-1} - e^{-5}) \\
         &= 0,2257.
       \end{align*}
-    \item On trouve d'abord la densité a posteriori de $\Theta$:
+    \item On trouve d'abord la densité à postériori de $\Theta$:
       \begin{align*}
         u(\theta|x_1=1, x_2=1)
         &= \frac{\Pr[S_1 = 1|\Theta = \theta]
@@ -2008,7 +2008,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
     et $\Pr[\Theta = \theta] = 1/3$, $\theta = A, B, C$. Deux
     solutions possibles.
     \begin{enumerate}[1.]
-    \item Avec la distribution a posteriori de $\Theta$. Tout d'abord,
+    \item Avec la distribution à postériori de $\Theta$. Tout d'abord,
       on a
       \begin{align*}
         \Pr[\Theta = \theta|X_1 = \nombre{30000}]
@@ -2257,7 +2257,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
     dé. On a $S|\Theta = \theta \sim U(0, 100\theta)$ et $\Pr[\Theta
     = \theta] = 1/6$.
     \begin{enumerate}
-    \item On trouve d'abord la densité a posteriori de $\Theta$:
+    \item On trouve d'abord la densité à postériori de $\Theta$:
       \begin{align*}
         \Pr[\Theta = \theta|S_1 = 80, S_2 = 340)
         &= \frac{
@@ -2331,7 +2331,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
     \end{cases}
   \end{displaymath}
   On simule deux valeurs de $S$ et on obtient $x_1 = 1$ et $x_2 = 1$.
-  Quelle est maintenant la distribution a posteriori de $\Theta$ pour
+  Quelle est maintenant la distribution à postériori de $\Theta$ pour
   ce simulateur?
   \begin{rep}
     $u(\theta|S_1 = 1, S_2 = 1) = \theta^{5} e^{-2\theta}/1,8737$,
@@ -2361,7 +2361,7 @@ curve(dbeta(x, 4, 3), xlim = c(0, 1))
 <<echo=TRUE>>=
 pgamma(10, 6, 2)
 @
-    Par conséquent, la distribution a posteriori de $\Theta$ est
+    Par conséquent, la distribution à postériori de $\Theta$ est
     \begin{displaymath}
       u(\theta|S_1 = 1, S_2 = 1) =
       \begin{cases}
@@ -2405,7 +2405,7 @@ pgamma(10, 6, 2)
           0,5, & \theta = 4.
         \end{cases}
       \end{displaymath}
-    \item On doit d'abord trouver la distribution a posteriori de
+    \item On doit d'abord trouver la distribution à postériori de
       $\Theta$ en utilisant
       \begin{align*}
         \Pr[N_1=4, N_2=4|\Theta = 2]
@@ -2476,8 +2476,8 @@ pgamma(10, 6, 2)
       \end{cases}
     \end{displaymath}
     De plus $\mu(\theta_1) = 2$, $\mu(\theta_2) = 4$ et $\mu(\theta_3)
-    = 5$.  Le calcul de la prime bayésienne requiert la distribution a
-    posteriori de $\Theta$:
+    = 5$.  Le calcul de la prime bayésienne requiert la distribution à
+    postériori de $\Theta$:
     \begin{align*}
       \Pr[\Theta = \theta_i|S_1 = 1, S_2 = 2]
       &= \frac{f(1|\theta_i) f(2|\theta_i) \Pr[\Theta = \theta_i]}{%
@@ -2517,7 +2517,7 @@ pgamma(10, 6, 2)
   \begin{enumerate}
   \item Énoncer le modèle pour la fréquence et la sévérité des
     sinistres dans ce portefeuille.
-  \item Calculer l'espérance a posteriori du montant total des
+  \item Calculer l'espérance à postériori du montant total des
     sinistres du contrat choisi ci-dessus. (\emph{Note}: calculer
     l'espérance du montant total des sinistres comme le produit de
     l'espérance de la fréquence et de l'espérance de la sévérité des
@@ -2614,7 +2614,7 @@ pgamma(10, 6, 2)
   \begin{enumerate}
   \item Calculer la prime de risque.
   \item Calculer la prime collective.
-  \item Calculer la distribution a posteriori de $\Theta$ après $n$
+  \item Calculer la distribution à postériori de $\Theta$ après $n$
     années d'expérience $S_1, \dots, S_n$.
   \item Calculer la distribution prédictive de $S_{n+1}$.
   \item Calculer la prime bayésienne à partir du résultat en c) ou
@@ -2657,8 +2657,8 @@ pgamma(10, 6, 2)
       \end{align*}
       d'où $\Theta|\mat{S} = \mat{x} \sim \text{Bêta}(\tilde{\alpha} =
       \alpha + n, \tilde{\beta} = \beta + \sum x_t)$.
-    \item Comme la densité a posteriori de $\Theta$ est du même type
-      que sa densité a priori, on peut calculer en premier la densité
+    \item Comme la densité à postériori de $\Theta$ est du même type
+      que sa densité à priori, on peut calculer en premier la densité
       marginale de $S$. La distribution prédictive sera du même type,
       mais avec des paramètres modifiés. Or,
       \begin{align*}
@@ -2701,7 +2701,7 @@ pgamma(10, 6, 2)
   \begin{enumerate}
   \item Déterminer la prime de risque.
   \item Déterminer la prime collective.
-  \item Déterminer la distribution a posteriori de $\Theta$ après $n$
+  \item Déterminer la distribution à postériori de $\Theta$ après $n$
     années.
   \item Déterminer la prime bayésienne pour la ($n+1$){\ieme} année et
     vérifier si celle-ci peut s'exprimer comme une prime de
@@ -2733,12 +2733,12 @@ pgamma(10, 6, 2)
         &= \theta^{\alpha + \sum x_t - 1} (1 - \theta)^{\beta + n \nu
           + \sum x_t - 1}.
       \end{align*}
-      La distribution a posteriori de $\Theta$ sachant l'expérience
+      La distribution à postériori de $\Theta$ sachant l'expérience
       $S_1, \dots, S_n$ est une bêta avec paramètres $\tilde{\alpha} =
       \alpha + \sum_{t=1}^n S_t$ et $\tilde{\beta} = \beta + n \nu -
       \sum_{t=1}^n S_t$.
-    \item Comme la distribution a posteriori est de même famille que
-      la distribution a priori, la prime bayésienne est de la même
+    \item Comme la distribution à postériori est de même famille que
+      la distribution à priori, la prime bayésienne est de la même
       forme que la prime collective, mais avec des paramètres
       modifiés:
       \begin{align*}
@@ -2773,11 +2773,11 @@ pgamma(10, 6, 2)
   \item Calculer la prime collective, d'abord à l'aide de la
     distribution marginale de $S$, puis comme la moyenne des primes de
     risque.
-  \item Déterminer la distribution a posteriori de $\Theta$ après $n$
+  \item Déterminer la distribution à postériori de $\Theta$ après $n$
     années d'expérience $S_1, \dots, S_n$.
   \item Déterminer la distribution prédictive de $S_{n+1}$.
   \item Calculer la prime bayésienne, d'abord à partir de la
-    distribution a posteriori de $\Theta$, puis à partir de la
+    distribution à postériori de $\Theta$, puis à partir de la
     distribution prédictive.
   \item La prime bayésienne est-elle une prime de crédibilité?
   \end{enumerate}
@@ -2817,7 +2817,7 @@ pgamma(10, 6, 2)
       \tau \lambda/(\alpha - 1)$ (\autoref{distributions:paretogen}).
       De la prime de risque, $m = \tau \esp{1/\Theta} = \tau
       \lambda/(\alpha - 1)$. Les deux approches sont équivalentes.
-    \item La densité de la distribution a posteriori de $\Theta$ est
+    \item La densité de la distribution à postériori de $\Theta$ est
       \begin{align*}
         u(\theta|x_1, \dots, x_n)
         &\propto u(\theta) \prod_{t=1}^n f(x_t|\theta) \\
@@ -2825,15 +2825,15 @@ pgamma(10, 6, 2)
         \prod_{t=1}^n \theta^\tau e^{-\theta x_t} \\
         &= \theta^{\alpha + n\tau-1} e^{-\left(\lambda + \sum x_t\right) \theta},
       \end{align*}
-      d'où la distribution a posteriori de $\Theta$ est une gamma avec
+      d'où la distribution à postériori de $\Theta$ est une gamma avec
       paramètres $\tilde{\alpha} = \alpha + n\tau$ et $\tilde{\lambda}
-      = \lambda + \sum_{t=1}^n x_t$. La distribution a priori de
+      = \lambda + \sum_{t=1}^n x_t$. La distribution à priori de
       $\Theta$ est la conjuguée naturelle de la fonction de
       vraisemblance $f(x|\theta)$.
     \item La distribution prédictive est une Pareto généralisée avec
       paramètres $\tilde{\alpha} = \alpha + n\tau$, $\tilde{\lambda} =
       \lambda + \sum_{t=1}^n x_t$ et $\tau$.
-    \item En utilisant la distribution a posteriori ou la distribution
+    \item En utilisant la distribution à postériori ou la distribution
       prédictive, la prime bayésienne pour l'année $n + 1$ est
       simplement la prime collective avec les paramètres modifiés.
       Donc,
@@ -2913,7 +2913,7 @@ pgamma(10, 6, 2)
     \Pr[S_3 = x | S_1 = 1, S_2 = 2] = \binom{6 + x}{x} (0,9)^7
     (0,1)^x, \quad x = 0, 1, \dots.
   \end{displaymath}
-  Quelle est l'espérance de la distribution a priori de $\Theta$?
+  Quelle est l'espérance de la distribution à priori de $\Theta$?
   \begin{rep}
     $4/7$
   \end{rep}
@@ -2923,14 +2923,14 @@ pgamma(10, 6, 2)
     + \sum_{t=1}^n x_t$ et $\theta = (\lambda + n)/(\lambda + n + 1)$.
     Ici, on peut identifier $r = 7$, $\theta = 0,9$ et on a $n = 2$ et
     $x_1 + x_2 = 3$. Par conséquent, $\alpha = 4$, $\lambda = 7$ et
-    l'espérance de la distribution a priori --- une gamma --- est
+    l'espérance de la distribution à priori --- une gamma --- est
     $4/7$.
   \end{sol}
 \end{exercice}
 
 \begin{exercice}
   On suppose que la distribution de $S_t|\Theta = \theta$ est une
-  Exponentielle$(\theta)$ et que la distribution a priori de $\Theta$
+  Exponentielle$(\theta)$ et que la distribution à priori de $\Theta$
   est une Gamma$(2, 8)$. Calculer $\Pr[S_4 \leq 5|S_1 = 2, S_2 = 3, S_3
   = 7]$.
   \begin{rep}
@@ -3110,8 +3110,8 @@ pgamma(10, 6, 2)
     \end{displaymath}
     où $t_0 > 0$, $x_0 > 0$ et $d(t_0, x_0) = \int_{-\infty}^\infty
     q(\theta)^{-t_0} e^{-\theta x_0}\, d\theta$.  (\emph{Astuce}:
-    démontrer que la distribution a posteriori $u(\theta|x_1, \dots,
-    x_n)$ est de la même famille que la distribution a priori
+    démontrer que la distribution à postériori $u(\theta|x_1, \dots,
+    x_n)$ est de la même famille que la distribution à priori
     $u(\theta)$.)
   \item Démontrer que
     \begin{displaymath}
@@ -3131,8 +3131,8 @@ pgamma(10, 6, 2)
   \end{enumerate}
   \begin{sol}
     \begin{enumerate}
-    \item On doit démontrer que la densité a posteriori $u(\theta|x_1,
-      \dots, x_n)$ est de la même famille que la densité a priori
+    \item On doit démontrer que la densité à postériori $u(\theta|x_1,
+      \dots, x_n)$ est de la même famille que la densité à priori
       $u(\theta)$. De manière usuelle,
       \begin{align*}
         u(\theta|x_1, \dots, x_n)
@@ -3216,7 +3216,7 @@ pgamma(10, 6, 2)
       &= \frac{\lambda^\alpha}{\Gamma(\alpha)}\, \theta^{\alpha-1}
       e^{-\lambda \theta}, \quad \theta > 0.
     \end{align*}
-    La distribution a posteriori de $\Theta$ est
+    La distribution à postériori de $\Theta$ est
     \begin{align*}
       u(\theta|x_1, \dots, x_n)
       &\propto \theta^{\alpha-1} e^{-\lambda \theta} \prod_{t=1}^n
@@ -3233,7 +3233,7 @@ pgamma(10, 6, 2)
 \begin{exercice}
   Démontrer que $\Theta \sim \text{Gamma}(\alpha, \lambda)$ est la
   conjuguée naturelle de $S|\Theta = \theta \sim \text{Gamma}(\alpha,
-  \theta)$ et trouver les paramètres de la distribution a posteriori
+  \theta)$ et trouver les paramètres de la distribution à postériori
   de $\Theta$.
   \begin{sol}
     Voir l'\autoref{ex:bayesienne:gamma_gamma}.
