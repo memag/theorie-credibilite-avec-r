@@ -1,118 +1,192 @@
 \chapter{Formules de crédibilité exacte}
 \label{chap:formules}
 
-Le tableau de la page suivante contient les principaux résultats de
-crédibilité bayesienne pour les combinaisons de distributions de la
-famille exponentielle univariée. Le contenu des colonnes du tableau
-est le suivant, dans l'ordre:
-\begin{quote}
-  \begin{enumerate}
-  \item La distribution de $S|\Theta = \theta$;
-  \item La distribution a priori de $\Theta$;
-  \item La distribution marginale de $S$;
-  \item La distribution a posteriori de $\Theta|S_1 = x_1, \dots, S_n
-    = x_n$, toujours du même type que la distribution a priori, mais
-    avec des paramètres mis à jour;
-  \item La prime de risque $\mu(\theta) = \esp{S|\Theta = \theta}$;
-  \item La prime collective $m = \esp{\mu(\Theta)}$;
-  \item La prime bayesienne $B_{n+1} = \esp{\mu(\Theta)|S_1, \dots,
-      S_n}$, toujours égale à la prime collective évaluée avec les
-    paramètres de la distribution a posteriori;
-  \item Le facteur de crédibilité dans l'expression de la prime
-    bayesienne sous forme de prime de crédibilité.
-  \end{enumerate}
-\end{quote}
+Cette annexe contient les principaux résultats de crédibilité
+bayesienne pour les combinaisons de distributions de la famille
+exponentielle univariée. Outre les noms des distributions
+conditionnelle de $S|\Theta = \theta$ et à priori de $\Theta$, on
+trouvera ci-dessous, pour chaque combinaison:
+\begin{itemize}
+\item la distribution marginale de $S$;
+\item la distribution à postériori de
+  $\Theta|S_1 = x_1, \dots, S_n = x_n$, toujours du même type que la
+  distribution à priori, mais avec des paramètres mis à jour;
+\item la prime de risque $\mu(\theta) = \esp{S|\Theta = \theta}$;
+\item la prime collective $m = \esp{\mu(\Theta)}$;
+\item la prime bayesienne
+  $B_{n+1} = \esp{\mu(\Theta)|S_1, \dots, S_n}$, toujours égale à la
+  prime collective évaluée avec les paramètres de la distribution à
+  postériori;
+\item le facteur de crédibilité dans l'expression de la prime
+  bayesienne sous forme de prime de crédibilité.
+\end{itemize}
 
-Les fonctions de masse ou de densité de probabilité des lois figurant
-au tableau se trouvent à l'annexe \ref{chap:distributions}.
+Les fonctions de masse ou de densité de probabilité des distributions
+se trouvent à l'annexe \ref{chap:distributions}.
 
-\newpage
 
-\begin{center}
-  \begin{sideways}
-    \begin{tabular}{lllp{30mm}cccc}
-      \toprule
-      %% Entêtes
-      \multicolumn{1}{c}{$f(x|\theta)$} &
-      \multicolumn{1}{c}{$u(\theta)$} &
-      \multicolumn{1}{c}{$f(x)$} &
-      \multicolumn{1}{c}{$u(\theta|x_1, \dots, x_n)$} &
-      $\mu(\theta)$ &
-      $m$ &
-      $B_{n+1}$ &
-      $z$ \\
-      \midrule
-      %% Cas Bernoulli/bêta
-      Bernoulli$(\theta)$ &
-      Bêta$(\alpha, \beta)$ &
-      Bernoulli$(\alpha/(\alpha + \beta))$ &
-      Bêta$(\tilde{\alpha}, \tilde{\beta})$ \newline
-      $\tilde{\alpha} = \alpha + \sum_t x_t$ \newline
-      $\tilde{\beta} = \beta + n - \sum_t x_t$ &
-      $\theta$ &
-      $\dfrac{\alpha}{\alpha + \beta}$ &
-      $\dfrac{\alpha + \sum_t S_t}{\alpha + \beta + n}$ &
-      $\dfrac{n}{n + \alpha + \beta}$ \\
-      \midrule
-      %% Cas géometrique/bêta
-      Géometrique$(\theta)$ &
-      Bêta$(\alpha, \beta)$ &
-      $\dfrac{\Gamma(\alpha + \beta) \Gamma(\alpha + 1) \Gamma(\beta + x)}
-      {\Gamma(\alpha) \Gamma(\beta) \Gamma(\alpha + \beta + x + 1)}$ &
-      Bêta$(\tilde{\alpha}, \tilde{\beta})$ \newline
-      $\tilde{\alpha} = \alpha + n$ \newline
-      $\tilde{\beta} = \beta + \sum_t x_t$ &
-      $\dfrac{1 - \theta}{\theta}$ &
-      $\dfrac{\beta}{\alpha - 1}$ &
-      $\dfrac{\beta + \sum_t S_t}{\alpha + n - 1}$ &
-      $\dfrac{n}{n + \alpha - 1}$ \\
-      \midrule
-      %% Cas Poisson/gamma
-      Poisson$(\theta)$ &
-      Gamma$(\alpha, \lambda)$ &
-      Bin.\ nég.$(\alpha, \lambda/(\lambda + 1))$ &
-      Gamma($\tilde{\alpha}$, $\tilde{\lambda}$) \newline
-      $\tilde{\alpha} = \alpha + \sum_t x_t$ \newline
-      $\tilde{\lambda} = \lambda + n$ &
-      $\theta$ &
-      $\dfrac{\alpha}{\lambda}$ &
-      $\dfrac{\alpha + \sum_t S_t}{\lambda + n}$ &
-      $\dfrac{n}{n + \lambda}$ \\
-      \midrule
-      %% Cas exponentielle/gamma
-      Exponentielle$(\theta)$ &
-      Gamma$(\alpha, \lambda)$ &
-      Pareto$(\alpha, \lambda)$ &
-      Gamma$(\tilde{\alpha}, \tilde{\lambda})$ \newline
-      $\tilde{\alpha} = \alpha + n$ \newline
-      $\tilde{\lambda} = \lambda + \sum_t x_t$ &
-      $\dfrac{1}{\theta}$ &
-      $\dfrac{\lambda}{\alpha - 1}$ &
-      $\dfrac{\lambda + \sum_t S_t}{\alpha + n - 1}$ &
-      $\dfrac{n}{n + \alpha - 1}$ \\
-      \midrule
-      %% Cas normale/normale
-      Normale$(\theta, \sigma_2^2)$ &
-      Normale$(\mu, \sigma_1^2)$ &
-      Normale$(\mu, \sigma_1^2 + \sigma_2^2)$ &
-      Normale$(\tilde{\mu}, \tilde{\sigma}_1^2)$ \newline
-      $\tilde{\mu} =
-      \dfrac{\sigma_1^2 \sum_t x_t + \sigma_2^2 \mu}{n \sigma_1^2 +
-        \sigma_2^2}$ \newline
-      $\tilde{\sigma}_1^2 = \dfrac{\sigma_1^2 \sigma_2^2}{n
-        \sigma_1^2 + \sigma_2^2}$ &
-      $\theta$ &
-      $\mu$ &
-      $\dfrac{\sigma_1^2 \sum_t S_t + \sigma_2^2 \mu}{n \sigma_1^2 +
-        \sigma_2^2}$ &
-      $\dfrac{n}{n + \sigma_2^2/\sigma_1^2}$ \\
-      \bottomrule
-    \end{tabular}
-  \end{sideways}
-\end{center}
+%% Listes à puce compactes et sans puce, justement.
+\begingroup
+\setlist[itemize]{label={},leftmargin=0pt,align=left,nosep}
+
+\section{Combinaison Bernoulli--bêta}
+
+\begin{itemize}
+\item $S|\Theta = \theta \sim \text{Bernoulli}(\theta)$
+\item $\Theta \sim \text{Bêta}(a, b)$
+\item $\Theta|S_1 = x_1, \dots, S_n = x_n \sim \text{Bêta}(\tilde{a},
+  \tilde{b})$
+  \begin{align*}
+    \tilde{a} &= a + \sum_{t = 1}^n x_t \\
+    \tilde{b} &= b + n - \sum_{t = 1}^n x_t
+  \end{align*}
+\item Prime de risque
+  \begin{equation*}
+    \mu(\theta) = \theta
+  \end{equation*}
+\item Prime collective
+  \begin{equation*}
+    m = \frac{a}{a + b}
+  \end{equation*}
+\item Prime bayésienne
+  \begin{equation*}
+    B_{n + 1} = \frac{a + \sum_{t = 1}^n S_t}{a + b + n}
+  \end{equation*}
+\item Facteur de crédibilité
+  \begin{equation*}
+    z = \frac{n}{n + a + b}
+  \end{equation*}
+\end{itemize}
+
+
+\section{Combinaison géométrique--bêta}
+
+\begin{itemize}
+\item $S|\Theta = \theta \sim \text{Géométrique}(\theta)$
+\item $\Theta \sim \text{Bêta}(a, b)$
+\item $\Theta|S_1 = x_1, \dots, S_n = x_n \sim
+  \text{Bêta}(\tilde{a}, \tilde{b})$
+  \begin{align*}
+    \tilde{a} &= a + n \\
+    \tilde{b} &= b + \sum_{t = 1}^n x_t
+  \end{align*}
+\item Prime de risque
+  \begin{equation*}
+    \mu(\theta) = \frac{1 - \theta}{\theta}
+  \end{equation*}
+\item Prime collective
+  \begin{equation*}
+    m = \frac{b}{a - 1}
+  \end{equation*}
+\item Prime bayésienne
+  \begin{equation*}
+    B_{n + 1} = \frac{b + \sum_{t = 1}^n S_t}{a + n - 1}
+  \end{equation*}
+\item Facteur de crédibilité
+  \begin{equation*}
+    z = \frac{n}{n + a - 1}
+  \end{equation*}
+\end{itemize}
+
+\section{Combinaison Poisson--gamma}
+
+\begin{itemize}
+\item $S|\Theta = \theta \sim \text{Poisson}(\theta)$
+\item $\Theta \sim \text{Gamma}(\alpha, \lambda)$
+\item $\Theta|S_1 = x_1, \dots, S_n = x_n \sim
+  \text{Gamma}(\tilde{\alpha}, \tilde{\lambda})$
+  \begin{align*}
+    \tilde{\alpha} &= \alpha + \sum_{t = 1}^n x_t \\
+    \tilde{\lambda} &= \lambda + n
+  \end{align*}
+\item Prime de risque
+  \begin{equation*}
+    \mu(\theta) = \theta
+  \end{equation*}
+\item Prime collective
+  \begin{equation*}
+    m = \frac{\alpha}{\lambda}
+  \end{equation*}
+\item Prime bayésienne
+  \begin{equation*}
+    B_{n + 1} = \frac{\alpha + \sum_{t = 1}^n S_t}{\lambda + n}
+  \end{equation*}
+\item Facteur de crédibilité
+  \begin{equation*}
+    z = \frac{n}{n + \lambda}
+  \end{equation*}
+\end{itemize}
+
+
+\section{Combinaison exponentielle--gamma}
+
+\begin{itemize}
+\item $S|\Theta = \theta \sim \text{Exponentielle}(\theta)$
+\item $\Theta \sim \text{Gamma}(\alpha, \lambda)$
+\item $\Theta|S_1 = x_1, \dots, S_n = x_n \sim
+  \text{Gamma}(\tilde{\alpha}, \tilde{\lambda})$
+  \begin{align*}
+    \tilde{\alpha} &= \alpha + n \\
+    \tilde{\lambda} &= \lambda + \sum_{t = 1}^n x_t
+  \end{align*}
+\item Prime de risque
+  \begin{equation*}
+    \mu(\theta) = \frac{1}{\theta}
+  \end{equation*}
+\item Prime collective
+  \begin{equation*}
+    m = \frac{\lambda}{\alpha - 1}
+  \end{equation*}
+\item Prime bayésienne
+  \begin{equation*}
+    B_{n + 1} = \frac{\lambda + \sum_{t = 1}^n S_t}{\alpha + n - 1}
+  \end{equation*}
+\item Facteur de crédibilité
+  \begin{equation*}
+    z = \frac{n}{n + \alpha - 1}
+  \end{equation*}
+\end{itemize}
+
+
+\section{Combinaison normale--normale}
+
+\begin{itemize}
+\item $S|\Theta = \theta \sim \text{Normale}(\theta, \sigma_2^2)$
+\item $\Theta \sim \text{Normale}(\mu, \sigma_1^2)$
+\item $\Theta|S_1 = x_1, \dots, S_n = x_n \sim
+  \text{Normale}(\tilde{\mu}, \tilde{\sigma}_1^2)$
+  \begin{align*}
+    \tilde{\mu} &=
+      \frac{\sigma_1^2 \sum_{t = 1}^n x_t + \sigma_2^2 \mu}{n \sigma_1^2 +
+        \sigma_2^2} \\
+    \tilde{\sigma}_1^2 &= \frac{\sigma_1^2 \sigma_2^2}{n
+        \sigma_1^2 + \sigma_2^2}
+  \end{align*}
+\item Prime de risque
+  \begin{equation*}
+    \mu(\theta) = \theta
+  \end{equation*}
+\item Prime collective
+  \begin{equation*}
+    m = \mu
+  \end{equation*}
+\item Prime bayésienne
+  \begin{equation*}
+    B_{n + 1} =
+      \frac{\sigma_1^2 \sum_{t = 1}^n x_t + \sigma_2^2 \mu}{n \sigma_1^2 +
+        \sigma_2^2}
+  \end{equation*}
+\item Facteur de crédibilité
+  \begin{equation*}
+    z = \frac{n}{n + \sigma_2^2/\sigma_1^2}
+  \end{equation*}
+\end{itemize}
+
+\endgroup
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "exercices_credibilite"
+%%% TeX-engine: xetex
+%%% TeX-master: "theorie-credibilite-avec-r"
 %%% coding: utf-8
 %%% End:
