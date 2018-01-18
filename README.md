@@ -82,4 +82,6 @@ Question d'éviter les publications accidentelles, `make all` est équivalent à
 
 ## Historique des versions
 
-### (en développement)
+### 2018.01 (2018-01-18)
+
+- Première version avec notes de cours de Vincent Goulet et exercices de Cossette et Goulet (2008).
