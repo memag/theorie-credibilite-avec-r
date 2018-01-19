@@ -12,9 +12,9 @@
 
 ## Numéro de version extrait du document maître
 MASTER = ../theorie-credibilite-avec-r.pdf
-YEAR = $(shell grep "newcommand{\\\\year" ${PREAMBLE} \
+YEAR = $(shell grep "newcommand{\\\\year" ${MASTER} \
 	| cut -d } -f 2 | tr -d {)
-MONTH = $(shell grep "newcommand{\\\\month"  ${PREAMBLE} \
+MONTH = $(shell grep "newcommand{\\\\month"  ${MASTER} \
 	| cut -d } -f 2 | tr -d {)
 VERSION = ${YEAR}.${MONTH}
 
