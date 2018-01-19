@@ -82,6 +82,6 @@ Question d'éviter les publications accidentelles, `make all` est équivalent à
 
 ## Historique des versions
 
-### 2018.01-1a (2018-01-18)
+### 2018.01-1 (2018-01-18)
 
-- Première version avec notes de cours de Vincent Goulet et exercices de Cossette et Goulet (2008).
+Première version avec notes de cours de Vincent Goulet et exercices de Cossette et Goulet (2008). Cette version ne justifie pas tellement le «avec R» du titre, mais ça viendra.
