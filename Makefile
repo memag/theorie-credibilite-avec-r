@@ -58,7 +58,7 @@ RM = rm -rf
 TMPDIR = tmpdir
 
 ## Dépôt GitHub et authentification
-REPOSURL = https://api.github.com/repos/vigou3/programmer-avec-r
+REPOSURL = https://api.github.com/repos/vigou3/theorie-credibilite-avec-r
 OAUTHTOKEN = $(shell cat ~/.github/token)
 
 
