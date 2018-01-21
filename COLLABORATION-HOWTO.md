@@ -4,7 +4,7 @@
 
 > Seuls les étudiants de l'Université Laval inscrits au cours ACT-2008 disposent des droits en écriture requis pour effectuer la procédure décrite ci-dessous.
 
-La version de développement du projet [Théorie de la crédibilité avec R](https://vigou3.github.io/theorie-credibilite-avec-r) est hébergée dans un [dépôt Git public](https://projets.fsg.ulaval.ca/git/scm/vg/theorie-credibilite-avec-r) de la Faculté des sciences et de génie de l'Université Laval.
+La version de développement du projet [Théorie de la crédibilité avec R](https://vigou3.github.io/theorie-credibilite-avec-r) est hébergée dans un [dépôt Git public](https://projets.fsg.ulaval.ca/git/scm/vg/theorie-credibilite-avec-r-develop) de la Faculté des sciences et de génie de l'Université Laval.
 
 Le dépôt utilise l'interface [Atlassian BitBucket Server](https://www.atlassian.com/software/bitbucket/server).
 
