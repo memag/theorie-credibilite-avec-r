@@ -81,6 +81,20 @@
     pdfstartview = {Fit}}
   \setlength{\XeTeXLinkMargin}{1pt}
 
+  %% Étiquettes de \autoref (redéfinitions compatibles avec babel).
+  %% Attention! Les % à la fin des lignes sont importants sinon des
+  %% blancs apparaissent dès que la commande \selectlanguage est
+  %% utilisée... comme dans la bibliographie, par exemple.
+  \addto\extrasfrench{%
+    \def\appendixautorefname{annexe}%
+    \def\definitionautorefname{définition}%
+    \def\figureautorefname{figure}%
+    \def\exempleautorefname{exemple}%
+    \def\exerciceautorefname{exercice}%
+    \def\tableautorefname{tableau}%
+    \def\thmautorefname{théorème}%
+  }
+
   %% Affichage de la table des matières du PDF
   \usepackage{bookmark}
   \bookmarksetup{%
@@ -163,7 +177,7 @@
   \newtheorem{corrolaire}{Corollaire}[chapter]
 
   \theoremstyle{definition}
-  \newtheorem*{definition}{Définition}
+  \newtheorem{definition}{Définition}[chapter]
   \newtheorem{exemple}{Exemple}[chapter]
 
   \theoremstyle{remark}
