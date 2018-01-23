@@ -13,53 +13,47 @@
 \label{chap:stabilite}
 
 La théorie de la crédibilité est apparue dans le domaine des accidents
-du travail au début des années 1900.
+du travail au début des années 1900. Les actuaires cherchaient alors à
+déterminer la taille minimale (en nombre d'employés) qu'un employeur
+devait atteindre pour que son expérience soit considérée pleinement
+«fiable» (\emph{dependable}) ou «crédible».
 
-\begin{quote}
-  Petite histoire du gros employeur avec une meilleure expérience que
-  le groupe...
-\end{quote}
+Tel que relaté à la \autoref{sec:introduction-historique:historique},
+\cite{Mowbray:1914} fournit une première solution. Il fournit du même
+coup une définition de ce que doit être une prime pure crédible: «une
+prime pour laquelle la probabilité est forte qu'elle ne diffère pas de
+la vraie prime par plus d'une limite arbitraire».
 
-Première solution: \cite{Mowbray:1914} définit une prime pure «fiable»
-(\emph{dependable}) comme «une prime pour laquelle la probabilité est
-forte qu'elle ne diffère pas de la vraie prime par plus d'une limite
-arbitraire».
-
-En termes mathématiques, on veut que
+En termes mathématiques, nous souhaitons que
 \begin{displaymath}
   \Pr[(1 - k) \esp{S} \leq S \leq (1 + k) \esp{S}] \geq p,
 \end{displaymath}
-où
-\begin{itemize}
-\item $k$ est petit, habituellement 5~\%;
-\item $p$ est près de 1, habituellement $0,90$, $0,95$ ou $0,99$;
-\item $S$ représente l'expérience d'un contrat, sous une forme ou une
-  autre.
-\end{itemize}
+où $S$ représente l'expérience d'un contrat, sous une forme ou une
+autre; $k$ est une petite valeur, habituellement autour de $5$~\%; $p$
+une valeur près de $1$, habituellement $0,90$, $0,95$ ou $0,99$.
 
 
 \section{Crédibilité complète}
-\label{sec:stabilite:credibilite_complete}
+\label{sec:stabilite:complete}
 
 En crédibilité complète, un contrat d'assurance est considéré
-\emph{crédible} si son expérience est \emph{stable}.
+\emph{crédible} si son expérience est \emph{stable}. Lorsque c'est le
+cas, seule l'expérience du contrat est utilisée dans la tarification
+de ce contrat.
 
-La notion de portefeuille n'est pas nécessaire pour le moment.
+\tipbox{La notion de portefeuille de contrats ne joue aucun rôle pour
+  le moment.}
 
-Intuitivement, la stabilité de l'expérience va de pair avec la
-«taille» d'un contrat, qu'elle soit exprimée en termes de
-\begin{itemize}
-\item volume de prime;
-\item masse salariale;
-\item nombre d'employés;
-\item nombre de sinistres;
-\item nombre d'années d'expérience;
-\item etc.
-\end{itemize}
+Intuitivement, la stabilité de l'expérience d'un contrat va de pair
+avec sa «taille», qu'elle soit exprimée en termes de: volume de prime,
+masse salariale, nombre d'employés, nombre de sinistres, nombre
+d'années d'expérience, etc.
+
 De plus, la taille du contrat est généralement liée à la fréquence des
 sinistres, et non à la sévérité de ceux-ci.
 
 \begin{definition}[Crédibilité complète]
+  \label{def:stabilite:complete}
   Une crédibilité complète d'ordre $(k, p)$ est attribuée à
   l'expérience $S$ d'un contrat si les paramètres de la distribution
   de $S$ sont tels que la relation
@@ -69,43 +63,23 @@ sinistres, et non à la sévérité de ceux-ci.
   est vérifiée.
 \end{definition}
 
-\begin{exemple}[Binomiale pure]
-  \cite{Mowbray:1914} voulait trouver le nombre d'employés minimal
-  pour considérer l'expérience d'un employeur pleinement crédible. On
-  définit alors
-  \begin{displaymath}
-    S: \text{nombre d'accidents par année}
-  \end{displaymath}
-  avec
-  \begin{displaymath}
-    S \sim \text{Binomiale}(n, \theta),
-  \end{displaymath}
-  où
-  \begin{align*}
-    n &= \text{nombre d'employés} \\
-    \theta &= \text{probabilité d'accident (connue)}.
-  \end{align*}
-
-  On cherche $n$ tel que
-  \begin{displaymath}
-    \Pr[(1 - k) \esp{S} \leq S \leq (1 + k) \esp{S}] \geq p
-  \end{displaymath}
-  pour des valeurs de $k$ et $p$ données. Par le Théorème central
-  limite,
-  \begin{displaymath}
-    \frac{S - \esp{S}}{\sqrt{\var{S}}}
-    \stackrel{n \rightarrow \infty}{\longrightarrow}
-    N(0, 1),
-  \end{displaymath}
-  d'où
-  \begin{align*}
-    \Pr
-    \left[
-      - \frac{k \esp{S}}{\sqrt{\var{S}}}
-      \leq \frac{S - \esp{S}}{\sqrt{\var{S}}} \leq
-      \frac{k \esp{S}}{\sqrt{\var{S}}}
-    \right]
-    &\approx
+La variable aléatoire $S$ représente la somme de l'expérience de
+plusieurs risques. Par le Théorème central limite,
+\begin{equation*}
+  Z = \frac{S - \esp{S}}{\sqrt{\var{S}}}
+  \longrightarrow
+  N(0, 1)
+\end{equation*}
+lorsque le nombre de termes dans la somme $S$ augmente. La relation de
+la \autoref{def:stabilite:complete} peut alors se réécrire
+\begin{align*}
+  \Pr
+  \left[
+    - \frac{k \esp{S}}{\sqrt{\var{S}}}
+    \leq Z \leq
+    \frac{k \esp{S}}{\sqrt{\var{S}}}
+  \right]
+  &\approx
     \Phi
     \left(
       \frac{k \esp{S}}{\sqrt{\var{S}}}
@@ -114,21 +88,42 @@ sinistres, et non à la sévérité de ceux-ci.
     \left(
       - \frac{k \esp{S}}{\sqrt{\var{S}}}
     \right) \\
-    &=
+  &=
     2 \Phi
     \left(
-      \frac{k \esp{S}}{\sqrt{\var{S}}}
+    \frac{k \esp{S}}{\sqrt{\var{S}}}
     \right) - 1 \geq p.
-  \end{align*}
-  On a donc
-  \begin{displaymath}
-    \frac{k \esp{S}}{\sqrt{\var{S}}} \geq \zeta_{\varepsilon/2},
-  \end{displaymath}
-  où $\varepsilon = 1 - p$ et $\zeta_\alpha$ est le $100(1 -
-  \alpha)${\ieme} centile d'une loi $N(0, 1)$.
+\end{align*}
+L'inégalité est satisfaite dès lors que
+\begin{equation*}
+  \frac{k \esp{S}}{\sqrt{\var{S}}} \geq \zeta_{\varepsilon/2},
+\end{equation*}
+ou, de manière équivalente, lorsque
+\begin{equation}
+  \label{eq:stabilite:complete}
+  \esp{S} \geq
+  \left(
+    \frac{\zeta_{\varepsilon/2}}{k}
+  \right)
+  \sqrt{\var{S}},
+\end{equation}
+où $\varepsilon = 1 - p$ et $\zeta_\alpha$ est le $100(1 -
+\alpha)${\ieme} centile d'une loi normale centrée réduite.
+
+\begin{exemple}[Binomiale pure]
+  \label{exemple:stabilite:binomiale_pure}
+  \cite{Mowbray:1914} recherchait le nombre minimal d'employés pour
+  considérer l'expérience d'un employeur pleinement crédible. Ses
+  hypothèses étaient que la variable aléatoire $S$ du nombre
+  d'accidents par année pour un employeur est binomiale de paramètres
+  $n$ et $\theta$, où $n$ représente le nombre d'employés et $\theta$
+  la probabilité qu'un accident survienne au cours de l'année pour
+  tout employé. Cette probabilité est supposée connue.
 
   Avec $\esp{S} = n \theta$ et $\var{S} = n \theta (1 - \theta)$ et en
-  isolant $n$ dans l'inégalité, on obtient
+  isolant $n$ dans l'inégalité \eqref{eq:stabilite:complete}, nous
+  obtenons la relation suivante pour le critère de crédibilité
+  complète:
   \begin{displaymath}
     n \geq
     \left(
@@ -140,6 +135,7 @@ sinistres, et non à la sévérité de ceux-ci.
 \end{exemple}
 
 \begin{exemple}[Poisson composée]
+  \label{exemple:stabilite:comppois}
   La taille d'un contrat est souvent exprimée en termes du nombre
   espéré de sinistres dans une période --- typiquement une année. La
   distribution la plus populaire pour $S$ dans un tel cas est alors la
@@ -148,7 +144,7 @@ sinistres, et non à la sévérité de ceux-ci.
     S = X_1 + \dots + X_N
   \end{displaymath}
   où $N \sim \text{Poisson}(\lambda)$ et la distribution de $X_1, X_2,
-  \dots$ est $F_X(\cdot)$. On a
+  \dots$ est $F_X(\cdot)$. Nous savons que
   \begin{align*}
     \esp{S}
     &= \esp{N} \esp{X} \\
@@ -158,111 +154,114 @@ sinistres, et non à la sévérité de ceux-ci.
     &= \lambda \esp{X}^2 + \lambda \var{X} \\
     &= \lambda \esp{X^2}.
   \end{align*}
-  En suivant le même cheminement qu'à l'exemple précédent, on trouve
-  \begin{align*}
-    \lambda
-    &\geq
-    \left(
-      \frac{\zeta_{\varepsilon/2}}{k}
-    \right)^2
-    \left(
-      1 + \frac{\var{X}}{\esp{X}^2}
-    \right) \\
-    &=
-    \left(
-      \frac{\zeta_{\varepsilon/2}}{k}
-    \right)^2
-    (1 + \CV(X)^2),
-  \end{align*}
+  La relation \eqref{eq:stabilite:complete} devient alors, en isolant
+  le nombre espéré de sinistre $\lambda$:
+  \begin{equation}
+    \label{eq:stabilite:complete_comppois}
+    \begin{split}
+      \lambda
+      &\geq
+      \left(
+        \frac{\zeta_{\varepsilon/2}}{k}
+      \right)^2
+      \left(
+        1 + \frac{\var{X}}{\esp{X}^2}
+      \right) \\
+      &=
+      \left(
+        \frac{\zeta_{\varepsilon/2}}{k}
+      \right)^2
+      (1 + \CV(X)^2),
+    \end{split}
+  \end{equation}
   où
   \begin{displaymath}
-    \CV(X) = \frac{\sqrt{\var{X}}}{\esp{X}}.
+    \CV(X) = \frac{\sqrt{\var{X}}}{\esp{X}}
   \end{displaymath}
+  est le coefficient de variation de la variable aléatoire $X$.
+
+  Vous remarquerez que, dans l'inégalité
+  \eqref{eq:stabilite:complete_comppois}, le seuil de crédibilité
+  complète $\lambda$ augmente avec la variabilité des montants de
+  sinistres (exprimée en fonction de coefficient de variation
+  $\CV(X)$).
+
+  Si $k = 0,05$ et $p = 0,90$, alors $\zeta_{0,05} = 1,645$ et
+  \begin{displaymath}
+    \lambda
+    \geq
+    \nombre{1082,41}
+    \left(
+      1 + \frac{\var{X}}{\esp{X}^2}
+    \right).
+  \end{displaymath}
+
+  Si, de plus, $X$ est une variable aléatoire dégénérée (c'est-à-dire
+  que $\Pr[X = M] = 1$ pour $M$ quelconque), alors
+  \begin{displaymath}
+    \lambda \geq \nombre{1082,41}.
+  \end{displaymath}
+  Ce cas revient en définitive à poser
+  $S \sim \text{Poisson}(\lambda)$. %
   \qed
 \end{exemple}
 
-\begin{rems}
-  \begin{enumerate}
-  \item Plus $\CV(X)$ augmente, plus $\lambda$ augmente.
-  \item Si $k = 0,05$ et $p = 0,90$, alors $\zeta_{0,05} = 1,645$ et
-    \begin{displaymath}
-      \lambda
-      \geq
-      \nombre{1082,41}
-      \left(
-        1 + \frac{\var{X}}{\esp{X}^2}
-      \right).
-    \end{displaymath}
-  \item Si, en plus, $X$ est dégénérée (c'est-à-dire $\Pr[X = M] = 1$
-    pour $M$ quelconque), alors
-    \begin{displaymath}
-      \lambda \geq \nombre{1082,41},
-    \end{displaymath}
-    un nombre célèbre.
-  \item Si $X$ est dégénérée en $1$ on a en définitive $S \sim
-    \text{Poisson}(\lambda)$.
-  \end{enumerate}
-\end{rems}
+\tipbox{Le seuil de pleine crédibilité \nombre{1082} est un nombre
+  célèbre en théorie de la crédibilité. Malheureusement, il est très
+  souvent utilisé à tort et à travers et sans aucunement tenir compte
+  des hypothèses qui nous ont permis d'obtenir cette valeur.}
 
 \begin{exemple}
-  Dans les deux exemples précédents, on détermine si un contrat est
-  pleinement crédible une période à la fois. On pourrait aussi fixer
-  le seuil de crédibilité complète en fonction du nombre d'années
-  d'expérience. Pour cela, on définit simplement
+  \label{exemple:stabilite:nombre_annees}
+  Dans les deux exemples précédents, nous avons déterminé le seuil de
+  pleine crédibilité d'un contrat pour une seule période. Nous
+  pourrions aussi choisir de fixer le seuil en fonction du nombre
+  d'années d'expérience. Pour cela, il suffit de définir
   \begin{displaymath}
     S \equiv \bar{S} = \frac{S_1 + \dots + S_n}{n},
   \end{displaymath}
   où $S_1, \dots, S_n$ sont des variables aléatoires indépendantes et
-  identiquement distribuées et $S_t$ est l'expérience de l'année $t =
-  1, \dots, n$.
+  identiquement distribuées et $S_t$ est l'expérience de l'année
+  $t = 1, \dots, n$.
 
-  On a alors
+  Nous avons alors
   \begin{align*}
     \esp{S} &= \esp{S_t} \\
     \var{S} &= \frac{\var{S_t}}{n},
   \end{align*}
-  d'où l'expérience d'un contrat est considérée pleinement crédible
-  après
-  \begin{displaymath}
+  d'où, en remplaçant ces expressions dans l'inégalité
+  \eqref{eq:stabilite:complete}, l'expérience d'un contrat est
+  considérée pleinement crédible après
+  \begin{equation*}
     n \geq
     \left(
       \frac{\zeta_{\varepsilon/2}}{k}
     \right)^2
     \frac{\var{S_t}}{\esp{S_t}^2}
-  \end{displaymath}
+  \end{equation*}
   périodes.
   \qed
 \end{exemple}
 
-\begin{rems}
-  \begin{enumerate}
-  \item De manière générale, le seuil de crédibilité complète est tel
-    que
-    \begin{displaymath}
-      \esp{S} \geq
-      \left(
-        \frac{\zeta_{\varepsilon/2}}{k}
-      \right)
-      \sqrt{\var{S}}.
-    \end{displaymath}
-  \item La distribution de $S$ n'est en général pas symétrique. Est-il
-    alors correct d'utiliser le Théorème central limite (TCL)?  Le
-    critère de crédibilité complète exige que la distribution de $S$
-    soit très concentrée autour de sa moyenne, donc presque
-    symétrique. Le TCL est donc bien assez précis.
-  \item Il y a en fait très peu d'applications légitimes de la
-    crédibilité de stabilité. Un bon exemple: seuil d'admissibilité à
-    un régime rétrospectif.
-  \end{enumerate}
-\end{rems}
+\tipbox{La distribution de $S$ n'est en général pas symétrique. Est-il
+  alors correct d'utiliser le Théorème central limite (TCL)? Le
+  critère de crédibilité complète exige que la distribution de $S$
+  soit très concentrée autour de sa moyenne, donc presque symétrique.
+  Le TCL s'avère donc bien assez précis.}
+
+\importantbox{Il y a en fait très peu d'applications légitimes de la
+  crédibilité de stabilité. Un bon exemple, toutefois: la fixation du
+  seuil d'admissibilité à un régime de tarification rétrospectif, où
+  la stabilité de l'expérience joue un rôle important.}
 
 
 \section{Crédibilité partielle}
-\label{sec:stabilite:credibilite_partielle}
+\label{sec:stabilite:partielle}
 
-Le besoin de tenir compte en partie de l'expérience individuelle d'un
-contrat se trouvant sous le seuil de crédibilité complète apparait
-rapidement.
+La crédibilité complète ne connait que deux états: aucune crédibilité
+ou crédibilité complète. Le besoin (ou la pression) de tenir compte en
+partie de l'expérience individuelle d'un contrat se trouvant sous le
+seuil de crédibilité complète apparait rapidement chez les assureurs.
 
 \cite{Whitney:1918} propose de pondérer l'expérience individuelle
 ($S$) et la prime collective ($m$) par un \emph{facteur de
@@ -283,15 +282,14 @@ sont
 où $K$ est une constante déterminée au jugement de façon à limiter les
 fluctuations dans la prime d'une année à l'autre (\emph{swing}).
 
-\begin{rems}
-  \begin{enumerate}
-  \item But de cette approche: incorporer autant d'expérience
-    individuelle possible sans trop affecter la stabilité de la prime.
-  \item La distribution des primes est basée uniquement sur la taille
-    des assurés. La tarification n'est donc pas nécessairement précise
-    et équitable.
-  \end{enumerate}
-\end{rems}
+Le but de cette approche consiste à incorporer autant d'expérience que
+individuelle possible dans la prime sans trop en affecter la stabilité
+d'une année à l'autre.
+
+\importantbox{La distribution des primes dans cette approche de
+  crédibilité partielle est basée uniquement sur la taille des
+  assurés. Rien n'assure que la tarification est précise ou
+  équitable.}
 
 
 \section{Exercices}
@@ -303,20 +301,6 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
 \begin{Filesave}{solutions}
 \section*{Chapitre \ref*{chap:stabilite}}
 \addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:stabilite}}
-
-\subsubsection*{Remarques}
-\begin{enumerate}
-  \item Afin d'éviter toute confusion avec le facteur de crédibilité,
-    le $100(1 - \varepsilon)${\ieme} quantile d'une loi normale
-    centrée réduite est noté $\zeta_\varepsilon$, c'est-à-dire que
-    \begin{displaymath}
-      \Pr[Z > \zeta_\varepsilon] = \varepsilon,
-    \end{displaymath}
-    où $Z \sim N(0, 1)$.
-  \item Dans les discussions sur la crédibilité complète de niveau
-    $(k, p)$, on pose toujours $\varepsilon = 1 - p$.
-  \end{enumerate}
-\bigskip
 
 \end{Filesave}
 
@@ -330,15 +314,15 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     $\esp{S} = \nombre{89047}$, $\var{S} = \nombre{713633042}$
   \end{rep}
   \begin{sol}
-    On a $S = X_1, \dots, X_N$ avec
+    Nous avons $S = X_1, \dots, X_N$ avec
     $N \sim \text{Binomiale}(\nombre{1000},\, 0,6)$ et
     $X \sim \text{Log-normale}(3, 4)$, d'où
-    $\esp{N} = (\nombre{1000})(0,6) = 600$,
-    $\var{N} = (\nombre{1000})(0,6)(1 - 0,6) = 240$,
-    $\esp{X} = e^{3 + 4/2} = e^5$ et
-    $\var{X} = e^{2 \cdot 3 + 4}(e^4 - 1) = e^{10}(e^4 - 1)$.
-    Alors,
     \begin{align*}
+      \esp{N} &= (\nombre{1000})(0,6) = 600 \\
+      \var{N} &= (\nombre{1000})(0,6)(1 - 0,6) = 240 \\
+      \esp{X} &= e^{3 + 4/2} = e^5 \\
+      \var{X} &= e^{2 \cdot 3 + 4}(e^4 - 1) = e^{10}(e^4 - 1) \\
+      \intertext{et, par conséquent,}
       \esp{S}
       &= \esp{N} \esp{X} \\
       &= 600\, e^5 \\
@@ -361,7 +345,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     $\esp{S} = 16$, $\var{S} = 160$
   \end{rep}
   \begin{sol}
-    On a $\esp{S} = \esp{N}\esp{X}$ et $\var{S} = \esp{N}\var{X} +
+    Nous avons $\esp{S} = \esp{N}\esp{X}$ et $\var{S} = \esp{N}\var{X} +
     \esp{X}^2\var{N}$. Or, $\esp{N} = 4 (0,5)/(1 - 0,5) = 4$, $\var{N}
     = 4 (0,5)/(1 - 0,5)^2 = 8$, $\esp{X} = 2/0,5 = 4$ et $\var{X} =
     2/0,5^2 = 8$, d'où
@@ -378,7 +362,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
 \end{exercice}
 
 \begin{exercice}
-  Interpréter l'inégalité suivante :
+  Interpréter l'inégalité suivante:
   \begin{displaymath}
     \Pr
     \left[
@@ -387,10 +371,9 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     \geq 0,95.
   \end{displaymath}
   \begin{rep}
-    On veut être certain à au moins 95~\% que l'expérience
-    individuelle d'un assuré ne varie pas de plus de 4~\% autour de la
-    prime pure; on veut une crédibilité complète d'ordre $(0,04,\,
-    0,95)$.
+    L'inégalité signifie que l'on veut être certain à au moins $95$~\%
+    que l'expérience individuelle d'un assuré ne varie pas de plus de
+    $4$~\% autour de la prime pure.
   \end{rep}
 \end{exercice}
 
@@ -404,7 +387,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     $n \geq \lambda^{-1} (\zeta_{\varepsilon/2}/k)^2 (1 + \CV(X)^2)$
   \end{rep}
   \begin{sol}
-    Puisque $\esp{\bar{S}} = \esp{S}$ et $\var{S} = \var{S}/n$,
+    Puisque $\esp{\bar{S}} = \esp{S}$ et $\var{\bar{S}} = \var{S}/n$,
     l'inégalité
     \begin{displaymath}
       \Pr
@@ -419,7 +402,8 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
       \left( \frac{\zeta_{\varepsilon/2}}{k} \right)^2
       \frac{\var{S}}{\esp{S}^2}.
     \end{displaymath}
-    Dans le cas d'une Poisson composée, $\esp{S} = \lambda \esp{X}$ et
+    Nous savons que dans le cas d'une Poisson composée,
+    $\esp{S} = \lambda \esp{X}$ et
     $\var{S} = \lambda (\var{X} + \esp{X}^2)$. Ainsi,
     \begin{align*}
       n
@@ -454,8 +438,9 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \end{rep}
   \begin{sol}
     \begin{enumerate}
-    \item On sait que dans le cas d'une Poisson composée, la
-      crédibilité complète est donnée par
+    \item Nous savons de l'\autoref{exemple:stabilite:comppois} que
+      dans le cas d'une Poisson composée, la crédibilité complète est
+      donnée par
       \begin{displaymath}
         \lambda \geq
         \left(
@@ -465,21 +450,22 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
           1 + \frac{\var{X}}{\esp{X}^2}
         \right).
       \end{displaymath}
-      On a $\esp{X} = \theta/(\alpha - 1) = 1/40$ et $\var{X} = \alpha
-      \theta^2/((\alpha - 1)^2(\alpha - 2)) = 3/\nombre{1600}$. Comme
-      on exige un niveau de crédibilité de 90~\%,
-      $\zeta_{\varepsilon/2} = 1,645$.  En isolant $k$ dans la
-      formule, on obtient
+      Or, nous avons $\esp{X} = \theta/(\alpha - 1) = 1/40$ et
+      $\var{X} = \alpha \theta^2/((\alpha - 1)^2(\alpha - 2)) =
+      3/\nombre{1600}$. Comme nous exigeons un niveau de crédibilité
+      de $90$~\%, $\zeta_{\varepsilon/2} = 1,645$. En isolant $k$ dans
+      la formule, nous obtenons
       \begin{displaymath}
         k \ge
         \frac{1,645}{\sqrt{256}}
-        \sqrt{1 + \frac{3/\nombre{1600}}{1/\nombre{1600}}} = 0,2056 = 20,56~\%.
+        \sqrt{1 + \frac{3/\nombre{1600}}{1/\nombre{1600}}} =
+        0,2056 = 20,56~\%.
       \end{displaymath}
-      On obtient une grande valeur de $k$ parce que la distribution du
-      montant des sinistres est très asymétrique. Pour obtenir une
-      valeur de $k$ plus usuelle (de l'ordre de 5~\%), il faudrait
-      augmenter le paramètre de Poisson, de manière à sommer un plus
-      grand nombre de lois de Pareto.
+      La valeur de $k$ est obtient une grande parce que la
+      distribution du montant des sinistres est très asymétrique. Pour
+      obtenir une valeur de $k$ plus usuelle (de l'ordre de $5$~\%),
+      il faudrait augmenter le paramètre de Poisson, de manière à
+      sommer un plus grand nombre de lois de Pareto.
     \item De manière similaire, mais en utilisant plutôt la formule
       \begin{displaymath}
         n \geq \frac{1}{\lambda}
@@ -491,7 +477,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
         \right)
       \end{displaymath}
       obtenue à l'\autoref{ex:stabilite:nPC}
-      avec $n = 10$, on obtient
+      avec $n = 10$, nous obtenons
       \begin{displaymath}
         k \geq
         \frac{1}{\sqrt{256}} \frac{1,645}{\sqrt{10}}
@@ -505,37 +491,8 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
 \end{exercice}
 
 \begin{exercice}
-  Dans son article de 1914, Mowbray cherche à déterminer le nombre
-  minimal d'employés (\emph{payroll exposure}) qu'un employeur doit
-  avoir sous contrat pour que son expérience puisse être considérée
-  complètement crédible (\emph{dependable}). Mowbray suppose que la
-  fréquence des accidents chez un employeur suit une distribution
-  binomiale de paramètres $n$ --- le nombre d'employés --- et $\theta$
-  --- la probabilité qu'un employé ait un accident (supposée connue).
-  Trouver la formule donnant le nombre d'employés assurant une
-  crédibilité complète d'ordre $(k, p)$.
-  \begin{rep}
-    $n \geq (\zeta_{\varepsilon/2}/k)^2 (1 - \theta)/\theta$
-  \end{rep}
-  \begin{sol}
-    On a un cas binomiale pure, c'est-à-dire $S \sim
-    \text{Binomiale}(n, \theta)$. À partir de la formule générale
-    \begin{displaymath}
-      \esp{S} \geq \left( \frac{\zeta_{\varepsilon/2}}{k} \right)
-      \sqrt{\var{S}}
-    \end{displaymath}
-    et avec $\esp{S} = n \theta$ et $\var{S} = n \theta (1 - \theta)$,
-    on obtient
-    \begin{displaymath}
-      n \geq \left( \frac{\zeta_{\varepsilon/2}}{k} \right)^2
-      \frac{1 - \theta}{\theta}.
-    \end{displaymath}
-  \end{sol}
-\end{exercice}
-
-\begin{exercice}
   Sachant que la variable aléatoire $S$ de l'expérience des contrats
-  obéit à une loi $N(\mu, \sigma^{2})$, trouver, pour une période
+  obéit à une loi $N(\mu, \sigma^2)$, trouver, pour une période
   d'expérience, la relation entre $\mu$ et $\sigma$ pour avoir une
   crédibilité complète d'ordre $(k, p)$ pour chacune des combinaisons
   de $k$ et $p$ suivantes.
@@ -553,11 +510,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \end{rep}
   \begin{sol}
     Dans un tel cas normale pure, la formule générale
-    \begin{displaymath}
-      \esp{S} \geq \left( \frac{\zeta_{\varepsilon/2}}{k} \right)
-      \sqrt{\var{S}}
-    \end{displaymath}
-    devient simplement
+    \eqref{eq:stabilite:complete} devient simplement
     \begin{displaymath}
       \mu \geq \left( \frac{\zeta_{\varepsilon/2}}{k} \right)
       \sigma.
@@ -595,8 +548,8 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     \end{inparaenum}
   \end{rep}
   \begin{sol}
-    On sait que $\bar{S} \sim N(\mu, \sigma^2/9)$. On a donc une
-    crédibilité complète d'ordre $(k, p)$ lorsque
+    On nous donne que $\bar{S} \sim N(\mu, \sigma^2/9)$. La
+    crédibilité complète d'ordre $(k, p)$ est donc atteinte lorsque
     \begin{displaymath}
       \esp{\bar{S}} \geq \left( \frac{\zeta_{\varepsilon/2}}{k} \right)
       \sqrt{\var{\bar{S}}},
@@ -629,16 +582,16 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   des sinistres, quant à elle, suit une loi gamma de paramètres
   $\alpha = 0,02$ et $\lambda = 1$. Trouver la plus petite valeur de
   $r$ telle que le montant total des sinistres d'un contrat
-  d'assurance automobile sera à plus ou moins 5~\% égal à sa moyenne,
-  19 fois sur 20.
+  d'assurance automobile sera à plus ou moins $5$~\% égal à sa moyenne,
+  $19$ fois sur $20$.
   \begin{rep}
     $r \geq \nombre{2328,24}$
   \end{rep}
   \begin{sol}
-    On détermine tout d'abord une formule générale pour le cas de la
-    binomiale négative composée. Sachant que $\esp{N} = r(1 -
-    \theta)/\theta$ et que $\var{N} = r (1 - \theta)/\theta^2$, on
-    obtient
+    Déterminons tout d'abord une formule générale pour le cas de la
+    binomiale négative composée. Sachant que
+    $\esp{N} = r(1 - \theta)/\theta$ et que
+    $\var{N} = r (1 - \theta)/\theta^2$, nous obtenons
     \begin{displaymath}
       r \geq
       \left(
@@ -670,11 +623,11 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     \nombre{1692}
   \end{rep}
   \begin{sol}
-    On remarquera tout d'abord que le contexte est celui de
+    Remarquez tout d'abord que le contexte est celui de
     l'\autoref{ex:stabilite:nPC}, sauf que le critère de crédibilité
     complète est exprimé non pas en nombre d'années d'expérience, $n$,
     mais plutôt en nombre total de sinistres espéré, soit $n \lambda$.
-    On a donc
+    Nous avons donc
     \begin{displaymath}
       n \lambda \geq
       \left(
@@ -690,41 +643,35 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
 
 \begin{exercice}
   Soit $S_{j}$ le montant total des sinistres pour un assuré à la
-  période $j = 1, \dots, n$ et $S_{j} \sim \text{Poisson
-    composée}(\lambda, F_X(\cdot))$. Le montant d'un sinistre
-  individuel a une variance de 100 et une espérance de 5. Déterminer
-  le nombre minimal espéré de sinistres pour accorder une crédibilité
-  complète selon les critères ci-dessous.
+  période $j = 1, \dots, n$ et
+  $S_{j} \sim \text{Poisson composée}(\lambda, F_X(\cdot))$. Le
+  montant d'un sinistre individuel a une variance de $100$ et une
+  espérance de $5$. Déterminer le nombre minimal espéré de sinistres
+  pour accorder une crédibilité complète selon les critères
+  ci-dessous.
   \begin{enumerate}
-  \item Le montant total des sinistres demeure à 3~\% ou moins du
-    montant espéré avec une probabilité de 95~\%.
-  \item Le nombre total de sinistres demeure à 3~\% ou moins du nombre
-    espéré avec une probabilité de 95~\%.
+  \item Le montant total des sinistres demeure à $3$~\% ou moins du
+    montant espéré avec une probabilité de $95$~\%.
+  \item Le nombre total de sinistres demeure à $3$~\% ou moins du nombre
+    espéré avec une probabilité de $95$~\%.
   \end{enumerate}
   \begin{rep}
     \begin{inparaenum}
-    \item \nombre{21343} sinistres
-    \item \nombre{4269} sinistres
+    \item $\nombre{21343}$ sinistres
+    \item $\nombre{4269}$ sinistres
     \end{inparaenum}
   \end{rep}
   \begin{sol}
     \begin{enumerate}
     \item Le montant total des sinistres a une distribution Poisson
       composée avec $\esp{X} = 5$, $\var{X} = 100$, $k = 0,03$ et
-      $\zeta_{\varepsilon/2} = \zeta_{0,025} = 1,96$. De la formule générale
-      \begin{displaymath}
-        \lambda \ge
-        \left(
-          \frac{\zeta_{\varepsilon/2}}{k}
-        \right)^2
-        \left(
-          1 + \frac{\var{X}}{\esp{X}^2}
-        \right)
-      \end{displaymath}
-      on obtient directement $\lambda \geq \nombre{21343}$.
-    \item Le nombre de sinistres a une distribution de Poisson pure.
-      On peut donc utiliser la formule ci-dessus avec $\var{X} = 0$. On
-      obtient alors $\lambda \geq \nombre{4269}$.
+      $\zeta_{\varepsilon/2} = \zeta_{0,025} = 1,96$. De la formule
+      générale \eqref{eq:stabilite:complete_comppois}, nous obtenons
+      directement $\lambda \geq \nombre{21343}$.
+    \item La distribution du nombre de sinistres est une Poisson. Nous
+      pouvons utiliser la formule
+      \eqref{eq:stabilite:complete_comppois} avec $\var{X} = 0$, ce
+      qui donne $\lambda \geq \nombre{4269}$.
     \end{enumerate}
   \end{sol}
 \end{exercice}
@@ -732,12 +679,12 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
 \begin{exercice}
   Une compagnie assure deux groupes ayant la même loi de Poisson pour
   la fréquence de leurs sinistres individuels. Cependant, les
-  individus du groupe A ne peuvent avoir que des sinistres de 50 alors
-  que les individus du groupe B ont des sinistres obéissant à une loi
-  gamma de moyenne 50. Si l'on sait que l'observation de \nombre{1000}
-  sinistres est suffisante pour accorder une crédibilité complète au
-  groupe A et que \nombre{3000} sinistres sont nécessaires pour
-  accorder une crédibilité complète de même ordre au groupe B,
+  individus du groupe A ne peuvent avoir que des sinistres de $50$
+  alors que les individus du groupe B ont des sinistres obéissant à
+  une loi gamma de moyenne $50$. Sachant que l'observation de
+  \nombre{1000} sinistres est suffisante pour accorder une crédibilité
+  complète au groupe A et que \nombre{3000} sinistres sont nécessaires
+  pour accorder une crédibilité complète de même ordre au groupe B,
   calculer les paramètres de la loi gamma en question.
   \begin{rep}
     $\alpha = 1/2$, $\lambda = 1/100$
@@ -745,41 +692,34 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \begin{sol}
     Soit $X_A$ la variable aléatoire du montant des sinistres du
     groupe A et $X_B$ la variable aléatoire du montant des sinistres
-    du groupe B. On sait que $\esp{X_A} = 50$, $\var{X_A} = 0$ et que
-    $X_B \sim \text{Gamma}(\alpha, \lambda)$ tel que $\alpha/\lambda =
-    50$. De plus, la distribution du montant total des sinistres est
-    une Poisson composée, donc le niveau de crédibilité complète est
-    donné par
-    \begin{displaymath}
-      \lambda \ge
-      \left(
-        \frac{\zeta_{\varepsilon/2}}{k}
-      \right)^2
-      (1 + \CV(X)^2).
-    \end{displaymath}
-    Pour le groupe A, on a $\lambda_A = \nombre{1000}$ et
-    $\CV(X_A) = 0$, d'où $(\zeta_{\varepsilon/2}/k)^2 =
-    \nombre{1000}$. Ce facteur est identique pour le groupe B, mais
-    $\lambda_B = \nombre{3000}$ et $\CV(X_B) = 1/\sqrt{\alpha}$. On
-    a donc
+    du groupe B. On nous donne $\esp{X_A} = 50$, $\var{X_A} = 0$ et
+    $X_B \sim \text{Gamma}(\alpha, \lambda)$ avec
+    $\alpha/\lambda = 50$. De plus, la distribution du montant total
+    des sinistres est une Poisson composée, donc le seuil de
+    crédibilité complète est donné par \eqref{eq:stabilite:complete_comppois}.
+
+    Pour le groupe A $\lambda_A = \nombre{1000}$ et $\CV(X_A) = 0$,
+    d'où $(\zeta_{\varepsilon/2}/k)^2 = \nombre{1000}$. Ce facteur est
+    identique pour le groupe B, mais $\lambda_B = \nombre{3000}$ et
+    $\CV(X_B) = 1/\sqrt{\alpha}$, d'où
     \begin{displaymath}
       \nombre{3000} = \nombre{1000}
       \left(
         1 + \frac{1}{\alpha}
       \right),
     \end{displaymath}
-    soit $\alpha = 1/2$. Enfin, de $\alpha/\lambda = 50$ on obtient
-    que $\lambda = 1/100$.
+    soit $\alpha = 1/2$. Enfin, de $\alpha/\lambda = 50$ découle que
+    $\lambda = 1/100$.
   \end{sol}
 \end{exercice}
 
 \begin{exercice}
   Dans un modèle Poisson composée, on accorde une crédibilité complète
   d'ordre $(0,05, p)$ au nombre total de sinistres si le nombre de
-  sinistres observé est supérieur à \nombre{1000}. Quel doit être le
-  nombre de sinistres minimal que l'on doit observer pour accorder une
-  crédibilité d'ordre $(0,25, p)$ au montant total des sinistres si le
-  montant d'un sinistre individuel suit une loi Gamma$(2, 2)$?
+  sinistres observé est supérieur à $\nombre{1000}$. Quel doit être le
+  nombre minimal de sinistres pour accorder une crédibilité d'ordre
+  $(0,25, p)$ au montant total des sinistres si le montant d'un
+  sinistre individuel suit une loi Gamma$(2, 2)$?
   \begin{rep}
     60 sinistres
   \end{rep}
@@ -794,18 +734,11 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     On nous donne donc d'abord le seuil de crédibilité complète dans
     un modèle avec distribution de Poisson pure (ou Poisson composée
     avec une distribution des montants de sinistres dégénérée en 1),
-    puis on demande de déterminer le seuil dans un modèle avec
+    puis on nous demande de déterminer le seuil dans un modèle avec
     distribution Poisson composée où la distribution du montant des
     sinistres a un coefficient de variation de $1/\sqrt{2}$. Toujours
-    à partir de la formule
-    \begin{displaymath}
-      \lambda \geq
-      \left(
-        \frac{\zeta_{\varepsilon/2}}{k}
-      \right)^2
-      (1 + \CV(X)^2)
-    \end{displaymath}
-    on trouve dans un premier temps que
+    à partir de la formule \eqref{eq:stabilite:complete_comppois},
+    nous trouvons que, dans un premier temps,
     \begin{displaymath}
       \nombre{1000} =
       \left(
@@ -813,7 +746,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
       \right)^2,
     \end{displaymath}
     soit $\zeta_{\varepsilon/2} = 0,05 \sqrt{\nombre{1000}}$. Dans un
-    deuxième temps, on a
+    deuxième temps, nous avons
     \begin{align*}
       \lambda
       &\geq
@@ -834,23 +767,22 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
 
 \begin{exercice}
   Pour ses calculs relatifs à l'admission au régime rétrospectif, la
-  CSST peut n'employer que la fréquence des sinistres, ou encore la
+  CNESST peut n'employer que la fréquence des sinistres, ou encore la
   fréquence ainsi que la sévérité. Dans le premier cas, le nombre
   minimal d'employés pour être admissible au régime rétrospectif est
-  de \nombre{6494} en supposant que la probabilité d'avoir un accident
-  est de 0,04.  Sachant que le coefficient de variation de la sévérité
-  des sinistres est de 2, que devient le seuil d'admissibilité
+  de $\nombre{6494}$ en supposant que la probabilité d'avoir un accident
+  est de $0,04$.  Sachant que le coefficient de variation de la sévérité
+  des sinistres est $2$, que devient le seuil d'admissibilité
   lorsque la sévérité est également prise en compte dans les calculs?
   \begin{rep}
-    \nombre{33552}
+    $\nombre{33552}$
   \end{rep}
   \begin{sol}
     Il faut d'abord identifier le modèle pour la fréquence comme étant
     une $\text{Binomiale}(n, \theta)$, où $n$ est le nombre d'employés
-    et $\theta$, la probabilité qu'un employé ait un accident. On doit
-    considérer deux cas: premièrement la binomiale pure et deuxièmement
-    la binomiale composée. La formule de crédibilité de stabilité
-    générale est
+    et $\theta$, la probabilité qu'un employé ait un accident. Nous
+    devons étudier deux cas: la binomiale pure et la binomiale
+    composée. La formule de crédibilité de stabilité générale est
     \begin{displaymath}
       \esp{S} \geq
       \left(
@@ -875,30 +807,30 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
         \frac{1 - \theta}{\theta}
       \right).
     \end{displaymath}
-    (À noter que cette dernière équation revient à la première si $X =
-    1$ avec probabilité 1, c'est-à-dire si $\CV(X) = 0$.) On a
-    que $\theta = 0,04$ et, dans le cas d'une binomiale pure, un
+    (À noter que cette dernière équation revient à la première si
+    $X = 1$ avec probabilité $1$, c'est-à-dire si $\CV(X) = 0$.) Nous
+    avons $\theta = 0,04$ et, dans le cas d'une binomiale pure, un
     niveau de crédibilité complète de $n = \nombre{6494}$. Par
     conséquent, $(\zeta_{\varepsilon/2}/k)^2 = 270,5833$. En insérant
     cette valeur dans la formule pour la binomiale composée avec
-    $\CV(X) = 2$, on obtient un niveau de crédibilité complète
-    de $n = \nombre{33552}$ employés.
+    $\CV(X) = 2$, nous obtenons un niveau de crédibilité complète de
+    $n = \nombre{33552}$ employés.
   \end{sol}
 \end{exercice}
 
 \begin{exercice}
   Le montant total des sinistres a une distribution Poisson composée
-  où les montants de sinistres individuels proviennent d'une loi
+  où les montants de sinistres individuels proviennent d'une loi de
   Pareto de paramètres $\alpha = 3$ et $\lambda = 100$. Lorsque la
-  largeur de l'intervalle de confiance autour de la moyenne est 5~\%
-  de celle-ci, le seuil de crédibilité complète est \nombre{2500}. On
+  largeur de l'intervalle de confiance autour de la moyenne est $5$~\%
+  de celle-ci, le seuil de crédibilité complète est $\nombre{2500}$. On
   décide de changer la distribution de la fréquence des sinistres pour
   une binomiale négative avec $\theta = 0,5$. Si le seuil de
   crédibilité complète et le niveau de confiance de l'intervalle
   autour de la moyenne demeurent tous deux inchangés, quelle est la
   nouvelle largeur de l'intervalle de confiance?
   \begin{rep}
-    \nombre{13975}
+    $\nombre{13975}$
   \end{rep}
   \begin{sol}
     Avec la distribution Poisson composée, le seuil de crédibilité
@@ -911,7 +843,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     Or, on nous donne $\esp{X} = 100/(3 - 1) = 50$ et $\var{X} = 3
     \cdot 100^2/((3 - 1)^2 (3 - 2)) = \nombre{7500}$. Si le seuil de
     crédibilité complète dans le cas Poisson composée est
-    \nombre{2500} quand $k = 0,05$, alors
+    $\nombre{2500}$ quand $k = 0,05$, alors
     \begin{displaymath}
       \zeta_{\varepsilon/2}
       = 0,05 \sqrt{\frac{2500}{1 + 7500/50^2}}
@@ -930,7 +862,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
       \right).
     \end{displaymath}
     Avec $\var{X}/\esp{X}^2 = 3$, $\theta = 0,5$, $r = \nombre{2500}$
-    et $\zeta_{\varepsilon/2} = 1,25$, on obtient $k = 0,0559$, d'où la
+    et $\zeta_{\varepsilon/2} = 1,25$, nous obtenons $k = 0,0559$, d'où la
     largeur de l'intervalle de confiance autour de la moyenne est $2 k
     \esp{S} = 2 (0,559) (\nombre{2500}) (50) = \nombre{13975}$.
   \end{sol}
@@ -944,16 +876,16 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \item $X_j \sim \text{Pareto}(3, 3)$
   \item $N \sim \text{Binomiale négative}(r, 1/3)$.
   \end{enumerate}
-  Calculer la valeur minimale de $r$ pour que l'on puisse accorder une
-  crédibilité complète d'ordre $(0,05,\, 0,90)$ à $S$. Utiliser
-  l'approximation normale.
+  Calculer la valeur minimale de $r$ pour accorder une crédibilité
+  complète d'ordre $(0,05,\, 0,90)$ à $S$. Utiliser l'approximation
+  normale.
   \begin{rep}
     $r \geq 3247,23$
   \end{rep}
   \begin{sol}
-    On a un cas binomiale négative composée. À l'aide de la formule
-    développée à l'\autoref{ex:stabilite:rBNC},
-    on trouve directement que
+    Nous avons un cas binomiale négative composée. À l'aide de la
+    formule développée à l'\autoref{ex:stabilite:rBNC}, nous obtenons
+    directement que
     \begin{align*}
       r
       &\geq
@@ -987,7 +919,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   complète en termes du nombre espéré de sinistres selon les
   hypothèses de distribution suivantes.
   \begin{enumerate}
-  \item $\Pr[X = 1] = 1$ (dégénérée en 1), $k = 0,05$ et $p = 0,90$.
+  \item $\Pr[X = 1] = 1$ (dégénérée en $1$), $k = 0,05$ et $p = 0,90$.
   \item $X \sim \text{Exponentielle}(2)$, $k = 0,04$, $p = 0,95$.
   \item Si le seuil de crédibilité complète selon les conditions en b)
     n'est pas atteint, quel facteur de crédibilité partielle
@@ -1011,9 +943,9 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
       (\zeta_{\varepsilon/2}/k)^2 (1 + \CV(X)^2) = 2
       (1,96/0,04)^2 = \nombre{4802}$.
     \item Sans plus de précisions sur la formule de crédibilité
-      partielle à utiliser, on se rabattra sur la formule de la racine
-      carrée. Pour une seule période d'expérience, on a $\bar{S} = S$,
-      donc la crédibilité partielle $z$ serait
+      partielle à utiliser, nous allons utiliser sur la formule de la
+      racine carrée. Pour une seule période d'expérience, nous avons
+      $\bar{S} = S$, donc la crédibilité partielle $z$ serait
       \begin{displaymath}
         z = \min
         \left\{
@@ -1029,7 +961,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   sinistres pour accorder une crédibilité complète à un assuré d'un
   groupe si la sévérité est constante.  Après une étude, il se rend
   compte que la sévérité suit plutôt une loi de Pareto de moyenne
-  \nombre{1000} avec $\alpha = 3$. Si le nombre de sinistres obéit à
+  $\nombre{1000}$ avec $\alpha = 3$. Si le nombre de sinistres obéit à
   une loi de Poisson, combien de sinistres doit-on avoir observé si
   l'on a accordé, après une période d'expérience, une crédibilité de
   $0,5$ à l'expérience individuelle de l'assuré?
@@ -1037,10 +969,10 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     \nombre{3000} sinistres
   \end{rep}
   \begin{sol}
-    On a un modèle Poisson composée pour le montant total des
+    Nous avons un modèle Poisson composée pour le montant total des
     sinistres. Le seuil de crédibilité complète de \nombre{3000} est
     atteint lorsque $\CV(X) = 0$, donc
-    $(\zeta_{\varepsilon/2}/k)^2 = \nombre{3000}$. Si on a plutôt
+    $(\zeta_{\varepsilon/2}/k)^2 = \nombre{3000}$. Si nous avons plutôt
     $\CV(X)^2 = \alpha/(\alpha - 2) = 3$, alors le seuil de
     crédibilité complète est $\lambda_0 = \nombre{3000}(1 + 3) =
     \nombre{12000}$. Enfin, si l'on a accordé à l'assuré une
@@ -1058,14 +990,14 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     coefficient de variation de 3.
   \item Le nombre et les montants de sinistres sont indépendants.
   \item Le nombre de sinistres la première année fut de \nombre{1000}.
-  \item Le montant total des sinistres la première année fut de 6,75
-    millions.
-  \item La prime collective pour la seconde année est de 5,00
-    millions.
+  \item Le montant total des sinistres la première année fut de
+    $6,75$~millions.
+  \item La prime collective pour la seconde année est de
+    $5,00$~millions.
   \item Le volume du contrat est le même pour la première et la
     seconde année.
   \item Le niveau de crédibilité complète assure que le montant total
-    des sinistres sera à 5~\% de la moyenne 95~\% du temps.
+    des sinistres sera à $5$~\% de la moyenne $95$~\% du temps.
   \end{enumerate}
   Déterminer la prime de crédibilité (partielle) selon l'approche de
   crédibilité de stabilité. Calculer le niveau de crédibilité complète
@@ -1078,7 +1010,7 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
     Il faut déduire de l'énoncé que la crédibilité complète est donnée
     en années d'expérience et que $\zeta_{\varepsilon/2} = 1,96$, $k =
     0,05$, $\CV(X) = 3$ et $\lambda = \nombre{1000}$. Puisque
-    l'on a un modèle Poisson composée, le niveau de crédibilité
+    nous avons un modèle Poisson composée, le niveau de crédibilité
     complète $n_0$ est
     \begin{displaymath}
       n_0 =
@@ -1104,11 +1036,11 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   F_X(\cdot))$. La fréquence annuelle espérée des sinistres est
   évaluée à $0,035$. La grandeur minimale du portefeuille de
   l'assureur pour accorder une crédibilité complète à l'expérience est
-  \nombre{103500}. Pour accorder une crédibilité de 0,67 à
+  $\nombre{103500}$. Pour accorder une crédibilité de $0,67$ à
   l'expérience d'une période, quelle doit être la grandeur minimale du
   portefeuille?
   \begin{rep}
-    \nombre{46462}
+    $\nombre{46462}$
   \end{rep}
   \begin{sol}
     Soit $\lambda$ la grandeur du portefeuille. Le seuil de
@@ -1136,9 +1068,9 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \end{center}
   Une crédibilité complète est accordée à l'expérience d'un contrat
   après $n$ années si celle-ci se concentre dans un intervalle de
-  10~\% autour de sa moyenne avec probabilité de 90~\%. Déterminer
+  $10$~\% autour de sa moyenne avec probabilité de $90$~\%. Déterminer
   après combien d'années d'expérience le facteur de crédibilité
-  partielle sera de 0,54 selon chacune des formules de crédibilité
+  partielle sera de $0,54$ selon chacune des formules de crédibilité
   partielle ci-dessous.
   \begin{enumerate}
   \item $z = \left( \dfrac{n}{n_0} \right)^{1/2}$
@@ -1146,14 +1078,16 @@ fluctuations dans la prime d'une année à l'autre (\emph{swing}).
   \end{enumerate}
   \begin{rep}
     \begin{inparaenum}
-    \item 9,86 années
-    \item 13,42 années
+    \item $9,86$ années
+    \item $13,42$ années
     \end{inparaenum}
   \end{rep}
   \begin{sol}
-    On a $\esp{S} = \esp{N} \esp{X} = 50,000$ et $\var{S} = \var{N}
-    \esp{X}^2 + \var{X} \esp{N} = \nombre{312500000}$. On trouve le
-    seuil de crédibilité complète avec la formule générale
+    Nous avons $\esp{S} = \esp{N} \esp{X} = 50,000$ et
+    $\var{S} = \var{N} \esp{X}^2 + \var{X} \esp{N} =
+    \nombre{312500000}$. Avec la formule générale
+    \eqref{eq:stabilite:complete_comppois}, le seuil de crédibilité
+    complète est
     \begin{align*}
       n_0
       &= \left( \frac{\zeta_{\varepsilon/2}}{k} \right)^2
