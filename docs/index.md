@@ -11,7 +11,7 @@ cours](https://www.ulaval.ca/les-etudes/cours/repertoire/detailsCours/act-2008-m
 à l'[École d'actuariat](https://www.act.ulaval.ca) de l'[Université
 Laval](https://ulaval.ca).
 
-> Plus de détails suivront.
+> Plus de détails à venir.
 
 ## Auteur
 
